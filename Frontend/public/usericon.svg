@@ -1,0 +1,6 @@
+<svg class="fm-user-dropdown-trigger" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+    <g fill="none" fill-rule="evenodd" stroke="#4A4A4A" stroke-width="1.5" transform="translate(1 1)">
+            <circle cx="9" cy="4" r="4"></circle>
+        <path d="M18 18a9 9 0 0 0-18 0h18z"></path>
+    </g>
+</svg>
