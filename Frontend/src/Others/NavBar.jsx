@@ -1,6 +1,3 @@
-//Header
-//Navbar
-//and so on
 import React from "react";
 import styled from "styled-components";
 
