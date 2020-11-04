@@ -13,7 +13,7 @@ const Image = styled.img`
 `;
 
 const Cover = () => {
-    return (
+    return(
         <Div>
             <Image src="https://s3-ap-southeast-1.amazonaws.com/foodvista.1/e67af689-347e-4a1b-ba6b-784e6e10d483.png" alt="cover" />
         </Div>
