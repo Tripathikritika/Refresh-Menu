@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import Footer from "./Others/Footer";
+import Routing from './Routes/Routing';
 function App() {
   return (
     <div className="App">
-	<Footer/>
+      <Routing/>
     </div>
   );
 }

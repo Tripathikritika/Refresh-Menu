@@ -1,0 +1,6 @@
+.carouselCards {
+  display: flex;
+}
+.carouselCards > * {
+  margin: 20px;
+}
