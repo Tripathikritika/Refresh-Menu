@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const TopDiv = styled.div`
@@ -46,6 +47,10 @@ const TopDiv = styled.div`
   & #downloadapp {
     color: #4a4a4a;
     padding-left: 10px;
+    transition: color 500ms;
+    :hover{
+      color: #e85826;
+    }
   }
   & a {
     text-decoration: none;
@@ -70,8 +75,9 @@ const BottomDiv = styled.div`
         display: flex;
         padding: 10px 15px;
         border-radius: 20px;
+        transition: background-color 500ms;
         :hover {
-            background: #f2f3f3;
+          background-color: #f2f3f3;
         }
     }
   }
@@ -88,10 +94,10 @@ const Navbar = () => {
       <TopDiv>
         {/* navbar top div */}
         <div></div>
-        <a id="refreshmenu" href="#">
+        <Link to="/" id="refreshmenu">
           <img id="logoicon" src="./logoicon.jpg" alt="logoicon.jpg" />
           <h2>RefreshMenu</h2>
-        </a>
+        </Link>
         <div>
           <div id="deliverto">Deliver to:</div>
           <span>Koramangala, Bengaluru</span>
@@ -102,14 +108,14 @@ const Navbar = () => {
         <div></div>
         <div></div>
         <div>
-          <a href="#" id="discountoffer">
+          <Link to="/diwali-gift" id="discountoffer">
             <img
               width="30px"
               src="./discountoffer.svg"
               alt="discountoffer.svg"
             />
             <div>Diwali Gift</div>
-          </a>
+          </Link>
           <a href="#" id="downloadapp">
             Download App
           </a>
