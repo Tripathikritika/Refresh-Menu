@@ -3,12 +3,12 @@ import Cover from "./Cover";
 import Navbar from "./Navbar";
 
 const DiwaliGift = () => {
-    return (
-        <>
-            <Navbar/>
-            <Cover/>
-        </>
-    )
-}
+  return (
+    <>
+      <Navbar />
+      <Cover />
+    </>
+  );
+};
 
-export default DiwaliGift
+export default DiwaliGift;
