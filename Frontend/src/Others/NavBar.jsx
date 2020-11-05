@@ -145,6 +145,8 @@ const BottomDiv = styled.div`
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: "flex",
+    width: "400px",
+    margin: "auto",
     alignItems: "center",
     justifyContent: "center",
   },
