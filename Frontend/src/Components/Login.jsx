@@ -77,7 +77,11 @@ const Last = styled.div`
   }
 `;
 
-const Login = (handleOpenLogin) => {
+const handleSubmit = (e) => {
+    e.preventDefault();
+}
+
+const Login = () => {
   return (
     <>
       <Flexbox>
@@ -90,9 +94,10 @@ const Login = (handleOpenLogin) => {
         <Line></Line>
       </Second>
 
-      <InputBox placeholder="Mobile Number/ Email ID" autoFocus />
-
-      <SendOtp>Send OTP</SendOtp>
+        <form onSubmit={handleSubmit}>
+            <InputBox placeholder="Mobile Number/ Email ID" autoFocus required/>
+            <SendOtp type='submit'>Send OTP</SendOtp>
+        </form>
 
       <hr />
 
