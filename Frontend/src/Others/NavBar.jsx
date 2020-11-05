@@ -188,8 +188,6 @@ const Navbar = () => {
     setOpenSignup(false);
   };
 
- 
-
   return (
     <>
       <TopDiv>
