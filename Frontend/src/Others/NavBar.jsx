@@ -1,4 +1,4 @@
-import React ,{useState, useEffect } from "react";
+import React ,{useState ,useEffect} from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { makeStyles } from "@material-ui/core/styles";
@@ -145,8 +145,6 @@ const BottomDiv = styled.div`
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: "flex",
-    width: "400px",
-    margin: "auto",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -162,7 +160,18 @@ const Navbar = () => {
   const [openLogin, setOpenLogin] = useState(false);
   const [openSignup, setOpenSignup] = useState(false);
   const [query , setQuery] = useState('')
+  const [locationSearch , setLocationSearch] = useState('')
+  const [getLocation , setGetLocation] = useState('Bangalore Karnataka')
 
+  useEffect(() => {
+    axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${locationSearch}.json?access_token=pk.eyJ1Ijoia3JpdGlrYWd0IiwiYSI6ImNraDNzZzRqNjByc2ozMGxzcjc3OXFycTcifQ.USQiQRYZ40MTwAb-3XPXQA`)
+    .then((res) => {
+      setQuery(res.data.features.map((item) => item.place_name))
+      // console.log(res.data.features.map((item) => item.place_name))
+    })
+    .catch((err) => console.log(err))
+  }, [ locationSearch ])
+  console.log(query)
   const handleOpenLogin = () => {
     setOpenLogin(true);
   };
@@ -179,12 +188,6 @@ const Navbar = () => {
     setOpenSignup(false);
   };
 
-  useEffect(() => {
-    axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?access_token=pk.eyJ1Ijoia3JpdGlrYWd0IiwiYSI6ImNraDNzZzRqNjByc2ozMGxzcjc3OXFycTcifQ.USQiQRYZ40MTwAb-3XPXQA`)
-    .then((res) => console.log(res.data.features.map((item) => item.place_name)))
-    .catch((err) => console.log(err))
-  }, [query])
-
   return (
     <>
       <TopDiv>
@@ -196,7 +199,7 @@ const Navbar = () => {
         </Link>
         <div data-toggle="modal" data-target="#mapLocation" >
           <div id="deliverto" >Deliver to:</div>
-          <span>Koramangala, Bengaluru</span>
+          <span>{getLocation}</span>
           <img src="./downarrow.svg" alt="downarrow.svg" />
         </div>
           {/* Search Map Modal */}
@@ -219,9 +222,17 @@ const Navbar = () => {
                   </div>
                     <div className = {styles.searchDiv}>
                       <img src="https://www.freshmenu.com/pages/common/images/icn-search.svg" alt="Search Icons"/>
-                      <input type="text" placeholder = "Enter min 5 characters to search your location" className={styles.inputBox}  onChange={ (e) => setQuery(e.target.value)} />
+                      <input type="text" placeholder = "Enter min 5 characters to search your location" className={styles.inputBox}  onChange={ (e) => setLocationSearch(e.target.value)} />
                       <button className={styles.locateMe}>Locate Me</button>
                     </div>
+                   { query &&  <div style={{width:'100%' ,minHeight:'50px',border:'1px solid black', textAlign:'left'}}>
+                        {
+                          query.map((res) => <p className='pl-3' onClick={ (e) => setGetLocation(e.target.textContent) } data-dismiss="modal">
+                            {res} <hr/>
+                          </p> )
+                        } 
+                    </div>
+                    }
                   </div>
                 </div>
               </div>
