@@ -4,3 +4,19 @@
 .carouselCards > * {
   margin: 20px;
 }
+.catergoryListBody {
+  margin-left: 10%;
+}
+.catergoryList {
+  border: 0px solid white;
+}
+.categoriesBody {
+  margin-top: 20px;
+}
+.categoriesBody > div {
+  margin: 0px 10px 10px 10px;
+}
+.cards_details {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
