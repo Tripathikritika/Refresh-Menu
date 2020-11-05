@@ -1,0 +1,47 @@
+.searchDiv {
+  width: 100%;
+  display: flex;
+  border: 1px solid black;
+  padding: 3px 3px 3px 8px;
+}
+.inputBox {
+  outline: none;
+  border: none;
+  margin: 5px;
+  width: 73%;
+  font-family: ProximaNova-Regular, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+  line-height: 1.6;
+}
+.buttonGroup > button {
+  margin: 10px;
+  color: #e85826;
+  margin-bottom: 20px;
+}
+.button {
+  border: 2px solid #e85826;
+  width: '150px';
+}
+.headerDiv {
+  font-family: ProximaNova-Medium, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
+}
+.locateMe {
+  border: none;
+  outline: none;
+  background-color: white;
+  color: #e85826;
+  font-size: 13px !important;
+  font-family: ProximaNova-Semibold, Helvetica, Arial, sans-serif !important;
+  padding: 0 10px 0 9px !important;
+  line-height: 22px !important;
+  border-left: 1px solid gray;
+  font-weight: 600 !important;
+}
