@@ -1,30 +1,15 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 import {Box, TableRow} from "@material-ui/core" 
 import IconButton from '@material-ui/core/IconButton';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import InstagramIcon from '@material-ui/icons/Instagram';
 
-const FooterContainer = styled.div`
-  text-align: center;
-  position: absolute;
-  bottom: 0;
-  width: 100% !important;
-  height: 100px !important ;
-`;
-
 class Footer extends Component {
-    
   render() {
     return (
         <div>
-            
-            <>
-                <hr/>
-             
-                
-                <Box style={{width:"100%",height:"500px",fontFamily: "Helvetica",fontWeight:"bolder",fontSize:"13px"}}>
+            <Box style={{width:"100%",height:"500px",fontFamily: "Helvetica",fontWeight:"bolder",fontSize:"13px"}}>
                     <Box style={{background:"white",color:"black",height:"250px"}}>
                         <div style={{display:'flex', flexDirection:'row'}}>
                             <Box style={{marginLeft:"60px"}} >
@@ -179,11 +164,9 @@ class Footer extends Component {
                     </Box>
                   
                 </Box>
-            </>
         </div>
      
     );
   }
 }
-
 export default Footer;
