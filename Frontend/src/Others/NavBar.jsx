@@ -1,4 +1,4 @@
-import React ,{useState ,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { makeStyles } from "@material-ui/core/styles";
@@ -8,8 +8,8 @@ import Fade from "@material-ui/core/Fade";
 import Login from "../Components/Login";
 import Signup from "../Components/Signup";
 import { useSelector } from "react-redux";
-import styles from '../Styling/NavBar.module.css'
-import axios from 'axios'
+import styles from "../Styling/NavBar.module.css";
+import axios from "axios";
 const TopDiv = styled.div`
   display: grid;
   grid-template-columns: auto auto auto auto auto auto auto auto auto;
@@ -47,7 +47,7 @@ const TopDiv = styled.div`
   & #discountoffer {
     display: flex;
     align-items: center;
-    min-width:152px;
+    min-width: 152px;
     padding: 23px;
     background-color: #e85826;
     color: white;
@@ -160,9 +160,9 @@ const Navbar = () => {
   const classes = useStyles();
   const [openLogin, setOpenLogin] = useState(false);
   const [openSignup, setOpenSignup] = useState(false);
-  const [query , setQuery] = useState('')
-  const [locationSearch , setLocationSearch] = useState('')
-  const [getLocation , setGetLocation] = useState('Bangalore Karnataka')
+  const [query, setQuery] = useState("");
+  const [locationSearch, setLocationSearch] = useState("");
+  const [getLocation, setGetLocation] = useState("Bangalore Karnataka");
 
   const { token, isAuth, isLoading, errorMsg, isError } = useSelector(
     (state) => state.reducer
@@ -171,14 +171,17 @@ const Navbar = () => {
   console.log(token, isAuth, isLoading, errorMsg, isError);
 
   useEffect(() => {
-    axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${locationSearch}.json?access_token=pk.eyJ1Ijoia3JpdGlrYWd0IiwiYSI6ImNraDNzZzRqNjByc2ozMGxzcjc3OXFycTcifQ.USQiQRYZ40MTwAb-3XPXQA`)
-    .then((res) => {
-      setQuery(res.data.features.map((item) => item.place_name))
-      // console.log(res.data.features.map((item) => item.place_name))
-    })
-    .catch((err) => console.log(err))
-  }, [ locationSearch ])
-  console.log(query)
+    axios
+      .get(
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/${locationSearch}.json?access_token=pk.eyJ1Ijoia3JpdGlrYWd0IiwiYSI6ImNraDNzZzRqNjByc2ozMGxzcjc3OXFycTcifQ.USQiQRYZ40MTwAb-3XPXQA`
+      )
+      .then((res) => {
+        setQuery(res.data.features.map((item) => item.place_name));
+        // console.log(res.data.features.map((item) => item.place_name))
+      })
+      .catch((err) => console.log(err));
+  }, [locationSearch]);
+  console.log(query);
   const handleOpenLogin = () => {
     setOpenLogin(true);
   };
@@ -204,46 +207,107 @@ const Navbar = () => {
           <img id="logoicon" src="./logoicon.jpg" alt="logoicon.jpg" />
           <h2>RefreshMenu</h2>
         </Link>
-        <div data-toggle="modal" data-target="#mapLocation" >
-          <div id="deliverto" >Deliver to:</div>
+        <div data-toggle="modal" data-target="#mapLocation">
+          <div id="deliverto">Deliver to:</div>
           <span>{getLocation}</span>
           <img src="./downarrow.svg" alt="downarrow.svg" />
         </div>
-          {/* Search Map Modal */}
+        {/* Search Map Modal */}
         <div>
-            <div className="modal fade" id="mapLocation" style={{width:'100%' ,height:'100%',backgroundColor:"#eeeeee"}} tabindex="-1" aria-labelledby="mapLocationLabel" aria-hidden="true">
-              <div className="modal-dialog">
-                <div className="modal-content">
-                  <div className="modal-header">
-                    <h3 className={`modal-title ${styles.headerDiv}`} id="mapLocationLabel">Enter Your Delivery Location</h3>
-                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
+          <div
+            className="modal fade"
+            id="mapLocation"
+            style={{
+              width: "100%",
+              height: "100%",
+              backgroundColor: "#eeeeee",
+            }}
+            tabindex="-1"
+            aria-labelledby="mapLocationLabel"
+            aria-hidden="true"
+          >
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h3
+                    className={`modal-title ${styles.headerDiv}`}
+                    id="mapLocationLabel"
+                  >
+                    Enter Your Delivery Location
+                  </h3>
+                  <button
+                    type="button"
+                    className="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div className="modal-body">
+                  <div className={styles.buttonGroup}>
+                    <button
+                      type="button"
+                      class={`btn rounded-pill ${styles.button}`}
+                    >
+                      Bengaluru{" "}
+                    </button>
+                    <button
+                      type="button"
+                      class={`btn rounded-pill ${styles.button}`}
+                    >
+                      Mumbai
+                    </button>
+                    <button
+                      type="button"
+                      class={`btn rounded-pill ${styles.button}`}
+                    >
+                      New Delhi
+                    </button>
+                    <button
+                      type="button"
+                      class={`btn rounded-pill ${styles.button}`}
+                    >
+                      Gurgaon
                     </button>
                   </div>
-                  <div className="modal-body">
-                  <div className={styles.buttonGroup}>
-                    <button type="button" class={`btn rounded-pill ${styles.button}`}>Bengaluru </button>
-                    <button type="button" class={`btn rounded-pill ${styles.button}`}>Mumbai</button>
-                    <button type="button" class={`btn rounded-pill ${styles.button}`}>New Delhi</button>
-                    <button type="button" class={`btn rounded-pill ${styles.button}`}>Gurgaon</button>
+                  <div className={styles.searchDiv}>
+                    <img
+                      src="https://www.freshmenu.com/pages/common/images/icn-search.svg"
+                      alt="Search Icons"
+                    />
+                    <input
+                      type="text"
+                      placeholder="Enter min 5 characters to search your location"
+                      className={styles.inputBox}
+                      onChange={(e) => setLocationSearch(e.target.value)}
+                    />
+                    <button className={styles.locateMe}>Locate Me</button>
                   </div>
-                    <div className = {styles.searchDiv}>
-                      <img src="https://www.freshmenu.com/pages/common/images/icn-search.svg" alt="Search Icons"/>
-                      <input type="text" placeholder = "Enter min 5 characters to search your location" className={styles.inputBox}  onChange={ (e) => setLocationSearch(e.target.value)} />
-                      <button className={styles.locateMe}>Locate Me</button>
+                  {query && (
+                    <div
+                      style={{
+                        width: "100%",
+                        minHeight: "50px",
+                        border: "1px solid black",
+                        textAlign: "left",
+                      }}
+                    >
+                      {query.map((res) => (
+                        <p
+                          className="pl-3"
+                          onClick={(e) => setGetLocation(e.target.textContent)}
+                          data-dismiss="modal"
+                        >
+                          {res} <hr />
+                        </p>
+                      ))}
                     </div>
-                   { query &&  <div style={{width:'100%' ,minHeight:'50px',border:'1px solid black', textAlign:'left'}}>
-                        {
-                          query.map((res) => <p className='pl-3' onClick={ (e) => setGetLocation(e.target.textContent) } data-dismiss="modal">
-                            {res} <hr/>
-                          </p> )
-                        } 
-                    </div>
-                    }
-                  </div>
+                  )}
                 </div>
               </div>
-            </div>      
+            </div>
+          </div>
         </div>
         <div></div>
         <div></div>
@@ -317,9 +381,7 @@ const Navbar = () => {
             /* user */
             <div className="">
               <img src="./usericon.svg" alt="usericon.svg" />
-              <span className="tooltiptext">
-                
-              </span>
+              <span className="tooltiptext"></span>
             </div>
           )}
         </div>
@@ -354,6 +416,7 @@ const Navbar = () => {
 
       {/* Signup Modal */}
       <Modal
+        style={{ width: "400px", margin: "auto" }}
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         className={classes.modal}
