@@ -30,7 +30,7 @@ export const Oauth = () => {
         cookiePolicy={"single_host_origin"}
       />
       <FacebookLogin
-        appId=""
+        appId="633585867333844"
         autoLoad={false}
         fields="name,email,picture"
         callback={responseFacebook}
