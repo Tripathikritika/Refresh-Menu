@@ -35,17 +35,14 @@ function LandingPage() {
                     </div>
                 </div>
                 <div>
-                   <div className = {`d-flex flex-row justify-content-center ${styles.categoriesBody}`} >
-                       <div>
+                   <div className = {`d-flex justify-content-between  px-5 flex-row ${styles.categoriesBody}`} >
+                       <div >
                             <h5>CATEGORIES</h5>
                        </div>
-                       <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div><div></div> <div></div>
-                       <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div><div></div> <div></div>
-                       <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div><div></div> <div></div>
-                       <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div><div></div> <div></div>
-                       <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div><div></div> <div></div>
-                       <div><h5>VEG</h5></div>
-                       <div><h5><img src="/funnel.svg" alt=""/> FILTERS</h5></div>
+                       <div className = 'h5'>
+                            <span className= "px-2">VEG</span>
+                            <span ><img src="/funnel.svg" alt=""/> FILTERS</span>
+                       </div>
                    </div>
                    <hr/>
                     <div className={styles.catergoryListBody}>
@@ -71,18 +68,23 @@ function LandingPage() {
                                     <div data-offset="0" className="scrollspy-example col-10" style={{overflowY:'scroll'}}>
                                         <h4 id="list-item-1" className="text-left">APPETIZERS</h4>
                                         <div className={`text-left ${styles.cards_details}`}>
+                                            <div className="row">
                                             {
                                                 food_List.filter((item) => item.category === 'Appetizers').map((item) =>  (
-                                                    <div class ="card m-2 rounded">
-                                                    <img src={item.food_link} alt="Appetizers" className="img-fluid card-img-top rounded"/>
-                                                    <div class="card-body">
-                                                    <h5 class="card-title">{item.title}</h5>
-                                                    <p>₹{item.amount} <button type="button" class="btn btn-danger float-right rounded-pill">ADD</button></p>
-                                                    
+                                                    <div className = 'col-12 col-sm-12 col-md-6 col-lg-4'>
+
+                                                        <div class ="card m-2 rounded ">
+                                                        <img src={item.food_link} alt="Appetizers" className="img-fluid card-img-top rounded"/>
+                                                        <div class="card-body">
+                                                        <h5 class="card-title">{item.title}</h5>
+                                                        <p>₹{item.amount} <button type="button" class="btn btn-danger float-right rounded-pill">ADD</button></p>
+                                                        
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 ))
                                             }
+                                            </div>
                                         </div>
                                         <h4 id="list-item-2">MATCH DAY COMBOS</h4>
                                         <div className={`text-left ${styles.cards_details}`}>

@@ -12,6 +12,7 @@
 }
 .categoriesBody {
   margin-top: 20px;
+  width: 100%;
 }
 .categoriesBody > div {
   margin: 0px 10px 10px 10px;
