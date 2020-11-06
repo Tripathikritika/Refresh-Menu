@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../Styling/Footer.module.css';
+
 class Footer extends Component {
-    
   render() {
     return (
         <div>
@@ -126,68 +126,8 @@ class Footer extends Component {
                     </div>
                 </div>
             </section>
-
-    <section className="footer2">
-        <div className="container">
-            <div className="row">
-                <div className="col-xl-2 col-lg-2 col-md-6 col-sm-12 col-12">
-                    <h3>CATEGORIES</h3>
-                    <ul>
-                        <li>
-                            <a href="#">Mains</a>
-                        </li>
-                        <li>
-                            <a href="#">Pizzas</a>
-                        </li>
-                        <li>
-                            <a href="#">Salads</a>
-                        </li>
-                        <li>
-                            <a href="#">Desserts</a>
-                        </li>
-                        <li>
-                            <a href="#">Quickbites</a>
-                        </li>
-                    </ul>
-                </div>
-                <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 second_menu">
-                    <h3>CUISINES</h3>
-                    <ul>
-                        <li>
-                            <a href="#">Indian</a>
-                        </li>
-                        <li>
-                            <a href="#">Chinese</a>
-                        </li>
-                        <li>
-                            <a href="#">Italian</a>
-                        </li>
-                        <li>
-                            <a href="#">American</a>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <a href="#">Mexican</a>
-                        </li>
-                        <li>
-                            <a href="#">Thai</a>
-                        </li>
-                        <li>
-                            <a href="#">Continental</a>
-                        </li>
-                        <li>
-                            <a href="#">Mediterranean</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
         </div>
-    </section>
-        </div>
-     
     );
   }
 }
-
 export default Footer;
