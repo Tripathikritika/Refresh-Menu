@@ -1,6 +1,17 @@
 import React from "react";
 import { GoogleLogin } from "react-google-login";
 import FacebookLogin from "react-facebook-login";
+import styled from "styled-components";
+
+const Flex = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    & > *{
+        margin-right: 10px;
+    }
+`;
 
 const responseGoogle = (response) => {
   console.log(response);
@@ -10,7 +21,7 @@ const responseFacebook = (response) => {
 };
 export const Oauth = () => {
   return (
-    <div>
+    <Flex>
       <GoogleLogin
         clientId=""
         buttonText="Login"
@@ -26,7 +37,7 @@ export const Oauth = () => {
         cssClass="my-facebook-button-class"
         icon="fa-facebook"
       />
-    </div>
+    </Flex>
   );
 };
 export default Oauth;

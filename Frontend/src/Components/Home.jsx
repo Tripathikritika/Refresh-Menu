@@ -8,7 +8,7 @@ const Home = () => {
     <>
       <Navbar />
       <LandingPage />
-      <Footer />
+      <Footer  />
     </>
   );
 };
