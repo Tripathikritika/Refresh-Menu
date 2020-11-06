@@ -15,7 +15,7 @@ function LandingPage() {
     return (
         <>
         {/* First part */}
-            <div>
+            <div style={{width:'85%' , margin : 'auto'}}>
                 <div className={styles.carouselCards}>
                     <div>
                         <img src="https://s3-ap-southeast-1.amazonaws.com/foodvista.1/a7918f75-63a3-4923-8879-b27f104fa10d.jpg" height = "300px" alt="Desert 40 % Off"/>
@@ -26,17 +26,17 @@ function LandingPage() {
                     <div>
                         <img src="https://s3-ap-southeast-1.amazonaws.com/foodvista.1/64f2ee38-bbba-460f-976b-cb60b532e507.jpg" height = "300px" alt="Bowls"/>
                     </div>
-                     <div>
+                     {/* <div>
                         <img src="https://s3-ap-southeast-1.amazonaws.com/foodvista.1/1635b32e-b727-489a-bcd6-870941b29c40.jpg" height = "300px" alt="Desert 40 % Off"/>
                     </div>
                     
                     <div>
                         <img src="https://s3-ap-southeast-1.amazonaws.com/foodvista.1/a8d84480-dc3b-42c2-80d3-d3c3f4f2740e.jpg" height = "300px" alt="Order Today"/>
-                    </div>
+                    </div> */}
                 </div>
                 <div>
                    <div className = {`d-flex justify-content-between  px-5 flex-row ${styles.categoriesBody}`} >
-                       <div >
+                       <div>
                             <h5>CATEGORIES</h5>
                        </div>
                        <div className = 'h5'>
@@ -45,11 +45,12 @@ function LandingPage() {
                        </div>
                    </div>
                    <hr/>
-                    <div className={styles.catergoryListBody}>
+                    <div className={styles.catergoryListBody} >
                         <div className = 'row'>
                             <div className="col-12">
-                                <div className="row" style={{position:'relative' }} data-spy="scroll" data-target=".navbar" data-offset="50">
-                                    <div id="list-example" className="list-group col-2"   >
+                                <div className="row" style={{position:'relative'}} data-spy="scroll" data-target=".navbar" data-offset="50">
+                                    
+                                    <div id="list-example" className="list-group col-2 text-left">
                                         <a className={`list-group-item list-group-item-action ${styles.catergoryList}`} href="#list-item-1" >Appetizers</a>
                                         <a className={`list-group-item list-group-item-action ${styles.catergoryList}`} href="#list-item-2">Match Day Combos</a>
                                         <a className={`list-group-item list-group-item-action ${styles.catergoryList}`} href="#list-item-3">New & Exciting</a>
@@ -65,14 +66,17 @@ function LandingPage() {
                                         <a className={`list-group-item list-group-item-action ${styles.catergoryList}`} href="#list-item-13">Beverage</a>
                                     </div>
 
-                                    <div data-offset="0" className="scrollspy-example col-10" style={{overflowY:'scroll'}}>
+                                    <div data-offset="0" data-target="#list-example" className="scrollspy-example col-10" style={{overflowY:'hidden' }}>
                                         <h4 id="list-item-1" className="text-left">APPETIZERS</h4>
                                         <div className={`text-left ${styles.cards_details}`}>
                                             <div className="row">
                                             {
                                                 food_List.filter((item) => item.category === 'Appetizers').map((item) =>  (
                                                     <div className = 'col-12 col-sm-12 col-md-6 col-lg-4'>
-
+                                                        <div style={{display:'flex', fontSize:'13px', color:'#A8A8A8'}}>
+                                                            <div className={styles.foodType}>{item.type === 'VEG' ? <img src="./vegIcon.png" alt="Vegetarian" className={styles.typeIcon}/>  : <img src="/non-vegetarian.png" alt=""/>}</div>
+                                                            <div>{item.cuisine}</div>
+                                                        </div>
                                                         <div class ="card m-2 rounded ">
                                                         <img src={item.food_link} alt="Appetizers" className="img-fluid card-img-top rounded"/>
                                                         <div class="card-body">
@@ -86,35 +90,49 @@ function LandingPage() {
                                             }
                                             </div>
                                         </div>
-                                        <h4 id="list-item-2">MATCH DAY COMBOS</h4>
+                                        <h4 id="list-item-2" className="text-left">MATCH DAY COMBOS</h4>
                                         <div className={`text-left ${styles.cards_details}`}>
+                                        <div className="row">
                                             {
                                                 food_List.filter((item) => item.category === 'Match Day Combos').map((item) =>  (
-                                                    <div class ="card m-2 rounded">
-                                                    <img src={item.food_link} alt="Appetizers" className="img-fluid card-img-top rounded"/>
-                                                    <div class="card-body">
-                                                    <h5 class="card-title">{item.title}</h5>
-                                                    <p>₹{item.amount} <button type="button" class="btn btn-danger float-right rounded-pill">ADD</button></p>
-                                                    
+                                                    <div className = 'col-12 col-sm-12 col-md-6 col-lg-4'>
+                                                        <div style={{display:'flex', fontSize:'13px', color:'#A8A8A8'}}>
+                                                            <div className={styles.foodType}>{item.type === 'VEG' ? <img src="./vegIcon.png" alt="Vegetarian" className={styles.typeIcon}/>  : <img src="/non-vegetarian.png" alt="" className={styles.typeIcon}/>}</div>
+                                                            <div>{item.cuisine}</div>
+                                                        </div>
+                                                        <div class ="card m-2 rounded ">
+                                                        <img src={item.food_link} alt="Appetizers" className="img-fluid card-img-top rounded"/>
+                                                        <div class="card-body">
+                                                        <h5 class="card-title">{item.title}</h5>
+                                                        <p>₹{item.amount} <button type="button" class="btn btn-danger float-right rounded-pill">ADD</button></p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 ))
                                             }
                                         </div>
-                                        <h4 id="list-item-3">NEW & EXCITING</h4>
+                                        </div>
+                                        <h4 id="list-item-3" className="text-left">NEW & EXCITING</h4>
                                         <div className={`text-left ${styles.cards_details}`}>
+                                        <div className="row">
                                             {
-                                                food_List.filter((item) => item.category === "New & Exciting").map((item) =>  (
-                                                    <div class ="card m-2 rounded">
-                                                    <img src={item.food_link} alt="Appetizers" className="img-fluid card-img-top rounded"/>
-                                                    <div class="card-body">
-                                                    <h5 class="card-title">{item.title}</h5>
-                                                    <p>₹{item.amount} <button type="button" class="btn btn-danger float-right rounded-pill">ADD</button></p>
-                                                    
+                                                food_List.filter((item) => item.category === 'New & Exciting').map((item) =>  (
+                                                    <div className = 'col-12 col-sm-12 col-md-6 col-lg-4'>
+                                                        <div style={{display:'flex', fontSize:'13px', color:'#A8A8A8'}}>
+                                                            <div className={styles.foodType}>{item.type === 'VEG' ? <img src="./vegIcon.png" alt="Vegetarian" className={styles.typeIcon}/>  : <img src="/non-vegetarian.png" alt="" className={styles.typeIcon}/>}</div>
+                                                            <div>{item.cuisine}</div>
+                                                        </div>
+                                                        <div class ="card m-2 rounded ">
+                                                        <img src={item.food_link} alt="Appetizers" className="img-fluid card-img-top rounded"/>
+                                                        <div class="card-body">
+                                                        <h5 class="card-title">{item.title}</h5>
+                                                        <p>₹{item.amount} <button type="button" class="btn btn-danger float-right rounded-pill">ADD</button></p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 ))
                                             }
+                                        </div>
                                         </div>
                                         {/* <h4 id="list-item-4">BEVERAGES</h4>
                                         <div className={`text-left ${styles.cards_details}`}>

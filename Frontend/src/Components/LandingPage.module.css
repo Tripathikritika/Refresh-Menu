@@ -3,9 +3,10 @@
 }
 .carouselCards > * {
   margin: 20px;
+  /* margin: auto; */
 }
 .catergoryListBody {
-  margin-left: 10%;
+  margin-left: 3%;
 }
 .catergoryList {
   border: 0px solid white;
@@ -20,4 +21,10 @@
 .cards_details {
   display: grid;
   grid-template-columns: auto auto auto;
+}
+.typeIcon {
+  width: 20px;
+}
+.foodType {
+  padding-left: 10px;
 }

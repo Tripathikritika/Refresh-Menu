@@ -9,6 +9,7 @@ import Login from "../Components/Login";
 import Signup from "../Components/Signup";
 import styles from '../Styling/NavBar.module.css'
 import axios from 'axios'
+
 const TopDiv = styled.div`
   display: grid;
   grid-template-columns: auto auto auto auto auto auto auto auto auto;
@@ -46,7 +47,7 @@ const TopDiv = styled.div`
   & #discountoffer {
     display: flex;
     align-items: center;
-    max-width: 110px;
+    max-width: 150px;
     padding: 23px;
     background-color: #e85826;
     color: white;
@@ -70,6 +71,7 @@ const BottomDiv = styled.div`
   border-bottom: 1px solid #ececec;
   width: 100%;
   display: grid;
+  
   box-shadow: 0 5px 15px -6px #4a4a4a;
   grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
   & > * {
@@ -91,8 +93,9 @@ const BottomDiv = styled.div`
   }
   & #carticon {
     cursor: pointer;
-    background-color: #f2f3f3;
-    padding: 20px 0px;
+    // background-color: #f2f3f3;
+    padding: 40px 0px;
+
   }
   & .tooltip {
     position: relative;
@@ -155,7 +158,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Navbar = () => {
+const Navbar = ( props ) => {
   const classes = useStyles();
   const [openLogin, setOpenLogin] = useState(false);
   const [openSignup, setOpenSignup] = useState(false);
@@ -190,7 +193,7 @@ const Navbar = () => {
 
   return (
     <>
-      <TopDiv>
+      <TopDiv  style={{width:'85%' , margin : 'auto'}}>
         {/* navbar top div */}
         <div></div>
         <Link to="/" id="refreshmenu">
@@ -245,7 +248,7 @@ const Navbar = () => {
         <div>
           <Link to="/diwali-gift" id="discountoffer">
             <img
-              width="30px"
+              width="20px"
               src="./discountoffer.svg"
               alt="discountoffer.svg"
             />
@@ -274,8 +277,8 @@ const Navbar = () => {
         <div></div>
         <div></div>
         <div></div>
-        <div></div>
-        <div></div>
+        
+       
         <div className="bottom-items">
           {/* search */}
           <div>
@@ -297,7 +300,7 @@ const Navbar = () => {
         </div>
         <div className="bottom-items">
           {/* user */}
-          <div className="tooltip">
+          <div >
             <img src="./guesticon.svg" alt="guesticon.svg" />
             <span className="tooltiptext">
               <div onClick={handleOpenLogin}>Log In</div>
@@ -307,9 +310,6 @@ const Navbar = () => {
         </div>
         <div id="carticon">
           {/* cart */}
-          <div>
-            <img src="./carticon.svg" alt="carticon.svg" />
-          </div>
         </div>
         <div></div>
       </BottomDiv>
