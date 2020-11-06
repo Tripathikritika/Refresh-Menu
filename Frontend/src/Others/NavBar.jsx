@@ -246,7 +246,9 @@ const Navbar = ( props ) => {
         <div></div>
         <div></div>
         <div>
+
           <Link to="/diwali-gift" id="discountoffer">
+            
             <img
               width="20px"
               src="./discountoffer.svg"

@@ -1,16 +1,18 @@
 import React from 'react'
 import { useEffect } from 'react'
-import  styles from './LandingPage.module.css'
-import axios from 'axios'
-import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import  styles from '../Styling/LandingPage.module.css'
+import { getFoodList } from '../Redux/FoodList/action'
+import {Link} from 'react-router-dom'
 
 function LandingPage() {
-    const [ food_List , setFoodList ] = useState([])
+    const dispatch = useDispatch()
+    const  food_List = useSelector(state => state.foodReducer.foodList)
+
     useEffect ( () => {
-        axios.get(`http://localhost:8000/`) 
-             .then((res) => setFoodList(res.data) )
-             .catch((err) => console.log(err))
+        dispatch(getFoodList () )
     },[])
+
     console.log(food_List)
     return (
         <>
@@ -78,7 +80,7 @@ function LandingPage() {
                                                             <div>{item.cuisine}</div>
                                                         </div>
                                                         <div class ="card m-2 rounded ">
-                                                        <img src={item.food_link} alt="Appetizers" className="img-fluid card-img-top rounded"/>
+                                                       <Link to ={`/${item.title}/product/${item.id}`}><img src={item.food_link} alt="Appetizers" className="img-fluid card-img-top rounded"/></Link>
                                                         <div class="card-body">
                                                         <h5 class="card-title">{item.title}</h5>
                                                         <p>₹{item.amount} <button type="button" class="btn btn-danger float-right rounded-pill">ADD</button></p>
