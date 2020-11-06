@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../Styling/Footer.module.css';
+
 class Footer extends Component {
-    
   render() {
     return (
         <div>
@@ -126,7 +126,6 @@ class Footer extends Component {
                     </div>
                 </div>
             </section>
-
             <section className="footer2">
                 <div className="container">
                     <div className="row">
@@ -185,9 +184,7 @@ class Footer extends Component {
                 </div>
             </section>
         </div>
-     
     );
   }
 }
-
 export default Footer;
