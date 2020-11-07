@@ -77,24 +77,18 @@ const Home = () => {
             alt="carticon.svg"
             style={{
               position: "absolute",
-              top: "12%",
-              right: open ? "11.5%" : "11.5%",
+              top: "13.4%",
+              right: "12%",
+              zIndex : '10',
+              display : open ? 'none' : 'block'
             }}
           />
         </div>
-
         <main
           className={clsx(classes.content, {
             [classes.contentShift]: open,
           })}
         >
-          {open && (
-            <img
-              src="./carticon.svg"
-              alt="carticon.svg"
-              style={{ position: "absolute", top: "12%", right: "23.5%" }}
-            />
-          )}
           <Navbar openDrawer={handleDrawerOpen} />
           <LandingPage />
           <Footer />
