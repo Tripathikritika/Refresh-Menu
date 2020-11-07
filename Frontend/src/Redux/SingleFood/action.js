@@ -20,9 +20,9 @@ export const singlefoodListFailure = () => {
     }
 }
 
-export const getSingleFoodList = ( payload ) => ( dispatch ) => {
+export const getSingleFoodList = ( id ) => ( dispatch ) => {
     dispatch ( singlefoodListRequest() )
-    axios.get(`http://localhost:8000/`)
+    axios.get(`http://localhost:8000/singleFoodDetails/${id}`)
          .then(res => {
              dispatch(singlefoodListSuccess(res.data))
              console.log(res.data)

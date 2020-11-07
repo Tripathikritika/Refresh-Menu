@@ -170,7 +170,7 @@ const Navbar = ( props ) => {
     (state) => state.reducer
   );
 
-  console.log(token, isAuth, isLoading, errorMsg, isError);
+  // console.log(token, isAuth, isLoading, errorMsg, isError);
 
   useEffect(() => {
     axios
@@ -183,7 +183,7 @@ const Navbar = ( props ) => {
       })
       .catch((err) => console.log(err));
   }, [locationSearch]);
-  console.log(query);
+  
   const handleOpenLogin = () => {
     setOpenLogin(true);
   };
@@ -224,7 +224,7 @@ const Navbar = ( props ) => {
               height: "100%",
               backgroundColor: "#eeeeee",
             }}
-            tabindex="-1"
+            tabIndex="-1"
             aria-labelledby="mapLocationLabel"
             aria-hidden="true"
           >
@@ -250,25 +250,25 @@ const Navbar = ( props ) => {
                   <div className={styles.buttonGroup}>
                     <button
                       type="button"
-                      class={`btn rounded-pill ${styles.button}`}
+                      className={`btn rounded-pill ${styles.button}`}
                     >
                       Bengaluru{" "}
                     </button>
                     <button
                       type="button"
-                      class={`btn rounded-pill ${styles.button}`}
+                      className={`btn rounded-pill ${styles.button}`}
                     >
                       Mumbai
                     </button>
                     <button
                       type="button"
-                      class={`btn rounded-pill ${styles.button}`}
+                      className={`btn rounded-pill ${styles.button}`}
                     >
                       New Delhi
                     </button>
                     <button
                       type="button"
-                      class={`btn rounded-pill ${styles.button}`}
+                      className={`btn rounded-pill ${styles.button}`}
                     >
                       Gurgaon
                     </button>
@@ -326,7 +326,7 @@ const Navbar = ( props ) => {
             />
             <div>Diwali Gift</div>
           </Link>
-          <Link href="#" id="downloadapp">
+          <Link to="#" id="downloadapp">
             Download App
           </Link>
         </div>

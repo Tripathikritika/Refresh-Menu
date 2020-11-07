@@ -9,7 +9,7 @@ const initState = {
 };
 
 const reducer = (state = initState, { type, payload }) => {
-  console.log(payload)
+  // console.log(payload)
   switch (type) {
     case REQUEST:
       return {

@@ -25,7 +25,7 @@ export const getFoodList = ( payload ) => ( dispatch ) => {
     axios.get(`http://localhost:8000/`)
          .then(res => {
              dispatch(foodListSuccess(res.data))
-             console.log(res.data)
+            //  console.log(res.data)
          })
          .catch(err => {
              dispatch( foodListFailure(err))
