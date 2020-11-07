@@ -4,10 +4,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import  styles from '../Styling/LandingPage.module.css'
 import { getFoodList } from '../Redux/FoodList/action'
 import {Link} from 'react-router-dom'
+import FoodsCards from '../Others/FoodsCards'
+import { useState } from 'react'
 
 function LandingPage() {
     const dispatch = useDispatch()
     const  food_List = useSelector(state => state.foodReducer.foodList)
+    const [veg , setVeg] = useState(false)
 
     useEffect ( () => {
         dispatch(getFoodList () )
@@ -42,7 +45,7 @@ function LandingPage() {
                             <h5>CATEGORIES</h5>
                        </div>
                        <div className = 'h5'>
-                            <span className= "px-2">VEG</span>
+                            <button className= "px-2" onClick = {() => setVeg(true)} >VEG</button>
                             <span ><img src="/funnel.svg" alt=""/> FILTERS</span>
                        </div>
                    </div>
@@ -73,21 +76,8 @@ function LandingPage() {
                                         <div className={`text-left ${styles.cards_details}`}>
                                             <div className="row" >
                                             {
-                                                food_List.filter((item) => item.category === 'Appetizers').map((item) =>  (
-                                                    <div className = 'col-12 col-sm-12 col-md-6 col-lg-4' key={item.id}>
-                                                        <div style={{display:'flex', fontSize:'13px', color:'#A8A8A8'}}>
-                                                            <div className={styles.foodType}>{item.type === 'VEG' ? <img src="./vegIcon.png" alt="Vegetarian" className={styles.typeIcon}/>  : <img src="/non-vegetarian.png" alt=""/>}</div>
-                                                            <div>{item.cuisine}</div>
-                                                        </div>
-                                                        <div className ="card m-2 rounded ">
-                                                       <Link to ={`/${item.title}/product/${item.id}`}><img src={item.food_link} alt="Appetizers" className="img-fluid card-img-top rounded"/></Link>
-                                                        <div className="card-body">
-                                                        <h5 className="card-title">{item.title}</h5>
-                                                        <p>₹{item.amount} <button type="button" className="btn btn-danger float-right rounded-pill">ADD</button></p>
-                                                        
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                food_List.filter((item) => item.category === 'Appetizers').filter((item) => veg ? item.type === 'VEG' : item  ).map((item) =>  (
+                                                    <FoodsCards item = {item} />
                                                 ))
                                             }
                                             </div>
@@ -96,20 +86,8 @@ function LandingPage() {
                                         <div className={`text-left ${styles.cards_details}`}>
                                         <div className="row">
                                             {
-                                                food_List.filter((item) => item.category === 'Match Day Combos').map((item) =>  (
-                                                    <div className = 'col-12 col-sm-12 col-md-6 col-lg-4' key={item.id}>
-                                                        <div style={{display:'flex', fontSize:'13px', color:'#A8A8A8'}}>
-                                                            <div className={styles.foodType}>{item.type === 'VEG' ? <img src="./vegIcon.png" alt="Vegetarian" className={styles.typeIcon}/>  : <img src="/non-vegetarian.png" alt="" className={styles.typeIcon}/>}</div>
-                                                            <div>{item.cuisine}</div>
-                                                        </div>
-                                                        <div className ="card m-2 rounded ">
-                                                        <img src={item.food_link} alt="Appetizers" className="img-fluid card-img-top rounded"/>
-                                                        <div className="card-body">
-                                                        <h5 className="card-title">{item.title}</h5>
-                                                        <p>₹{item.amount} <button type="button" className="btn btn-danger float-right rounded-pill">ADD</button></p>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                food_List.filter((item) => item.category === 'Match Day Combos').filter((item) => veg ? item.type === 'VEG' : item  ).map((item) =>  (
+                                                    <FoodsCards item = {item} />
                                                 ))
                                             }
                                         </div>
@@ -118,20 +96,9 @@ function LandingPage() {
                                         <div className={`text-left ${styles.cards_details}`}>
                                         <div className="row">
                                             {
-                                                food_List.filter((item) => item.category === 'New & Exciting').map((item) =>  (
-                                                    <div className = 'col-12 col-sm-12 col-md-6 col-lg-4' key={item.id}>
-                                                        <div style={{display:'flex', fontSize:'13px', color:'#A8A8A8'}}>
-                                                            <div className={styles.foodType}>{item.type === 'VEG' ? <img src="./vegIcon.png" alt="Vegetarian" className={styles.typeIcon}/>  : <img src="/non-vegetarian.png" alt="" className={styles.typeIcon}/>}</div>
-                                                            <div>{item.cuisine}</div>
-                                                        </div>
-                                                        <div className ="card m-2 rounded ">
-                                                        <img src={item.food_link} alt="Appetizers" className="img-fluid card-img-top rounded"/>
-                                                        <div className="card-body">
-                                                        <h5 className="card-title">{item.title}</h5>
-                                                        <p>₹{item.amount} <button type="button" className="btn btn-danger float-right rounded-pill">ADD</button></p>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                food_List.filter((item) => item.category === 'New & Exciting').filter((item) => veg ? item.type === 'VEG' : item  ).map((item) =>  (
+                                                   <FoodsCards item = {item} />
+                                              
                                                 ))
                                             }
                                         </div>
