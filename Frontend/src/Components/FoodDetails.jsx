@@ -5,48 +5,68 @@ import { useParams } from 'react-router-dom'
 import { getSingleFoodList } from '../Redux/SingleFood/action'
 import Footer from '../Others/Footer'
 import styles from '../Styling/FoodDetails.module.css'
+import { useState } from 'react'
 
 function FoodDetails () {
     const matchData = useParams()
-    const products = useSelector((state) => state.singleFoodReducer.singlefoodList)
-    
+    const foodItem = useSelector((state) => state.singleFoodReducer.singlefoodList)
     const dispatch = useDispatch()
-   useEffect(() => {
-       dispatch(getSingleFoodList())
-      console.log(matchData)
+
+    useEffect(() => {
+        dispatch(getSingleFoodList(matchData.id))
+        console.log(matchData)
    }, [])
-   console.log(products)
+
     return (
         <>
             <div className = {styles.mainDiv}>
-                {products && products.filter((item) => item.id === matchData.id).map((item) => (
-                    <div className={styles.descriptionCard}>
-                        <div style={{width:'100%',position: 'relative'}}>
-                            {<img src={item.food_link} alt="" className='img-fluid' width='100%'/> }
-                        </div>
-                        <div className={styles.itemsDescription}>
-                            <div className={styles.itemTitle}>
-                                {item.title}
+                { foodItem && 
+                    <div className={`container ${styles.descriptionCard}`}>
+                    <div className="row">
+                        <div className="col-12">
+                        <div class="card mb-3">
+                        <div className="row no-gutters">
+                            <div className="col-md-6">
+                                <img src={foodItem.food_link} className="card-img img-fluid" alt={foodItem.title}/>
+                                <div className = 'row'>
+                                    <div className="col-12 d-flex">
+                                        <i class="fab fa-facebook-f p-3 bg-primary text-white h5 m-2 rounded"></i>
+                                        <i class="fab fa-twitter  p-3 bg-info text-white h5 m-2 rounded"></i>
+                                        <i class="fab fa-google  p-3 bg-danger text-white h5 m-2 rounded"></i>
+                                    </div>
+                                    
+                                </div>
                             </div>
-                            <div>
-                                ₹{item.amount}
+                            <div className="col-md-6 text-left">
+                            <div className="card-body">
+                                <h5 className={`card-title ${styles.foodName}`}>{foodItem.title}</h5>
+                                <div style={{display:'flex', fontSize:'13px', color:'#A8A8A8'}}>
+                                    <div className={styles.foodType}>{foodItem.type === 'VEG' ? <img src="/vegIcon.png" alt="Vegetarian" className={styles.typeIcon}/>  : <img src="/non-vegetarian.png" alt="" className={styles.typeIcon}/>}</div>
+                                    <div className={styles.foodCuisine}>{foodItem.cuisine}</div>
+                                </div>
+                                <p className={`card-text ${styles.foodAmount}`}>₹{foodItem.amount}</p>
+                                <div className="row">
+                                    <div className="col-4">
+                                    <button className="btn btn-danger btn-lg rounded-pill px-5">Add</button>
+                                    <small className="text-muted pl-4">Customisable</small>
+                                    </div>
+                                </div>
+                                <h5 className={`card-text ${styles.foodDetails}`}>DETAILS ABOUT THIS MEAL</h5>
+                                <p className={`card-text ${styles.foodDescription}`}>{foodItem.details}</p>
+                                <div className={styles.foodType}>{foodItem.type === 'VEG' ? <img src="/leaf.png" alt="Vegetarian" className={styles.typeIcon}/>  : <img src="/chicken-leg.png" alt="" className={styles.typeIcon}/>}</div>
+                                <p className="card-text">{foodItem.type}</p>
+                                <h5 className={`card-text ${styles.foodDetails}`}>INGREDIENTS</h5>
+                                <p className={`card-text ${styles.foodDescription}`}>{foodItem.ingredients}</p>
                             </div>
-                            <div>
-                                <button>Add</button>
-                            </div>  
-                            <div>
-                                {item.details}
-                            </div>
-                            <div>
-
-                            </div>
-                            <div>
-                                {item.ingredients}
                             </div>
                         </div>
                     </div>
-                ))}
-            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+             </div>
+           
             <Footer />
         </>
     )
