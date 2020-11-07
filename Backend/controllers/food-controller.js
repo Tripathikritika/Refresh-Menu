@@ -6,4 +6,10 @@ const getFoods = async (req, res) => {
     .catch((err) => res.status(400).json({ message: "Failed" }));
 };
 
-module.exports = { getFoods };
+const getEachFoodDetails = (req,res) => {
+    FoodsData.findOne({id : req.params.id})
+            .then((result) => res.json(result))
+            .catch((err) => console.log(err))
+}
+
+module.exports = { getFoods , getEachFoodDetails};
