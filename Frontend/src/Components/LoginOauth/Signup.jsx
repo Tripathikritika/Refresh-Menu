@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Oauth from "./Oauth";
 import { useDispatch, useSelector } from "react-redux";
-import { apiCall } from "../Redux/actions";
+import { apiCall } from "../../Redux/Login/actions";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const Flexbox = styled.div`
   display: flex;
@@ -63,6 +64,9 @@ const SignupButton = styled.button`
   position: relative;
   border: 0;
   width: 100%;
+  :focus{
+    outline: none;
+  }
 `;
 
 const Last = styled.div`
@@ -79,13 +83,21 @@ const Last = styled.div`
   }
 `;
 
+const Fail = styled.div`
+  display: block;
+  color: #e4572e;
+  font-family: ProximaNova-Regular, Helvetica, Arial, sans-serif;
+  margin-bottom: 20px;
+  margin-top: 10px;
+`;
+
 const Signup = () => {
   const dispatch = useDispatch();
-  const { token, isAuth, isLoading, isError } = useSelector(
+  const { token, isAuth, isLoading, errorMsg, isError } = useSelector(
     (state) => state.reducer
   );
 
-  console.log(token, isAuth, isLoading, isError);
+  console.log(token, isAuth, isLoading, errorMsg, isError);
 
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
@@ -150,8 +162,8 @@ const Signup = () => {
           type="password"
           required
         />
-
-        <SignupButton type="submit">Sign up</SignupButton>
+        {isError && <Fail>* {errorMsg}</Fail>}
+        <SignupButton type="submit">{!isLoading && <>Sign up</>} {isLoading &&  <CircularProgress size={30} thickness={6} style={{color:"white"}} />}</SignupButton>
       </form>
 
       <hr />

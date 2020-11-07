@@ -6,9 +6,9 @@ const { default: Navbar } = require("../Others/NavBar");
 const Home = () => {
   return (
     <>
-      <Navbar />
-      <LandingPage />
-      <Footer  />
+      <Navbar/>
+      <LandingPage/>
+      <Footer/>
     </>
   );
 };

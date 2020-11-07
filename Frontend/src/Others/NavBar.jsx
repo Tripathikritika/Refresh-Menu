@@ -6,7 +6,8 @@ import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import Login from "../Components/Login";
-import Signup from "../Components/Signup";
+import Signup from "../Components/LoginOauth/Signup";
+import { useSelector } from "react-redux";
 import styles from "../Styling/NavBar.module.css";
 import axios from "axios";
 const TopDiv = styled.div`
@@ -46,7 +47,7 @@ const TopDiv = styled.div`
   & #discountoffer {
     display: flex;
     align-items: center;
-    max-width: 110px;
+    min-width: 152px;
     padding: 23px;
     background-color: #e85826;
     color: white;
@@ -162,6 +163,12 @@ const Navbar = () => {
   const [query, setQuery] = useState("");
   const [locationSearch, setLocationSearch] = useState("");
   const [getLocation, setGetLocation] = useState("Bangalore Karnataka");
+
+  const { token, isAuth, isLoading, errorMsg, isError } = useSelector(
+    (state) => state.reducer
+  );
+
+  console.log(token, isAuth, isLoading, errorMsg, isError);
 
   useEffect(() => {
     axios
@@ -360,14 +367,23 @@ const Navbar = () => {
           </div>
         </div>
         <div className="bottom-items">
-          {/* user */}
-          <div className="">
-            <img src="./guesticon.svg" alt="guesticon.svg" />
-            <span className="tooltiptext">
-              <div onClick={handleOpenLogin}>Log In</div>
-              <div onClick={handleOpenSignup}>Sign Up</div>
-            </span>
-          </div>
+        {!isAuth && (
+            /* guest */
+            <div className="">
+              <img src="./guesticon.svg" alt="guesticon.svg" />
+              <span className="tooltiptext">
+                <div onClick={handleOpenLogin}>Log In</div>
+                <div onClick={handleOpenSignup}>Sign Up</div>
+              </span>
+            </div>
+          )}
+          {isAuth && (
+            /* user */
+            <div className="">
+              <img src="./usericon.svg" alt="usericon.svg" />
+              <span className="tooltiptext"></span>
+            </div>
+          )}
         </div>
         <div id="carticon">
           {/* cart */}

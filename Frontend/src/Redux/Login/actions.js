@@ -28,6 +28,6 @@ export const apiCall = (payload) => async (dispatch) => {
     });
     dispatch(send(data));
   } catch (err) {
-    dispatch(foundError(err))
+    dispatch(foundError(err.response.data))
   }
 };
