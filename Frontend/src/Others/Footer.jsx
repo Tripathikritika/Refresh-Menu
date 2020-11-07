@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Footer extends Component {
   render() {
@@ -12,26 +13,24 @@ class Footer extends Component {
                 <h3>COMPANY</h3>
                 <ul>
                   <li>
-                    <a href="/faq" alt="">
-                      FAQ
-                    </a>
+                    <Link to="/faq">FAQ</Link>
                   </li>
                   <li>
-                    <a href="/about">About</a>
+                    <Link to="/about">About</Link>
                   </li>
                   <li>
-                    <a href="careers">Careers</a>
+                    <Link to="/careers">Careers</Link>
                   </li>
                   <li>
-                    <a href="/blog">Blog</a>
+                    <Link to="#">Blog</Link>
                   </li>
                 </ul>
                 <ul className="terms_links">
                   <li>
-                    <a href="/terms">Terms</a>
+                    <Link to="/terms-and-conditions">Terms</Link>
                   </li>
                   <li>
-                    <a href="/privacy">Privacy</a>
+                    <Link to="/privacy-policy">Privacy</Link>
                   </li>
                 </ul>
               </div>
@@ -39,22 +38,22 @@ class Footer extends Component {
                 <h3>HELP &amp; CONTACT</h3>
                 <ul>
                   <li>
-                    <a href="#">
+                    <Link to="#">
                       <i className="far fa-life-ring" />
                       Help Center
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="#">
+                    <Link to="#">
                       <i className="far fa-envelope" />
                       Email Us
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="#">
+                    <Link to="#">
                       <i className="fas fa-phone-alt" />
                       080-6824-5911
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -62,16 +61,16 @@ class Footer extends Component {
                 <h3>MORE FROM US</h3>
                 <ul>
                   <li>
-                    <a href="#">Bulk/Party Order</a>
+                    <Link to="/bulk-order">Bulk/Party Order</Link>
                   </li>
                   <li>
-                    <a href="#">Cake Order</a>
+                    <Link to="/cakes">Cake Order</Link>
                   </li>
                   <li>
-                    <a href="#">FreshClub</a>
+                    <Link to="/fresh-club">FreshClub</Link>
                   </li>
                   <li>
-                    <a href="#">Offers</a>
+                    <Link to="/offers">Offers</Link>
                   </li>
                 </ul>
               </div>
@@ -92,37 +91,37 @@ class Footer extends Component {
                   <div className="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 border border-top-0 border-bottom-0 border-left-0">
                     <div className="row mt-2">
                       <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
-                        <a href="#">
+                        <Link to="#">
                           <img src="/google-play.jpg" alt="" height="40" />
-                        </a>
+                        </Link>
                       </div>
                       <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
-                        <a href="#">
+                        <Link to="#">
                           <img
                             src="/btn-app-store-normal-2.svg"
                             alt=""
                             height="40"
                           />
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>
                   <div className="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 social_media">
                     <ul className="mt-2 mb-2">
                       <li>
-                        <a href="#">
+                        <Link to="#">
                           <i className="fab fa-facebook-square fa-2x" />
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#">
+                        <Link to="#">
                           <i className="fab fa-twitter fa-2x" />
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#">
+                        <Link to="#">
                           <i className="fab fa-instagram fa-2x" />
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </div>
@@ -138,19 +137,19 @@ class Footer extends Component {
                 <h3>CATEGORIES</h3>
                 <ul>
                   <li>
-                    <a href="#">Mains</a>
+                    <Link to="/category/mains">Mains</Link>
                   </li>
                   <li>
-                    <a href="#">Pizzas</a>
+                    <Link to="/category/pizza">Pizzas</Link>
                   </li>
                   <li>
-                    <a href="#">Salads</a>
+                    <Link to="/category/salads">Salads</Link>
                   </li>
                   <li>
-                    <a href="#">Desserts</a>
+                    <Link to="/category/desserts">Desserts</Link>
                   </li>
                   <li>
-                    <a href="#">Quickbites</a>
+                    <Link to="/category/quickbites">Quickbites</Link>
                   </li>
                 </ul>
               </div>
@@ -158,30 +157,30 @@ class Footer extends Component {
                 <h3>CUISINES</h3>
                 <ul>
                   <li>
-                    <a href="#">Indian</a>
+                    <Link to="/cuisine/indian-food">Indian</Link>
                   </li>
                   <li>
-                    <a href="#">Chinese</a>
+                    <Link to="/cuisine/chinese-food">Chinese</Link>
                   </li>
                   <li>
-                    <a href="#">Italian</a>
+                    <Link to="/cuisine/italian-food">Italian</Link>
                   </li>
                   <li>
-                    <a href="#">American</a>
+                    <Link to="/cuisine/american-food">American</Link>
                   </li>
                 </ul>
                 <ul>
                   <li>
-                    <a href="#">Mexican</a>
+                    <Link to="/cuisine/mexican-food">Mexican</Link>
                   </li>
                   <li>
-                    <a href="#">Thai</a>
+                    <Link to="/cuisine/thai-food">Thai</Link>
                   </li>
                   <li>
-                    <a href="#">Continental</a>
+                    <Link to="/cuisine/mexican-food">Continental</Link>
                   </li>
                   <li>
-                    <a href="#">Mediterranean</a>
+                    <Link to="cuisine/continental-food">Mediterranean</Link>
                   </li>
                 </ul>
               </div>

@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
-import Login from "../Components/Login";
+import Login from "../Components/LoginOauth/Login";
 import Signup from "../Components/LoginOauth/Signup";
 import { useSelector } from "react-redux";
 import styles from "../Styling/NavBar.module.css";
@@ -71,6 +71,7 @@ const BottomDiv = styled.div`
   border-bottom: 1px solid #ececec;
   width: 100%;
   display: grid;
+  
   box-shadow: 0 5px 15px -6px #4a4a4a;
   grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
   & > * {
@@ -92,8 +93,9 @@ const BottomDiv = styled.div`
   }
   & #carticon {
     cursor: pointer;
-    background-color: #f2f3f3;
-    padding: 20px 0px;
+    // background-color: #f2f3f3;
+    padding: 40px 0px;
+
   }
   & .tooltip {
     position: relative;
@@ -156,7 +158,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Navbar = () => {
+const Navbar = ( props ) => {
   const classes = useStyles();
   const [openLogin, setOpenLogin] = useState(false);
   const [openSignup, setOpenSignup] = useState(false);
@@ -200,7 +202,7 @@ const Navbar = () => {
 
   return (
     <>
-      <TopDiv>
+      <TopDiv  style={{width:'85%' , margin : 'auto'}}>
         {/* navbar top div */}
         <div></div>
         <Link to="/" id="refreshmenu">
@@ -314,9 +316,11 @@ const Navbar = () => {
         <div></div>
         <div></div>
         <div>
+
           <Link to="/diwali-gift" id="discountoffer">
+            
             <img
-              width="30px"
+              width="20px"
               src="./discountoffer.svg"
               alt="discountoffer.svg"
             />
@@ -345,8 +349,8 @@ const Navbar = () => {
         <div></div>
         <div></div>
         <div></div>
-        <div></div>
-        <div></div>
+        
+       
         <div className="bottom-items">
           {/* search */}
           <div>
@@ -387,9 +391,6 @@ const Navbar = () => {
         </div>
         <div id="carticon">
           {/* cart */}
-          <div>
-            <img src="./carticon.svg" alt="carticon.svg" />
-          </div>
         </div>
         <div></div>
       </BottomDiv>
