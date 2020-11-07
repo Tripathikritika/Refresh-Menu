@@ -28,3 +28,9 @@
 .foodType {
   padding-left: 10px;
 }
+div.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: -1px;
+  padding: 5px;
+}

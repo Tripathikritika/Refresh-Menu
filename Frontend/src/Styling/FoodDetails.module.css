@@ -1,0 +1,23 @@
+.mainDiv {
+  border: 1px solid;
+}
+
+.descriptionCard {
+  display: flex;
+  margin-top: 100px;
+  padding-right: 6% !important;
+  padding-left: 6% !important;
+  max-width: 1385px;
+}
+
+.itemsDescription {
+  border: 1px solid red;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  margin-left: 40px;
+  -webkit-box-flex: 1;
+}
+.itemTitle {
+}

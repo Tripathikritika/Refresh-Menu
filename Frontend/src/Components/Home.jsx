@@ -63,7 +63,7 @@ const Home = () => {
   const handleDrawerOpen = () => {
     setOpen(true);
   };
-  console.log(open);
+  // console.log(open);
   const handleDrawerClose = () => {
     setOpen(false);
   };
