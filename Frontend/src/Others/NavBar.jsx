@@ -391,6 +391,10 @@ const Navbar = ( props ) => {
         </div>
         <div id="carticon">
           {/* cart */}
+          <img
+            src="./carticon.svg"
+            alt="carticon.svg"
+          />
         </div>
         <div></div>
       </BottomDiv>
