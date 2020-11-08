@@ -45,7 +45,11 @@ function LandingPage() {
                             <h5>CATEGORIES</h5>
                        </div>
                        <div className = 'h5'>
-                            <button className= "px-2" onClick = {() => setVeg(true)} >VEG</button>
+                            <button style={{
+                                color: veg?`#2ebd59`: `rgba(74,74,74,.7)`,
+                                border: veg?`1px solid #2ebd59`:`1px solid #000`,
+                                borderRadius: `5px`
+                            }} className= "px-2" onClick = {() => setVeg(!veg)} >VEG</button>
                             <span ><img src="/funnel.svg" alt=""/> FILTERS</span>
                        </div>
                    </div>
