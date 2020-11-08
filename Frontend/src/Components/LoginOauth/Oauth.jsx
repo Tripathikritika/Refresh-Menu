@@ -22,19 +22,13 @@ const responseFacebook = (response) => {
 export const Oauth = () => {
   return (
     <Flex>
-      <div>
       <GoogleLogin
-        clientId="70197845692-5vskkc55c3aps93k99q3fmbrf7r89t2k.apps.googleusercontent.com"
+        clientId=""
         buttonText="Login"
-        render = {renderProps => (
-          <button onClick={renderProps.onClick}>Google</button>
-        )}
         onSuccess={responseGoogle}
         onFailure={responseGoogle}
         cookiePolicy={"single_host_origin"}
       />
-      </div>
-
       <FacebookLogin
         appId="633585867333844"
         autoLoad={false}

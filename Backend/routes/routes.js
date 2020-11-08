@@ -8,7 +8,7 @@ router.get("/", getFoods);
 
 router.post("/register", Register);
 
-router.get("/login/:data", Login);
+router.post("/login", Login);
 
 router.get('/singleFoodDetails/:id' , getEachFoodDetails)
 

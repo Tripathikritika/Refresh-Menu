@@ -13,7 +13,7 @@ const Register = async (req, res) => {
   if (emailExists) {
     return res.status(400).send("The email id is already registered.");
   }
-
+  
   const mobileExists = await Users.findOne({ mobile: req.body.mobile });
   if (mobileExists) {
     return res.status(400).send("The mobile number is already registered.");
@@ -40,51 +40,27 @@ const Register = async (req, res) => {
 };
 
 const Login = async (req, res) => {
-  const user = await Users.findOne({ email: req.params.data });
-  if (user) {
-    const email = user.email;
-    const mobile = user.mobile;
-    try {
-      const accessToken = jwt.sign(
-        {email,
-        mobile},
-        process.env.SECRET_KEY_TO_ACCESS
-      );
-      const data = {
-        accessToken,
-        email,
-        mobile
-      };
-      return res.json({ ...data });
-    } catch (e) {
-      console.log(e);
-      return;
-    }
+  const user = await Users.findOne({ email: req.body.email });
+  if (!user) {
+    return res.status(404).send("User not found");
   }
 
-  const mob = await Users.findOne({ mobile: req.params.data });
-  if (mob) {
-    const email = mob.email;
-    const mobile = mob.mobile;
-    try {
-      const accessToken = jwt.sign(
-        {email,
-        mobile},
-        process.env.SECRET_KEY_TO_ACCESS
-      );
-      const data = {
-        accessToken,
-        email,
-        mobile
-      };
-      return res.json({ ...data });
-    } catch (e) {
-      console.log(e);
-      return;
-    }
-  }
+  const validPass = await bcrypt.compare(req.body.password, user.password);
+  if (!validPass) return res.status(400).send("Invalid password");
 
-  return res.send(false);
+  const userEmail = req.body.email;
+  const email = { email: userEmail };
+
+  try {
+    const accessToken = jwt.sign(email, process.env.SECRET_KEY_TO_ACCESS);
+    const data = {
+      accessToken,
+      email: user.email,
+    };
+    res.json({ ...data });
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 module.exports = { Register, Login };
