@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Oauth from "./Oauth";
 
@@ -77,11 +77,15 @@ const Last = styled.div`
   }
 `;
 
-const handleSubmit = (e) => {
-    e.preventDefault();
-}
 
 const Login = () => {
+  
+  const [otp, setOtp] = useState("")
+  
+  const handleSubmit = (e) => {
+      e.preventDefault();
+  }
+
   return (
     <>
       <Flexbox>
@@ -95,7 +99,7 @@ const Login = () => {
       </Second>
 
         <form onSubmit={handleSubmit}>
-            <InputBox placeholder="Mobile Number/ Email ID" autoFocus required/>
+            <InputBox value={otp} onChange={(e)=>setOtp(e.target.value)} placeholder="Mobile Number/ Email ID" autoFocus required/>
             <SendOtp type='submit'>Send OTP</SendOtp>
         </form>
 
