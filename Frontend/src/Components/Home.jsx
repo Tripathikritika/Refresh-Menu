@@ -1,19 +1,17 @@
 import React from "react";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { useSelector } from "react-redux";
+import clsx from "clsx";
+import Drawer from "@material-ui/core/Drawer";
+import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from '@material-ui/icons/Close';
 import LandingPage from "./LandingPage";
 import Footer from "../Others/Footer.jsx";
-import clsx from "clsx";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import Drawer from "@material-ui/core/Drawer";
-import Divider from "@material-ui/core/Divider";
-import IconButton from "@material-ui/core/IconButton";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import { useSelector } from "react-redux";
-import { useState } from "react";
-
+import styles from '../Styling/Home.module.css'
+import { Link } from "react-router-dom";
 const { default: Navbar } = require("../Others/NavBar");
 
-const drawerWidth = 240;
+const drawerWidth = 300;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,10 +32,8 @@ const useStyles = makeStyles((theme) => ({
   drawerHeader: {
     display: "flex",
     alignItems: "center",
-    // padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
     ...theme.mixins.toolbar,
-    justifyContent: "flex-start",
+    justifyContent: "space-between",
   },
   content: {
     flexGrow: 1,
@@ -59,9 +55,9 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = () => {
   const classes = useStyles();
-  const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const cartListItem = useSelector((state) => state.cartItemReducer.cartList)
+  let total = 0
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -70,10 +66,13 @@ const Home = () => {
     setOpen(false);
   };
 
+  for(let i = 0 ; i < cartListItem.length ; i++){
+      total +=( cartListItem[i].amount) * (cartListItem[i].qty)
+  }
   return (
     <>
       <div className={classes.root}>
-        <div onClick={handleDrawerOpen} className={clsx(open)}>
+        <div onClick={handleDrawerOpen} className={clsx(open) }>
           <img
             src="./carticon.svg"
             alt="carticon.svg"
@@ -106,20 +105,61 @@ const Home = () => {
         >
          
           <div className={classes.drawerHeader}>
-            <IconButton onClick={handleDrawerClose}>
-              {theme.direction === "rtl" ? (
-                <ChevronLeftIcon />
-              ) : (
-                <ChevronRightIcon />
-              )}
-            </IconButton>
+          <div >
+            <div className={styles.cartHeader}>Your Cart</div>
+            <div className={styles.cartCount}>
+                {
+                  cartListItem.length === 0 ? "" :  <div>{cartListItem.length} Items</div>
+                }
+            </div>
             
           </div>
-          <Divider />
-          <div>
-            <h4>Your Cart</h4>
-              <span>{cartListItem.length}Items</span>
+            <IconButton onClick={handleDrawerClose}>
+              <CloseIcon />
+            </IconButton>
           </div>
+          {
+                cartListItem.length === 0 ?(
+                  <div>
+                      <div>
+                        <img src='https://www.freshmenu.com/pages/menu/images/ghost1.1.svg' className={styles.image} alt="Empty"/>
+                      </div>
+                      <div>
+                        <div className={styles.emptyHeader}>Your Cart is empty.</div>
+                        <small className={styles.emptyBody}>Add some delicious food available on our menu to checkout.</small>
+                        <button className = {styles.browserButton} onClick={handleDrawerClose}> Browse Food </button> 
+                      </div>
+                      
+                  </div>
+                ): (
+                  <div>
+                    <div>
+                      { 
+                      cartListItem && cartListItem.map((res) => (
+                        <>
+                          <div style={{display:'flex' , justifyContent:'space-between'}}>
+                            <div className={styles.foodType}>
+                              {res.type === 'VEG' ? <img src="./vegIcon.png" alt="Vegetarian" className={styles.typeIcon}/>  : 
+                              <img src="/non-vegetarian.png" alt="Non Veg" className={styles.typeIcon}/>}</div>
+                            <div> {res.title}</div>
+                            <div> {res.qty}</div>
+                          </div>
+                          <div className= "text-left pl-3 " >
+                             <b>₹{res.amount}</b> 
+                          </div>
+                        </>
+                      ))}
+
+                      <div>
+                       <Link to='/checkout'><button type="button" class={` px-5 btn btn-lg rounded-pill ${styles.placeOrderButton} `}> Place order . {total} </button></Link> 
+                      </div>
+                      <div className={styles.safety}>
+                        <h5>Safety Assured meals and contactless delivery</h5>
+                      </div>
+                    </div>
+                  </div>
+                )
+              }
         </Drawer>
       </div>
     </>
