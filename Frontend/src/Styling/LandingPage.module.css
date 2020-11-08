@@ -32,5 +32,68 @@ div.sticky {
   position: -webkit-sticky;
   position: sticky;
   top: -1px;
-  padding: 5px;
+  padding-left: 5px;
+}
+.modalLayout {
+  display: flex;
+  padding: 15px 15px 0px 15px;
+  border-bottom: 1px solid gray;
+  justify-content: space-between;
+}
+.modalTitle {
+  font-family: ProximaNova-Semibold, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #4a4a4a;
+}
+.addonsTitle {
+  font-family: ProximaNova-Regular, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #4a4a4a;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  margin-bottom: 13px;
+  padding: 15px 0px 0px 15px;
+}
+.addonValue {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 15px;
+}
+.inputDiv {
+  display: flex;
+  cursor: pointer;
+  position: relative;
+  padding: 0 15px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  line-height: 1.3;
+  color: #4a4a4a;
+}
+
+.addonValuePrice {
+  color: #4a4a4a;
+}
+.modalFooter {
+  display: flex;
+  background-color: #f7f7f7;
+  margin-top: 15px;
+  justify-content: space-between;
+  padding: 15px 30px 10px 10px;
+  margin-bottom: 0px;
+}
+.addonsSelected {
+  display: flex;
+  font-size: 16px;
+  font-weight: 600;
+  color: #686565;
+}
+.addonsSelected > div {
+  flex: 1;
+}
+.colorCode {
+  background-color: #e85826;
 }

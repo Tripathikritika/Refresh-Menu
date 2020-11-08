@@ -10,6 +10,7 @@ import Signup from "../Components/LoginOauth/Signup";
 import { useSelector } from "react-redux";
 import styles from "../Styling/NavBar.module.css";
 import axios from "axios";
+
 const TopDiv = styled.div`
   display: grid;
   grid-template-columns: auto auto auto auto auto auto auto auto auto;
@@ -200,7 +201,28 @@ const Navbar = ( props ) => {
   const handleCloseSignup = () => {
     setOpenSignup(false);
   };
-
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+  };
+  
+  function success(pos) {
+    var crd = pos.coords;
+  
+    console.log('Your current position is:');
+    console.log(`Latitude : ${crd.latitude}`);
+    console.log(`Longitude: ${crd.longitude}`);
+    console.log(`More or less ${crd.accuracy} meters.`);
+  }
+  
+  function error(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+  }
+  
+  const locateMe = () => {
+    navigator.geolocation.getCurrentPosition(success, error, options);
+  }
   return (
     <>
       <TopDiv  style={{width:'85%' , margin : 'auto'}}>
@@ -285,7 +307,7 @@ const Navbar = ( props ) => {
                       className={styles.inputBox}
                       onChange={(e) => setLocationSearch(e.target.value)}
                     />
-                    <button className={styles.locateMe}>Locate Me</button>
+                    <button className={styles.locateMe} onClick = {locateMe}>Locate Me</button>
                   </div>
                   {query && (
                     <div
@@ -312,10 +334,7 @@ const Navbar = ( props ) => {
             </div>
           </div>
         </div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        <div></div><div></div><div></div><div></div>
         <div>
 
           <Link to="/diwali-gift" id="discountoffer">
@@ -335,21 +354,7 @@ const Navbar = ( props ) => {
 
       <BottomDiv>
         {/* navbar bottom div */}
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
         
        
         <div className="bottom-items">
