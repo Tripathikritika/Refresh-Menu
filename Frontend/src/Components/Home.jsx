@@ -8,6 +8,8 @@ import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import { useSelector } from "react-redux";
+import { useState } from "react";
 
 const { default: Navbar } = require("../Others/NavBar");
 
@@ -59,7 +61,7 @@ const Home = () => {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-
+  const cartListItem = useSelector((state) => state.cartItemReducer.cartList)
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -71,7 +73,7 @@ const Home = () => {
   return (
     <>
       <div className={classes.root}>
-        <div onClick={handleDrawerOpen} className={clsx(open && classes.hide)}>
+        <div onClick={handleDrawerOpen} className={clsx(open)}>
           <img
             src="./carticon.svg"
             alt="carticon.svg"
@@ -80,7 +82,7 @@ const Home = () => {
               top: "13.4%",
               right: "12%",
               zIndex : '10',
-              display : open ? 'none' : 'block'
+              // display : open ? 'none' : 'block'
             }}
           />
         </div>
@@ -102,6 +104,7 @@ const Home = () => {
             paper: classes.drawerPaper,
           }}
         >
+         
           <div className={classes.drawerHeader}>
             <IconButton onClick={handleDrawerClose}>
               {theme.direction === "rtl" ? (
@@ -110,8 +113,13 @@ const Home = () => {
                 <ChevronRightIcon />
               )}
             </IconButton>
+            
           </div>
           <Divider />
+          <div>
+            <h4>Your Cart</h4>
+              <span>{cartListItem.length}Items</span>
+          </div>
         </Drawer>
       </div>
     </>

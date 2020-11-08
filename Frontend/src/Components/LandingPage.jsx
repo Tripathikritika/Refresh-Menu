@@ -81,7 +81,7 @@ function LandingPage() {
                                             <div className="row" >
                                             {
                                                 food_List.filter((item) => item.category === 'Appetizers').filter((item) => veg ? item.type === 'VEG' : item  ).map((item) =>  (
-                                                    <FoodsCards item = {item} />
+                                                    <FoodsCards item = {item} key={item.id} />
                                                 ))
                                             }
                                             </div>
@@ -91,7 +91,7 @@ function LandingPage() {
                                         <div className="row">
                                             {
                                                 food_List.filter((item) => item.category === 'Match Day Combos').filter((item) => veg ? item.type === 'VEG' : item  ).map((item) =>  (
-                                                    <FoodsCards item = {item} />
+                                                    <FoodsCards item = {item} key={item.id}/>
                                                 ))
                                             }
                                         </div>
@@ -101,7 +101,7 @@ function LandingPage() {
                                         <div className="row">
                                             {
                                                 food_List.filter((item) => item.category === 'New & Exciting').filter((item) => veg ? item.type === 'VEG' : item  ).map((item) =>  (
-                                                   <FoodsCards item = {item} />
+                                                   <FoodsCards item = {item} key={item.id} />
                                               
                                                 ))
                                             }
