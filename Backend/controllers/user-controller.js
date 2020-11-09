@@ -40,51 +40,51 @@ const Register = async (req, res) => {
 };
 
 const Login = async (req, res) => {
-  const user = await Users.findOne({ email: req.params.data });
-  if (user) {
-    const email = user.email;
-    const mobile = user.mobile;
-    try {
-      const accessToken = jwt.sign(
-        {email,
-        mobile},
-        process.env.SECRET_KEY_TO_ACCESS
-      );
-      const data = {
-        accessToken,
-        email,
-        mobile
-      };
-      return res.json({ ...data });
-    } catch (e) {
-      console.log(e);
-      return;
-    }
-  }
+  var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  var data = req.params.data;
 
-  const mob = await Users.findOne({ mobile: req.params.data });
-  if (mob) {
-    const email = mob.email;
-    const mobile = mob.mobile;
-    try {
-      const accessToken = jwt.sign(
-        {email,
-        mobile},
-        process.env.SECRET_KEY_TO_ACCESS
-      );
-      const data = {
-        accessToken,
-        email,
-        mobile
-      };
-      return res.json({ ...data });
-    } catch (e) {
-      console.log(e);
-      return;
+  try {
+    if (data.match(mailformat)) {
+      const user = await Users.findOne({ email: req.params.data });
+      if (user) {
+        const email = user.email;
+        const mobile = user.mobile;
+        const accessToken = jwt.sign(
+          { email, mobile },
+          process.env.SECRET_KEY_TO_ACCESS
+        );
+        const data = {
+          accessToken,
+          email,
+          mobile,
+        };
+        return res.json({ ...data });
+      }
+      return res.status(400).json({ message: "Email id is not registered." });
+    } else if (data.toString().length === 10 && !isNaN(data)) {
+      const mob = await Users.findOne({ mobile: req.params.data });
+      if (mob) {
+        const email = mob.email;
+        const mobile = mob.mobile;
+        const accessToken = jwt.sign(
+          { email, mobile },
+          process.env.SECRET_KEY_TO_ACCESS
+        );
+        const data = {
+          accessToken,
+          email,
+          mobile,
+        };
+        return res.json({ ...data });
+      }
+      return res
+        .status(400)
+        .json({ message: "Phone number is not registered." });
     }
+    return res.status(400).json({ message: "Invalid data entered." });
+  } catch (err) {
+    return res.status(400).json({ message: err.message });
   }
-
-  return res.send(false);
 };
 
 module.exports = { Register, Login };

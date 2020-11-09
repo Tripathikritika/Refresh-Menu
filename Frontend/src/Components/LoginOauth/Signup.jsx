@@ -16,7 +16,6 @@ const Line = styled.div`
   height: 1px;
   background: #d1d2d9;
   margin-right: 18px;
-  /* display: inline-block; */
 `;
 
 const OR = styled.div`

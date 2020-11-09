@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { verifyOtp } from "../../Redux/OtpVerify/actions";
 import Oauth from "./Oauth";
+import styles from "./Login.module.css";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const Flexbox = styled.div`
   display: flex;
@@ -13,7 +17,6 @@ const Line = styled.div`
   height: 1px;
   background: #d1d2d9;
   margin-right: 18px;
-  /* display: inline-block; */
 `;
 
 const OR = styled.div`
@@ -54,13 +57,24 @@ const SendOtp = styled.button`
   background: linear-gradient(to right, #f5914e, #e85826);
   margin-bottom: 11px;
   height: 42px;
-  border-radius: 3px;
   font-family: ProximaNova-Semibold, Helvetica, Arial, sans-serif;
   font-size: 16px;
   color: #fff;
   position: relative;
   border: 0;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    background-color: #ff8459;
+    box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s cubic-bezier(0.15, 0.69, 0.83, 0.67);
+  }
+  & :nth-last-child(2) {
+    position: absolute;
+    left: 0px;
+  }
 `;
 
 const Last = styled.div`
@@ -77,19 +91,32 @@ const Last = styled.div`
   }
 `;
 
-
 const Login = () => {
-  
-  const [otp, setOtp] = useState("")
-  
-  const handleSubmit = (e) => {
-      e.preventDefault();
-  }
+  const dispatch = useDispatch();
+  const {
+    token,
+    email,
+    mobile,
+    isAuth,
+    isToken,
+    isLoading,
+    message,
+    isError,
+  } = useSelector((state) => state.otpVerifyReducer);
+
+  console.log(token, email, mobile, isAuth, isLoading, message, isError);
+
+  const [inp, setInp] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    dispatch(verifyOtp(inp));
+  };
 
   return (
     <>
       <Flexbox>
-        <Oauth/>
+        <Oauth />
       </Flexbox>
 
       <Second>
@@ -98,10 +125,80 @@ const Login = () => {
         <Line></Line>
       </Second>
 
+      {!isToken && (
         <form onSubmit={handleSubmit}>
-            <InputBox value={otp} onChange={(e)=>setOtp(e.target.value)} placeholder="Mobile Number/ Email ID" autoFocus required/>
-            <SendOtp type='submit'>Send OTP</SendOtp>
+          <div class={styles.tooltip}>
+            <InputBox
+              value={inp}
+              onChange={(e) => setInp(e.target.value)}
+              placeholder="Mobile Number/ Email ID"
+              autoFocus
+              required
+            />
+            <span
+              style={
+                message ? { visibility: "visible" } : { visibility: "hidden" }
+              }
+              class={styles.tooltiptext}
+            >
+              {message}
+            </span>
+          </div>
+
+          {isLoading ? (
+            <SendOtp type="submit">
+              <CircularProgress
+                size={30}
+                thickness={6}
+                style={{ color: "white" }}
+              />
+              <div>Sending..</div>
+            </SendOtp>
+          ) : (
+            <SendOtp type="submit">
+              <div>Send OTP</div>
+            </SendOtp>
+          )}
         </form>
+      )}
+
+      {isToken && (
+        <form style={{width:"320px", textAlign: "center"}} onSubmit={handleSubmit}>
+          <div>{`We have sent a verification code to ${inp}. Please enter it below.`}</div>
+          <div class={styles.tooltip}>
+            <InputBox
+              value={inp}
+              onChange={(e) => setInp(e.target.value)}
+              placeholder="Mobile Number/ Email ID"
+              autoFocus
+              required
+            />
+            <span
+              style={
+                message ? { visibility: "visible" } : { visibility: "hidden" }
+              }
+              class={styles.tooltiptext}
+            >
+              {message}
+            </span>
+          </div>
+
+          {isLoading ? (
+            <SendOtp type="submit">
+              <CircularProgress
+                size={30}
+                thickness={6}
+                style={{ color: "white" }}
+              />
+              <div>Sending..</div>
+            </SendOtp>
+          ) : (
+            <SendOtp type="submit">
+              <div>Send OTP</div>
+            </SendOtp>
+          )}
+        </form>
+      )}
 
       <hr />
 

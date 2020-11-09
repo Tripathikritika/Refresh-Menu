@@ -16,18 +16,12 @@ export const foundError = (payload) => ({
   payload,
 });
 
-export const apiCall = (payload) => async (dispatch) => {
+export const verifyOtp = (payload) => async (dispatch) => {
   dispatch(request());
   try {
-    const { data } = await axios.post("http://localhost:8000/register", {
-      firstname: payload.firstname,
-      lastname: payload.lastname,
-      mobile: payload.mobile,
-      email: payload.email,
-      password: payload.password,
-    });
+    const { data } = await axios.get(`http://localhost:8000/login/${payload}`);
     dispatch(send(data));
-  } catch (err) {
+} catch (err) {
     dispatch(foundError(err.response.data));
   }
 };
