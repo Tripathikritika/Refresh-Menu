@@ -1,8 +1,9 @@
 const express = require("express");
-const router = express.Router();
 const jwt = require("jsonwebtoken");
+const router = express.Router();
 const { getFoods , getEachFoodDetails} = require("../controllers/food-controller");
 const { Register, Login } = require("../controllers/user-controller");
+const { Order, Capture } = require("../controllers/rpay-controller");
 
 router.get("/", getFoods);
 
@@ -11,6 +12,10 @@ router.post("/register", Register);
 router.post("/login", Login);
 
 router.get('/singleFoodDetails/:id' , getEachFoodDetails)
+
+router.get("/order", Order);
+
+router.post("/capture/:paymentId", Capture);
 
 function authenticateToken(req, res, next) {
   const authHeader = req.headers["authorization"];
