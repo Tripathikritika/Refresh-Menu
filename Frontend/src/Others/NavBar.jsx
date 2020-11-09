@@ -229,8 +229,9 @@ const Navbar = ( props ) => {
         {/* navbar top div */}
         <div></div>
         <Link to="/" id="refreshmenu">
-          <img id="logoicon" src="./logoicon.jpg" alt="logoicon.jpg" />
-          <h2>RefreshMenu</h2>
+        <div>
+            <img src="./Logo.jpg" alt=""/>
+        </div>
         </Link>
         <div data-toggle="modal" data-target="#mapLocation">
           <div id="deliverto">Deliver to:</div>
@@ -397,10 +398,10 @@ const Navbar = ( props ) => {
         </div>
         <div id="carticon">
           {/* cart */}
-          <img
+          {/* <img
             src="./carticon.svg"
             alt="carticon.svg"
-          />
+          /> */}
         </div>
         <div></div>
       </BottomDiv>
