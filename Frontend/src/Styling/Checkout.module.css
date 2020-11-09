@@ -1,0 +1,132 @@
+.mainDiv {
+  width: 100%;
+}
+.header {
+  margin: 0 auto;
+  padding-left: 1%;
+  padding-right: 1%;
+  max-width: 1185px;
+  padding-top: 1%;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.banner {
+  background-color: #e85826;
+  padding: 1rem;
+  font-size: 13px;
+  color: #ffffff;
+  margin-top: 1.5rem;
+}
+
+.bodyDiv {
+  background-color: #f7f7f7;
+}
+.guest,
+.delivery,
+.payment,
+.deliveryTime,
+.help {
+  margin-left: 12px;
+  font-family: ProximaNova-Bold, Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  color: #4a4a4a;
+  font-weight: 600;
+}
+.otherButton {
+  font-family: ProximaNova-Semibold, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #e85826;
+  cursor: pointer;
+}
+.offers,
+.payment {
+  font-family: ProximaNova-Bold, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  text-align: left;
+  color: #4a4a4a;
+  line-height: 1;
+  margin-bottom: 29px;
+  margin-top: 20px;
+}
+.img {
+  height: 30px;
+}
+
+.offerInfo {
+  margin: 0;
+  font-size: 14px;
+  text-align: left;
+  color: #4a4a4a;
+  margin-top: 4px;
+  line-height: 1.3;
+}
+.cash {
+  font-family: ProximaNova-Semibold, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #4a4a4a;
+  margin-bottom: 12px;
+}
+.cashInfo {
+  font-family: ProximaNova-Regular, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.3;
+  color: #9b9b9b;
+  margin: 0;
+}
+.placeOrderButton {
+  background-color: #e85826;
+  color: white;
+  margin-top: 50px;
+  width: 300px;
+  font-size: 16px;
+}
+.walletImg {
+  max-width: 100%;
+  height: auto;
+  padding: 0px 15px 15px 0px;
+}
+
+.deliverInfo {
+  font-weight: 700;
+  color: #4a4a4a;
+  font-family: ProximaNova-Bold, Helvetica, Arial, sans-serif;
+  margin-left: 14px;
+  margin-top: 17px;
+  margin-bottom: 0px;
+}
+.typeIcon {
+  width: 20px;
+}
+.foodType {
+  padding-left: 10px;
+}
+.safety {
+  border: 1px solid green;
+  margin: 20px 10px 20px 10px;
+  border-radius: 5px;
+  background-color: #e8f5e9;
+}
+.safety > * {
+  font-size: 15px;
+  text-align: start;
+  padding: 10px;
+  color: green;
+}
+
+.coupons {
+  border: 1px solid gray;
+  margin: 20px 10px 20px 10px;
+  border-radius: 5px;
+}
+.coupons > * {
+  font-size: 15px;
+  text-align: start;
+  padding: 20px;
+}
+.contactless {
+  display: flex;
+}
