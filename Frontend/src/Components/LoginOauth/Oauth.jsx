@@ -24,7 +24,7 @@ export const Oauth = () => {
     <Flex>
       <div>
       <GoogleLogin
-        clientId="70197845692-5vskkc55c3aps93k99q3fmbrf7r89t2k.apps.googleusercontent.com"
+        clientId=""
         buttonText="Login"
         render = {renderProps => (
           <button onClick={renderProps.onClick}>Google</button>
