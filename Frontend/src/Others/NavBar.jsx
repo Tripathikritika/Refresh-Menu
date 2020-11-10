@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 import { makeStyles } from "@material-ui/core/styles";
+import { useSelector } from "react-redux";
+import styled from "styled-components";
+import axios from "axios";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import Login from "../Components/LoginOauth/Login";
 import Signup from "../Components/LoginOauth/Signup";
-import { useSelector } from "react-redux";
 import styles from "../Styling/NavBar.module.css";
-import axios from "axios";
 
 const TopDiv = styled.div`
   display: grid;
@@ -158,7 +158,25 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
+  mapPaper: {
+    position: "absolute",
+    width: 320,
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+
+  }
 }));
+
+function getHelpModalStyle() {
+  const top = 50;
+  const left = 50;
+
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`
+  };
+}
 
 const Navbar = ( props ) => {
   const classes = useStyles();
@@ -167,13 +185,12 @@ const Navbar = ( props ) => {
   const [query, setQuery] = useState("");
   const [locationSearch, setLocationSearch] = useState("");
   const [getLocation, setGetLocation] = useState("Bangalore Karnataka");
-
+  const [helpModalOpen, setHelpModalOpen] = React.useState(false);
+  const [modalHelpStyle] = React.useState(getHelpModalStyle);
   const { token, isAuth, isLoading, errorMsg, isError } = useSelector(
     (state) => state.reducer
   );
-
   // console.log(token, isAuth, isLoading, errorMsg, isError);
-
   useEffect(() => {
     axios
       .get(
@@ -201,15 +218,49 @@ const Navbar = ( props ) => {
   const handleCloseSignup = () => {
     setOpenSignup(false);
   };
+
+  const handleHelpModalOpen = () => {
+    setHelpModalOpen(true);
+  };
+  const handleHelpModalClose = () => {
+    setHelpModalOpen(false);
+  };
+
+  const MapBody = (
+    <div style={{ width: "100%",height: "100%",backgroundColor: "#eeeeee",border:'1px solid #eeeeeee'}}>
+      <div style={modalHelpStyle} className={classes.mapPaper}>
+        <div id="simple-modal-title" className="text-right mr-3" onClick={handleHelpModalClose}><i className="fas fa-times"></i> </div>
+        <div className={styles.helpDiv}>
+          <p id="simple-modal-description">
+            <div className={styles.helpModalHeader}>Customer Support </div>
+            <div className={styles.helpModalBody}>
+              <p>
+                Our customer experience team is available all days from 9am to 12.00am to assist you with any questions or issues you might have.
+              </p>
+              <p>
+                <b>EMAIL US</b> <br/>
+                <a href="mailto:order@freshmenu.com" className={styles.helpContact}>order@freshmenu.com</a> 
+              </p>
+              <p>
+                <b>CALL US </b>  <br/>
+                <a href="tel:080-6824-5911" className={styles.helpContact}>080-6824-5911</a>
+              </p>
+            </div>
+          </p>
+        </div>
+      
+      </div>
+    </div>
+  );
+
   var options = {
     enableHighAccuracy: true,
     timeout: 5000,
     maximumAge: 0
   };
-  
-  function success(pos) {
+
+  function success(pos) {   
     var crd = pos.coords;
-  
     console.log('Your current position is:');
     console.log(`Latitude : ${crd.latitude}`);
     console.log(`Longitude: ${crd.longitude}`);
@@ -223,6 +274,7 @@ const Navbar = ( props ) => {
   const locateMe = () => {
     navigator.geolocation.getCurrentPosition(success, error, options);
   }
+  
   return (
     <>
       <TopDiv  style={{width:'85%' , margin : 'auto'}}>
@@ -246,7 +298,7 @@ const Navbar = ( props ) => {
             style={{
               width: "100%",
               height: "100%",
-              backgroundColor: "#eeeeee",
+              backgroundColor: "#f2f3f3",
             }}
             tabIndex="-1"
             aria-labelledby="mapLocationLabel"
@@ -357,7 +409,6 @@ const Navbar = ( props ) => {
         {/* navbar bottom div */}
         <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
         
-       
         <div className="bottom-items">
           {/* search */}
           <div>
@@ -373,9 +424,17 @@ const Navbar = ( props ) => {
         </div>
         <div className="bottom-items">
           {/* help */}
-          <div>
+          <div type="button" onClick={handleHelpModalOpen} >
             <img src="./helpicon.svg" alt="helpicon.svg" />
           </div>
+          <Modal
+              open={helpModalOpen}
+              onClose={handleHelpModalClose}
+              aria-labelledby="simple-modal-title"
+              aria-describedby="simple-modal-description"
+            >
+              {MapBody}
+          </Modal>
         </div>
         <div className="bottom-items">
         {!isAuth && (
