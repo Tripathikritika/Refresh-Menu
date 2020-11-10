@@ -1,17 +1,17 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import  styles from '../Styling/LandingPage.module.css'
-import { getFoodList } from '../Redux/FoodList/action'
-import {Link} from 'react-router-dom'
-import FoodsCards from '../Others/FoodsCards'
+import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import { getFoodList } from '../Redux/FoodList/action'
+import FoodsCards from '../Others/FoodsCards'
+import  styles from '../Styling/LandingPage.module.css'
 
 function LandingPage() {
     const dispatch = useDispatch()
     const  food_List = useSelector(state => state.foodReducer.foodList)
     const [veg , setVeg] = useState(false)
-
+    const [filters , setFilters] = useState(false)
     useEffect ( () => {
         dispatch(getFoodList () )
     },[])
@@ -49,8 +49,8 @@ function LandingPage() {
                                 color: veg?`#2ebd59`: `rgba(74,74,74,.7)`,
                                 border: veg?`1px solid #2ebd59`:`1px solid #000`,
                                 borderRadius: `5px`
-                            }} className= "px-2" onClick = {() => setVeg(!veg)} >VEG</button>
-                            <span ><img src="/funnel.svg" alt=""/> FILTERS</span>
+                            }} className= "px-2 mr-2" onClick = {() => setVeg(!veg)} >VEG</button>
+                            <span><img src="/funnel.svg" alt=""/> FILTERS</span>
                        </div>
                    </div>
                    <hr/>
@@ -59,7 +59,7 @@ function LandingPage() {
                             <div className="col-12">
                                 <div className="row" style={{position:'relative'}} data-spy="scroll" data-target=".navbar" data-offset="50">
                                     
-                                    <div id="list-example" className={`list-group col-2 text-left ${styles.sticky}`} style={{border:'1px solid black'}}>
+                                    <div id="list-example" className={`list-group col-2 text-left ${styles.sticky}`}>
                                         <a className={`list-group-item list-group-item-action ${styles.catergoryList}`} href="#list-item-1" >Appetizers</a>
                                         <a className={`list-group-item list-group-item-action ${styles.catergoryList}`} href="#list-item-2">Match Day Combos</a>
                                         <a className={`list-group-item list-group-item-action ${styles.catergoryList}`} href="#list-item-3">New & Exciting</a>
