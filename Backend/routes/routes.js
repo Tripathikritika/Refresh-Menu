@@ -13,7 +13,7 @@ router.post("/login", Login);
 
 router.get('/singleFoodDetails/:id' , getEachFoodDetails)
 
-router.get("/order", Order);
+router.get("/order/:price", Order);
 
 router.post("/capture/:paymentId", Capture);
 

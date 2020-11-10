@@ -4,37 +4,6 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Axios from "axios";
 
-const paymentHandler = async (e) => {
-  const API_URL = `http://localhost:8000/`;
-  const response = await Axios.get(`${API_URL}order`);
-  const { data } = response;
-
-  const options = {
-    name: "Omkarnath",
-    description: "Payment of items",
-    order_id: data.id,
-    handler: async (response) => {
-      try {
-        const paymentId = response.razorpay_payment_id;
-        const url = `${API_URL}capture/${paymentId}`;
-        const captureResponse = await Axios.post(url, {});
-        const successObj = JSON.parse(captureResponse.data);
-        const captured = successObj.captured;
-        if (captured) {
-          console.log("Success");
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    },
-    theme: {
-      color: "#c6203d",
-    },
-  };
-  const rzp1 = new window.Razorpay(options);
-  rzp1.open();
-};
-
 function Checkout() {
   const cartListItem = useSelector((state) => state.cartItemReducer.cartList);
   let total = 0;
@@ -49,6 +18,42 @@ function Checkout() {
   GST = Number((total + packagingfee) * 0.05);
   CGST = Number((total + packagingfee) * 0.025);
   SGST = Number((total + packagingfee) * 0.025);
+
+  const paymentHandler = async (e) => {
+    const API_URL = `http://localhost:8000/`;
+    const response = await Axios.get(
+      `${API_URL}order/${(total + packagingfee + deliver + GST).toFixed(2)}`
+    );
+    const { data } = response;
+
+    const options = {
+      name: "Omkarnath",
+      description: "Payment of items",
+      order_id: data.id,
+      handler: async (response) => {
+        try {
+          const paymentId = response.razorpay_payment_id;
+          const url = `${API_URL}capture/${paymentId}`;
+          const captureResponse = await Axios.post(url, {
+            price: (total + packagingfee + deliver + GST).toFixed(2),
+          });
+          const successObj = JSON.parse(captureResponse.data);
+          const captured = successObj.captured;
+          if (captured) {
+            console.log("Success");
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      },
+      theme: {
+        color: "#c6203d",
+      },
+    };
+    const rzp1 = new window.Razorpay(options);
+    rzp1.open();
+  };
+
   return (
     <>
       <div>
