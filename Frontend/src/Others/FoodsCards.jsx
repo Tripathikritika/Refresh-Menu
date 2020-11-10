@@ -34,8 +34,21 @@ function FoodsCards( {item} ) {
     const [open, setOpen] = React.useState(false);
     const [addons , setAddons ]= useState([])
     const [addonsTotalPrice , setAddonsTotalPrice] = useState(0)
+    const [addedItem , setAddedItem] = useState(true)
     let cartList = useSelector((state) => state.cartItemReducer.cartList)
     
+    const findItem = cartList.find((foodItem) => foodItem.title === item.title)
+    // console.log(findItem)
+    const handleQuantity = ( val ) => {
+        findItem.qty = Number(findItem.qty) + Number(val)
+        cartList = cartList.map((qtyItem) => qtyItem.title == findItem.title ? findItem : qtyItem)
+        if(findItem.qty == 1 && val == -1 || findItem.qty === 0 && val == -1){
+            cartList = cartList.filter((qtyFilter) => qtyFilter.title !== findItem.title)
+            dispatch(cartListItem( cartList ))
+            return
+        }
+        dispatch(cartListItem( cartList ))
+    }
     const handleOpen = () => {
       setOpen(true);
     };
@@ -125,20 +138,46 @@ function FoodsCards( {item} ) {
         <>
             <div className = 'col-12 col-sm-12 col-md-6 col-lg-4' key={item.id}>
                 <div style={{display:'flex', fontSize:'13px', color:'#A8A8A8'}}>
-                    <div className={styles.foodType}>{item.type === 'VEG' ? <img src="./vegIcon.png" alt="Vegetarian" className={styles.typeIcon}/>  : <img src="/non-vegetarian.png" alt="" className={styles.typeIcon} />}</div>
+                    <div className={styles.foodType}>{item.type === 'VEG' ? <img src="./vegIcon.png" alt="Vegetarian" className={styles.typeIcon}/>  : <img src="/non-vegetarian.png" alt="non-veg" className={styles.typeIcon} />}</div>
                     <div>{item.cuisine}</div>
                 </div>
                 <div className ="card m-2 rounded">
                     <Link to ={`/${item.title}/product/${item.id}`}><img src={item.food_link} alt="Appetizers" className="img-fluid card-img-top rounded"/></Link>
                     <div className="card-body">
                         <h5 className="card-title">{item.title}</h5>
-                        <p>₹{item.amount} 
-                            {
-                                item.addons === true 
-                                ? <button type="button" className={`btn float-right rounded-pill text-white ${styles.colorCode}`} onClick = {handleOpen}>ADD +</button>
-                                : <button type="button" className={`btn float-right rounded-pill text-white ${styles.colorCode}`} onClick ={handleAddItem}>ADD</button>
-                            }
-                        </p>
+                        <div style={{display:'flex',justifyContent:'space-between'}}>
+                            <div>
+                                ₹{item.amount} 
+                            </div>
+                            <div>
+                                {
+                                    item.addons === true ? 
+                                   <div>
+                                    {
+                                        (findItem == undefined ) ? 
+                                        <button type="button" className={`btn float-right rounded-pill text-white ${styles.colorCode}`} onClick = {handleOpen}>ADD +</button> :
+                                        <div className='d-flex px-3' style={{ width:'100%',backgroundColor:'#df561d',borderRadius:'20px',color:'white'}}>
+                                        <button className="px-2 py-2" onClick={() => handleQuantity(-1)} style={{width:'100%', borderRadius:'20px 0px 0px 20px',border:'none',backgroundColor:'#df561d' ,color:'white'}}>-</button>
+                                        <span className="px-3 py-2" style={{display:'inline' ,width:"100%", borderRadius:'50%',border:'none',backgroundColor:'#df561d',backgroundImage:' linear-gradient(to left,#fe7c18,#df561d)',color:'white'}}>{findItem.qty}</span>
+                                        <button className="px-2 py-2" onClick={() => handleOpen()} style={{width:'100%', borderRadius:'0px 20px 20px 0px',border:'none',backgroundColor:'#df561d',color:'white'}}>+</button>
+                                        </div>
+                                    }
+                                   </div>
+                                :                           
+                                    <div>
+                                       { findItem == undefined ? 
+                                        <button type="button" className={`btn float-right rounded-pill text-white ${styles.colorCode}`} onClick ={handleAddItem}>ADD</button> : 
+                                        <div className='d-flex px-3' style={{ width:'100%',backgroundColor:'#df561d',borderRadius:'20px',color:'white'}}>
+                                            <button className="px-2 py-2" onClick={() => handleQuantity(-1)} style={{width:'100%', borderRadius:'20px 0px 0px 20px',border:'none',backgroundColor:'#df561d' ,color:'white'}}>-</button>
+                                            <span className="px-3 py-2" style={{display:'inline' ,width:"100%", borderRadius:'50%',border:'none',backgroundColor:'#df561d',backgroundImage:' linear-gradient(to left,#fe7c18,#df561d)',color:'white'}}>{findItem.qty}</span>
+                                            <button className="px-2 py-2" onClick={() => handleQuantity(1)} style={{width:'100%', borderRadius:'0px 20px 20px 0px',border:'none',backgroundColor:'#df561d',color:'white'}}>+</button>
+                                        </div>}
+                                    </div>
+                                
+                                }
+                            </div>
+                            
+                        </div>
                     </div>
                 </div>
                 <Modal
