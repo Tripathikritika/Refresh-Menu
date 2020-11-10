@@ -227,7 +227,7 @@ const Navbar = ( props ) => {
   };
 
   const MapBody = (
-    <div style={{ width: "100%",height: "100%",backgroundColor: "#eeeeee",border:'1px solid #eeeeeee'}}>
+    <div style={{ width: "100%",height: "100%",backgroundColor: "#eeeeee",border:'none'}}>
       <div style={modalHelpStyle} className={classes.mapPaper}>
         <div id="simple-modal-title" className="text-right mr-3" onClick={handleHelpModalClose}><i className="fas fa-times"></i> </div>
         <div className={styles.helpDiv}>
