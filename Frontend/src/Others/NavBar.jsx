@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import axios from "axios";
 import Modal from "@material-ui/core/Modal";
@@ -10,6 +10,7 @@ import Fade from "@material-ui/core/Fade";
 import Login from "../Components/LoginOauth/Login";
 import Signup from "../Components/LoginOauth/Signup";
 import styles from "../Styling/NavBar.module.css";
+import {toggleSearch} from '../Redux/FoodList/action'
 
 const TopDiv = styled.div`
   display: grid;
@@ -85,7 +86,7 @@ const BottomDiv = styled.div`
     & > div {
       cursor: pointer;
       display: flex;
-      padding: 10px 15px;
+      padding: 5px 5px;
       border-radius: 20px;
       transition: background-color 500ms;
       :hover {
@@ -187,6 +188,8 @@ const Navbar = ( props ) => {
   const [getLocation, setGetLocation] = useState("Bangalore Karnataka");
   const [helpModalOpen, setHelpModalOpen] = React.useState(false);
   const [modalHelpStyle] = React.useState(getHelpModalStyle);
+  const dispatch = useDispatch()
+
   const { token, isAuth, isLoading, errorMsg, isError } = useSelector(
     (state) => state.reducer
   );
@@ -411,16 +414,16 @@ const Navbar = ( props ) => {
         
         <div className="bottom-items">
           {/* search */}
-          <div>
+          <div onClick={() => dispatch(toggleSearch())} style={{display:'flex',textDecoration:'none',color: '#4a4a4a'}}>
             <img src="./searchicon.svg" alt="searchicon.svg" />
             <div>Search</div>
-          </div>
+          </div >
         </div>
         <div className="bottom-items">
           {/* offers */}
-          <div>
+          <Link to='/offers' target='_Blank' style={{display:'flex',textDecoration:'none',color: '#4a4a4a'}}>
             <div>Offers</div>
-          </div>
+          </Link >
         </div>
         <div className="bottom-items">
           {/* help */}
