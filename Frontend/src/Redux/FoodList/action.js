@@ -68,3 +68,42 @@ export const getsearchFoodList = ( payload ) => ( dispatch ) => {
 export const toggleSearch = () => ({
     type : actionConstant.SEARCH_FUNCTION
 })
+
+export const filterFoodListRequest = () => {
+    return{
+        type : actionConstant.FILTER_FOOD_LIST_REQUEST
+    }
+}
+
+export const filterFoodListSuccess= ( payload ) => {
+    return{
+        type : actionConstant.FILTER_FOOD_LIST_SUCCESS,
+        payload 
+    }
+}
+
+export const filterFoodListFailure = () => {
+    return{
+        type : actionConstant.FILTER_FOOD_LIST_FAILURE
+    }
+}
+
+export const getFilterFoodList = ( payload ) => ( dispatch ) => {
+    // console.log(payload)
+    dispatch ( filterFoodListRequest() )
+    axios.get(`http://localhost:8000/filterItem?${payload}`)
+         .then(res => {
+             dispatch(filterFoodListSuccess(res.data))
+            //  console.log(res.data)
+         })
+         .catch(err => {
+             dispatch( filterFoodListFailure(err))
+             console.log(err)
+         })
+}
+
+export const toggleFilter = () => {
+    return{
+        type : actionConstant.TOGGLE_FILTER
+    }
+}

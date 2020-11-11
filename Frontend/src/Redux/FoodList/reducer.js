@@ -3,7 +3,9 @@ import actionConstant from  './actionTypes'
 export const initState = {
     foodList : [],
     searchedItem : [],
-    toggleSearchStatus : false
+    toggleSearchStatus : false,
+    filteredItem : [],
+    toggleFilterState : false
 }
 
 const reducer = ( state = initState , action ) => {
@@ -38,6 +40,24 @@ const reducer = ( state = initState , action ) => {
         return{
             ...state,
             toggleSearchStatus : !state.toggleSearchStatus
+        }
+        case actionConstant.FILTER_FOOD_LIST_REQUEST : 
+        return{
+            ...state
+        }
+        case actionConstant.FILTER_FOOD_LIST_SUCCESS : 
+            return{
+                ...state,
+                filteredItem : action.payload
+            }
+        case actionConstant.FILTER_FOOD_LIST_FAILURE : 
+            return{
+                ...state
+            }
+        case actionConstant.TOGGLE_FILTER : 
+        return{
+            ...state,
+            toggleFilterState : !state.toggleFilterState
         }
         default :
             return state
