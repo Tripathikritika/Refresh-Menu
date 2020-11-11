@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import { getSingleFoodList } from '../Redux/SingleFood/action'
 import Footer from '../Others/Footer'
 import styles from '../Styling/FoodDetails.module.css'
+import { Link } from "react-router-dom";
 import { useState } from 'react'
 
 function FoodDetails () {
@@ -13,18 +14,32 @@ function FoodDetails () {
     const dispatch = useDispatch()
 
     useEffect(() => {
+        window.scrollTo(0, 0)
         dispatch(getSingleFoodList(matchData.id))
-        console.log(matchData)
+        // console.log(matchData)
    }, [])
 
     return (
         <>
             <div className = {styles.mainDiv}>
+                <div className={styles.header}>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-2">
+                                <Link to="/" id="refreshmenu">
+                                    <div>
+                                        <img src="/Logo.jpg" alt=""/>
+                                    </div>
+                                </Link>
+                            </div>                           
+                        </div>
+                    </div>
+                </div>
                 { foodItem && 
                     <div className={`container ${styles.descriptionCard}`}>
-                    <div className="row">
+                    <div className="row mt-5">
                         <div className="col-12">
-                        <div class="card mb-3">
+                        <div class="card mb-3 border border-white">
                         <div className="row no-gutters">
                             <div className="col-md-6">
                                 <img src={foodItem.food_link} className="card-img img-fluid" alt={foodItem.title}/>
@@ -47,7 +62,7 @@ function FoodDetails () {
                                 <p className={`card-text ${styles.foodAmount}`}>₹{foodItem.amount}</p>
                                 <div className="row">
                                     <div className="col-4">
-                                    <button className="btn btn-danger btn-lg rounded-pill px-5">Add</button>
+                                    <button className={`btn btn-danger btn-lg rounded-pill px-5 ${styles.addButton}`}>Add</button>
                                     <small className="text-muted pl-4">Customisable</small>
                                     </div>
                                 </div>

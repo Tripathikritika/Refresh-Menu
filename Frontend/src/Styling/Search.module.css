@@ -11,11 +11,7 @@
   display: flex;
   justify-content: space-between;
 }
-.searchInput {
-  border: 1px solid black;
-  width: 100%;
-  padding: 20px;
-}
+
 .bodyDiv {
   background-color: #f7f7f7;
   padding-top: 40px;
@@ -23,4 +19,11 @@
 .imgSearch {
   width: 360px;
   height: 100px;
+}
+.innerInput {
+  border: none;
+}
+textarea:focus,
+input:focus {
+  outline: none;
 }

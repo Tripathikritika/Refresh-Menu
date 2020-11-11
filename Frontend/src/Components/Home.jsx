@@ -9,6 +9,8 @@ import LandingPage from "./LandingPage";
 import Footer from "../Others/Footer.jsx";
 import styles from '../Styling/Home.module.css'
 import { Link } from "react-router-dom";
+import Search from "./Search";
+
 const { default: Navbar } = require("../Others/NavBar");
 
 const drawerWidth = 300;
@@ -57,6 +59,7 @@ const Home = () => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const cartListItem = useSelector((state) => state.cartItemReducer.cartList)
+  const toggleState = useSelector((state) => state.foodReducer.toggleSearchStatus)
   let total = 0
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -91,7 +94,7 @@ const Home = () => {
           })}
         >
           <Navbar openDrawer={handleDrawerOpen} />
-          <LandingPage />
+         { !toggleState ?<LandingPage /> : <Search/>} 
           <Footer />
         </main>
         <Drawer
