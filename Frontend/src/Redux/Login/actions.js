@@ -17,6 +17,7 @@ export const foundError = (payload) => ({
 });
 
 export const apiCall = (payload) => async (dispatch) => {
+  
   dispatch(request());
   try {
     const { data } = await axios.post("http://localhost:8000/register", {

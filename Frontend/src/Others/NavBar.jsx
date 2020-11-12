@@ -72,7 +72,7 @@ const BottomDiv = styled.div`
   border-bottom: 1px solid #ececec;
   width: 100%;
   display: grid;
-  
+
   box-shadow: 0 5px 15px -6px #4a4a4a;
   grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
   & > * {
@@ -96,7 +96,6 @@ const BottomDiv = styled.div`
     cursor: pointer;
     // background-color: #f2f3f3;
     padding: 40px 0px;
-
   }
   & .tooltip {
     position: relative;
@@ -159,7 +158,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Navbar = ( props ) => {
+const Navbar = (props) => {
   const classes = useStyles();
   const [openLogin, setOpenLogin] = useState(false);
   const [openSignup, setOpenSignup] = useState(false);
@@ -171,7 +170,7 @@ const Navbar = ( props ) => {
     (state) => state.reducer
   );
 
-  // console.log(token, isAuth, isLoading, errorMsg, isError);
+  console.log(token, isAuth, isLoading, errorMsg, isError);
 
   useEffect(() => {
     axios
@@ -184,7 +183,7 @@ const Navbar = ( props ) => {
       })
       .catch((err) => console.log(err));
   }, [locationSearch]);
-  
+
   const handleOpenLogin = () => {
     setOpenLogin(true);
   };
@@ -203,7 +202,7 @@ const Navbar = ( props ) => {
 
   return (
     <>
-      <TopDiv  style={{width:'85%' , margin : 'auto'}}>
+      <TopDiv style={{ width: "85%", margin: "auto" }}>
         {/* navbar top div */}
         <div></div>
         <Link to="/" id="refreshmenu">
@@ -317,9 +316,7 @@ const Navbar = ( props ) => {
         <div></div>
         <div></div>
         <div>
-
           <Link to="/diwali-gift" id="discountoffer">
-            
             <img
               width="20px"
               src="./discountoffer.svg"
@@ -350,8 +347,7 @@ const Navbar = ( props ) => {
         <div></div>
         <div></div>
         <div></div>
-        
-       
+
         <div className="bottom-items">
           {/* search */}
           <div>
@@ -372,7 +368,7 @@ const Navbar = ( props ) => {
           </div>
         </div>
         <div className="bottom-items">
-        {!isAuth && (
+          {!isAuth && (
             /* guest */
             <div className="">
               <img src="./guesticon.svg" alt="guesticon.svg" />
@@ -392,10 +388,7 @@ const Navbar = ( props ) => {
         </div>
         <div id="carticon">
           {/* cart */}
-          <img
-            src="./carticon.svg"
-            alt="carticon.svg"
-          />
+          <img src="./carticon.svg" alt="carticon.svg" />
         </div>
         <div></div>
       </BottomDiv>
@@ -412,17 +405,21 @@ const Navbar = ( props ) => {
         BackdropProps={{
           timeout: 500,
         }}
+        style={{
+          backgroundColor: "rgba(238, 238, 238)",
+          width: "100%",
+          height: "100%",
+        }}
       >
         <Fade in={openLogin}>
           <div className={classes.paper}>
-            <Login {...handleOpenLogin} />
+            <Login {...{ handleOpenLogin, handleCloseLogin }} />
           </div>
         </Fade>
       </Modal>
 
       {/* Signup Modal */}
       <Modal
-        style={{ width: "400px", margin: "auto" }}
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         className={classes.modal}
@@ -433,10 +430,11 @@ const Navbar = ( props ) => {
         BackdropProps={{
           timeout: 500,
         }}
+        style={{ width: "400px", margin: "auto" }}
       >
         <Fade in={openSignup}>
           <div className={classes.paper}>
-            <Signup />
+            <Signup {...{ handleCloseSignup }} />
           </div>
         </Fade>
       </Modal>

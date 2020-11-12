@@ -38,3 +38,16 @@
   /* border: 1px solid transparent rgb(226, 226, 226) transparent transparent;; */
   border-color: transparent rgb(226, 226, 226) transparent transparent;
 }
+
+#notRecvCode{
+  color: #9b9b9b;
+  text-align: center;
+}
+
+#resendCode{
+  font-weight: 600;
+  color: #e85826;
+  margin-bottom: 10px;
+  cursor: pointer;
+  text-align: center;
+}

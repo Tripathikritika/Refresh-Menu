@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Oauth from "./Oauth";
 import { useDispatch, useSelector } from "react-redux";
 import { apiCall } from "../../Redux/Login/actions";
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const Flexbox = styled.div`
   display: flex;
@@ -63,7 +63,7 @@ const SignupButton = styled.button`
   position: relative;
   border: 0;
   width: 100%;
-  :focus{
+  :focus {
     outline: none;
   }
 `;
@@ -90,13 +90,14 @@ const Fail = styled.div`
   margin-top: 10px;
 `;
 
-const Signup = () => {
+const Signup = ({ handleCloseSignup }) => {
   const dispatch = useDispatch();
   const { token, isAuth, isLoading, errorMsg, isError } = useSelector(
     (state) => state.reducer
   );
 
-  console.log(token, isAuth, isLoading, errorMsg, isError);
+  // console.log(token, isAuth, isLoading, errorMsg, isError);
+  console.log(errorMsg, isError);
 
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
@@ -112,6 +113,10 @@ const Signup = () => {
     password,
   };
 
+  useEffect(() => {
+    isAuth && handleCloseSignup();
+  }, [isAuth]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(apiCall(data));
@@ -120,7 +125,7 @@ const Signup = () => {
   return (
     <>
       <Flexbox>
-        <Oauth />
+        <Oauth {...{ handleCloseSignup }} />
       </Flexbox>
 
       <Second>
@@ -162,7 +167,16 @@ const Signup = () => {
           required
         />
         {isError && <Fail>* {errorMsg}</Fail>}
-        <SignupButton type="submit">{!isLoading && <>Sign up</>} {isLoading &&  <CircularProgress size={30} thickness={6} style={{color:"white"}} />}</SignupButton>
+        <SignupButton type="submit">
+          {!isLoading && <>Sign up</>}{" "}
+          {isLoading && (
+            <CircularProgress
+              size={30}
+              thickness={6}
+              style={{ color: "white" }}
+            />
+          )}
+        </SignupButton>
       </form>
 
       <hr />

@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { verifyOtp } from "../../Redux/OtpVerify/actions";
 import Oauth from "./Oauth";
 import styles from "./Login.module.css";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import OtpInput from "react-otp-input";
 
 const Flexbox = styled.div`
   display: flex;
@@ -91,8 +92,12 @@ const Last = styled.div`
   }
 `;
 
-const Login = () => {
+const Login = ({ handleCloseLogin }) => {
   const dispatch = useDispatch();
+  const [inp, setInp] = useState("");
+  const [otp, setOtp] = useState("");
+  const [generatedOtp, setGeneratedOtp] = useState(0);
+  const [invalidOtp, setInvalidOtp] = useState(false);
   const {
     token,
     email,
@@ -104,19 +109,37 @@ const Login = () => {
     isError,
   } = useSelector((state) => state.otpVerifyReducer);
 
-  console.log(token, email, mobile, isAuth, isLoading, message, isError);
+  // console.log(token, email, mobile, isAuth, isLoading, message, isError);
+  console.log(message, isError);
 
-  const [inp, setInp] = useState("");
+  useEffect(() => {
+    if (generatedOtp) {
+      const obj = { inp, generatedOtp };
+      dispatch(verifyOtp(obj));
+    }
+  }, [generatedOtp]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(verifyOtp(inp));
+    setInvalidOtp(false);
+    let temp = Math.floor(1000 + Math.random() * 9000);
+    setGeneratedOtp(temp);
+  };
+
+  const sendotp = async (e) => {
+    e.preventDefault();
+    if (generatedOtp === Number(otp)) {
+      setInvalidOtp(false);
+      handleCloseLogin();
+    } else {
+      setInvalidOtp(true);
+    }
   };
 
   return (
     <>
       <Flexbox>
-        <Oauth />
+        <Oauth {...{ handleCloseLogin }} />
       </Flexbox>
 
       <Second>
@@ -163,42 +186,57 @@ const Login = () => {
       )}
 
       {isToken && (
-        <form style={{width:"320px", textAlign: "center"}} onSubmit={handleSubmit}>
-          <div>{`We have sent a verification code to ${inp}. Please enter it below.`}</div>
+        <form
+          style={{ width: "250px", textAlign: "center" }}
+          onSubmit={sendotp}
+        >
+          <div
+            style={{ fontSize: "14px", marginBottom: "40px" }}
+          >{`We have sent a verification code to ${inp}. Please enter it below.`}</div>
           <div class={styles.tooltip}>
-            <InputBox
-              value={inp}
-              onChange={(e) => setInp(e.target.value)}
-              placeholder="Mobile Number/ Email ID"
-              autoFocus
-              required
-            />
             <span
               style={
-                message ? { visibility: "visible" } : { visibility: "hidden" }
+                invalidOtp
+                  ? { visibility: "visible" }
+                  : { visibility: "hidden" }
               }
               class={styles.tooltiptext}
             >
-              {message}
+              Invalid OTP. Please retry.
             </span>
+            <OtpInput
+              value={otp}
+              onChange={(e) => setOtp(e)}
+              containerStyle={{ margin: "30px 25px" }}
+              focusStyle={{ border: "1px solid #e85826", outline: "none" }}
+              inputStyle={{
+                marginRight: "10px",
+                width: "40px",
+                height: "40px",
+                fontSize: "14px",
+              }}
+            />
           </div>
 
           {isLoading ? (
-            <SendOtp type="submit">
+            <SendOtp>
               <CircularProgress
                 size={30}
                 thickness={6}
                 style={{ color: "white" }}
               />
-              <div>Sending..</div>
+              <div>Verifying..</div>
             </SendOtp>
           ) : (
             <SendOtp type="submit">
-              <div>Send OTP</div>
+              <div>Log In</div>
             </SendOtp>
           )}
         </form>
       )}
+
+      <div id={styles.notRecvCode}>Didn’t receive code?</div>
+      <div id={styles.resendCode}>Resend Code</div>
 
       <hr />
 

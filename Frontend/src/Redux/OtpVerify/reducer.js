@@ -1,4 +1,4 @@
-import { REQUEST, ERROR, SEND } from "./actionTypes";
+import { REQUEST, ERROR, SEND, VERIFIED } from "./actionTypes";
 
 const initState = {
   token: "",

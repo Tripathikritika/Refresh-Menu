@@ -5,11 +5,11 @@ const initState = {
   isAuth: false,
   isLoading: false,
   isError: false,
-  errorMsg: ""
+  errorMsg: "",
 };
 
 const reducer = (state = initState, { type, payload }) => {
-  // console.log(payload)
+  console.log("signup");
   switch (type) {
     case REQUEST:
       return {
@@ -19,15 +19,15 @@ const reducer = (state = initState, { type, payload }) => {
         errorMsg: "",
         isError: false,
       };
-      case SEND:
-        return {
-          ...state,
-          token: payload.token,
-          isAuth: true,
-          errorMsg: "",
-          isLoading: false,
-        };
-      case ERROR:
+    case SEND:
+      return {
+        ...state,
+        token: payload.token || payload.accessToken,
+        isAuth: true,
+        errorMsg: "",
+        isLoading: false,
+      };
+    case ERROR:
       return {
         ...state,
         isLoading: false,
