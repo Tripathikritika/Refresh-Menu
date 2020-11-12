@@ -3,6 +3,7 @@ import styles from "../Styling/Checkout.module.css";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Axios from "axios";
+import { deleteData } from "../Redux/Cart/localStorage";
 
 function Checkout() {
   const cartListItem = useSelector((state) => state.cartItemReducer.cartList);
@@ -44,6 +45,9 @@ function Checkout() {
           }
         } catch (err) {
           console.log(err);
+        } finally {
+          deleteData("cartItem");
+          
         }
       },
       theme: {
