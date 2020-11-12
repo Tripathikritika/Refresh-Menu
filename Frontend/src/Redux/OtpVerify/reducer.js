@@ -1,41 +1,46 @@
-import { REQUEST, ERROR, SEND } from "./actionTypes";
+import { REQUEST, ERROR, SEND, VERIFIED } from "./actionTypes";
 
 const initState = {
   token: "",
+  mobile: "",
+  email: "",
   isAuth: false,
   isLoading: false,
   isError: false,
-  errorMsg: "",
+  message: "",
 };
 
-const reducer = (state = initState, { type, payload }) => {
-  console.log("signup");
+const otpVerifyReducer = (state = initState, { type, payload }) => {
+  console.log(payload);
   switch (type) {
     case REQUEST:
       return {
         ...state,
         isAuth: false,
         isLoading: true,
-        errorMsg: "",
+        message: "",
         isError: false,
       };
     case SEND:
       return {
         ...state,
-        token: payload.token || payload.accessToken,
-        isAuth: true,
-        errorMsg: "",
+        isToken: true,
+        token: payload.accessToken,
+        mobile: payload.mobile,
+        email: payload.email,
+        message: "",
         isLoading: false,
       };
     case ERROR:
       return {
         ...state,
+        isToken: false,
         isLoading: false,
-        errorMsg: payload,
+        message: payload.message,
         isError: true,
       };
     default:
       return state;
   }
 };
-export default reducer;
+export default otpVerifyReducer;
