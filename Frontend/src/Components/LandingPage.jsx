@@ -1,23 +1,29 @@
 import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import  styles from '../Styling/LandingPage.module.css'
-import { getFoodList } from '../Redux/FoodList/action'
-import {Link} from 'react-router-dom'
-import FoodsCards from '../Others/FoodsCards'
+import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import { getFoodList ,toggleFilter} from '../Redux/FoodList/action'
+import FoodsCards from '../Others/FoodsCards'
+import  styles from '../Styling/LandingPage.module.css'
+import FilterComponent from './FilterComponent'
+
 
 function LandingPage() {
     const dispatch = useDispatch()
     const  food_List = useSelector(state => state.foodReducer.foodList)
     const [veg , setVeg] = useState(false)
-
+    const filters  = useSelector((state) => state.foodReducer.toggleFilterState)
+    const filterItem = useSelector((state) => state.foodReducer.filteredItem)
+  
     useEffect ( () => {
         dispatch(getFoodList () )
     },[])
 
     // console.log(food_List)
+   
     return (
+        
         <>
         {/* First part */}
             <div style={{width:'85%' , margin : 'auto'}}>
@@ -39,27 +45,31 @@ function LandingPage() {
                         <img src="https://s3-ap-southeast-1.amazonaws.com/foodvista.1/a8d84480-dc3b-42c2-80d3-d3c3f4f2740e.jpg" height = "300px" alt="Order Today"/>
                     </div> */}
                 </div>
-                <div>
-                   <div className = {`d-flex justify-content-between  px-5 flex-row ${styles.categoriesBody}`} >
-                       <div>
+                <div className="container-fluid" >
+                    <div className="row">
+                        <div className="col-6 text-left">
                             <h5>CATEGORIES</h5>
-                       </div>
-                       <div className = 'h5'>
+                        </div>
+                        <div className="col-5 d-flex justify-content-end">
                             <button style={{
                                 color: veg?`#2ebd59`: `rgba(74,74,74,.7)`,
                                 border: veg?`1px solid #2ebd59`:`1px solid #000`,
                                 borderRadius: `5px`
-                            }} className= "px-2" onClick = {() => setVeg(!veg)} >VEG</button>
-                            <span ><img src="/funnel.svg" alt=""/> FILTERS</span>
-                       </div>
-                   </div>
+                            }} className= "px-2 m-1" onClick = {() => setVeg(!veg)} >VEG</button>
+                            <div className="px-1" onClick={() => dispatch(toggleFilter())}>
+                                <img src="./funnel.svg" alt=""/>
+                                <button className="px-2 m-1" >Filters</button>
+                            </div>
+                                { filters ? <FilterComponent /> : ""}
+                        </div>        
+                    </div>
                    <hr/>
                     <div className={styles.catergoryListBody} >
                         <div className = 'row'>
                             <div className="col-12">
                                 <div className="row" style={{position:'relative'}} data-spy="scroll" data-target=".navbar" data-offset="50">
                                     
-                                    <div id="list-example" className={`list-group col-2 text-left ${styles.sticky}`} style={{border:'1px solid black'}}>
+                                    <div id="list-example" className={`list-group col-2 text-left ${styles.sticky}`}>
                                         <a className={`list-group-item list-group-item-action ${styles.catergoryList}`} href="#list-item-1" >Appetizers</a>
                                         <a className={`list-group-item list-group-item-action ${styles.catergoryList}`} href="#list-item-2">Match Day Combos</a>
                                         <a className={`list-group-item list-group-item-action ${styles.catergoryList}`} href="#list-item-3">New & Exciting</a>
@@ -76,33 +86,42 @@ function LandingPage() {
                                     </div>
 
                                     <div data-offset="0" data-target="#list-example" className="scrollspy-example col-10" style={{overflowY:'hidden' }}>
-                                        <h4 id="list-item-1" className="text-left">APPETIZERS</h4>
-                                        <div className={`text-left ${styles.cards_details}`}>
-                                            <div className="row" >
-                                            {
-                                                food_List.filter((item) => item.category === 'Appetizers').filter((item) => veg ? item.type === 'VEG' : item  ).map((item) =>  (
-                                                    <FoodsCards item = {item} />
-                                                ))
-                                            }
-                                            </div>
-                                        </div>
-                                        <h4 id="list-item-2" className="text-left">MATCH DAY COMBOS</h4>
-                                        <div className={`text-left ${styles.cards_details}`}>
-                                        <div className="row">
-                                            {
-                                                food_List.filter((item) => item.category === 'Match Day Combos').filter((item) => veg ? item.type === 'VEG' : item  ).map((item) =>  (
-                                                    <FoodsCards item = {item} />
-                                                ))
-                                            }
-                                        </div>
-                                        </div>
-                                        <h4 id="list-item-3" className="text-left">NEW & EXCITING</h4>
+                                            {filterItem.length > 0 && filterItem.filter((item) => item.category === 'Appetizers').length === 0 ? ""  : 
+                                            <h4 id="list-item-1" className="text-left">APPETIZERS</h4> }
+                                                <div className={`text-left ${styles.cards_details}`}>
+                                                <div className="row" >
+                                                {
+                                                    filterItem.length === 0 ?  food_List.filter((item) => item.category === 'Appetizers').filter((item) => veg ? item.type === 'VEG' : item  ).map((item) =>  (
+                                                        <FoodsCards item = {item} key={item.id} />
+                                                    )) : filterItem.filter((item) => item.category === 'Appetizers').map((item) => (
+                                                        <FoodsCards item = {item} key={item.id} />
+                                                    ))
+                                                }
+                                                </div>
+                                                </div>
+                                        {filterItem.length > 0 && filterItem.filter((item) => item.category === 'Match Day Combos').length === 0 ? ""  : 
+                                            <h4 id="list-item-2" className="text-left">MATCH DAY COMBOS</h4>
+                                        }
                                         <div className={`text-left ${styles.cards_details}`}>
                                         <div className="row">
                                             {
-                                                food_List.filter((item) => item.category === 'New & Exciting').filter((item) => veg ? item.type === 'VEG' : item  ).map((item) =>  (
-                                                   <FoodsCards item = {item} />
-                                              
+                                                 filterItem.length === 0 ? food_List.filter((item) => item.category === 'Match Day Combos').filter((item) => veg ? item.type === 'VEG' : item  ).map((item) =>  (
+                                                    <FoodsCards item = {item} key={item.id}/>
+                                                )) : filterItem.filter((item) => item.category === 'Match Day Combos').map((item) => (
+                                                    <FoodsCards item = {item} key={item.id} />
+                                                ))
+                                            }
+                                        </div>
+                                        </div>
+                                        {filterItem.length > 0 && filterItem.filter((item) => item.category === 'New & Exciting').length === 0 ? ""  : 
+                                            <h4 id="list-item-1" className="text-left">NEW & EXCITING</h4> }
+                                        <div className={`text-left ${styles.cards_details}`}>
+                                        <div className="row">
+                                            {
+                                                filterItem.length === 0 ? food_List.filter((item) => item.category === 'New & Exciting').filter((item) => veg ? item.type === 'VEG' : item  ).map((item) =>  (
+                                                   <FoodsCards item = {item} key={item.id} />
+                                                )) : filterItem.filter((item) => item.category === 'New & Exciting').map((item) => (
+                                                    <FoodsCards item = {item} key={item.id} />
                                                 ))
                                             }
                                         </div>

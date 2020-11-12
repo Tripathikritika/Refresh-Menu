@@ -1,0 +1,29 @@
+.mainDiv {
+  width: 100%;
+}
+.header {
+  margin: 0 auto;
+  padding-left: 1%;
+  padding-right: 1%;
+  max-width: 1185px;
+  padding-top: 1%;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bodyDiv {
+  background-color: #f7f7f7;
+  padding-top: 40px;
+}
+.imgSearch {
+  width: 360px;
+  height: 100px;
+}
+.innerInput {
+  border: none;
+}
+textarea:focus,
+input:focus {
+  outline: none;
+}

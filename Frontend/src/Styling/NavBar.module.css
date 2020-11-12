@@ -45,3 +45,25 @@
   border-left: 1px solid gray;
   font-weight: 600 !important;
 }
+.helpModalHeader {
+  margin: 0 0 20px;
+  font-size: 14px;
+  color: #000;
+  font-weight: 400;
+  text-align: center;
+}
+.helpModalBody {
+  font-size: 13px;
+  line-height: 1.4;
+  color: #686565;
+  text-align: center;
+  margin: 0;
+}
+.helpDiv {
+  padding: 0px 49px 10px 49px;
+}
+.helpContact {
+  font-size: 16px;
+  color: #e85826;
+  justify-content: center;
+}

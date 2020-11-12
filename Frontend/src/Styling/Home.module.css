@@ -1,0 +1,62 @@
+.cartHeader {
+  font-family: ProximaNova-Bold, Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  padding: 10px 0px 0px 10px;
+}
+.cartCount {
+  font-size: 12px;
+  float: left;
+  padding: 0px 0px 0px 10px;
+}
+.image {
+  width: 200px;
+  padding: 10px;
+}
+.emptyHeader {
+  margin-top: 22px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #56595a;
+  font-weight: 500;
+}
+.emptyBody {
+  font-size: 15px;
+  line-height: 1;
+  color: #56595a;
+}
+.browserButton {
+  background-color: #e85826;
+  border: none;
+  border-radius: 2px;
+  font-size: 20px;
+  color: white;
+  padding: 10px 50px 10px 50px;
+  cursor: pointer;
+  margin-top: 25px;
+}
+.placeOrderButton {
+  background-color: #e85826;
+  color: white;
+  margin-top: 20px;
+  width: 290px;
+}
+.typeIcon {
+  width: 20px;
+}
+.foodType {
+  padding-left: 10px;
+}
+.safety {
+  border: 1px solid green;
+  margin: 20px 10px 0px 10px;
+  border-radius: 5px;
+  background-color: #e8f5e9;
+}
+.safety > * {
+  font-size: 15px;
+  text-align: start;
+  padding: 10px;
+  color: green;
+}
