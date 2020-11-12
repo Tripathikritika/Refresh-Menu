@@ -284,9 +284,9 @@ const Navbar = ( props ) => {
         {/* navbar top div */}
         <div></div>
         <Link to="/" id="refreshmenu">
-        <div>
-            <img src="./Logo.jpg" alt=""/>
-        </div>
+          <div>
+              <img src="./Logo.jpg" alt=""/>
+          </div>
         </Link>
         <div data-toggle="modal" data-target="#mapLocation">
           <div id="deliverto">Deliver to:</div>
