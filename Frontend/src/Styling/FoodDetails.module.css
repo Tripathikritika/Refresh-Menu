@@ -1,13 +1,15 @@
+* {
+  color: black;
+}
 .descriptionCard {
   display: flex;
-  margin-top: 100px;
-  padding-right: 6% !important;
-  padding-left: 6% !important;
-  max-width: 1385px;
 }
-/* .mainDiv {
-  width: 100%;
-} */
+.cartLength {
+  color: black;
+  position: absolute;
+  top: -8px;
+  right: 16px;
+}
 .header {
   margin: 0 auto;
   padding: 1%;
@@ -22,6 +24,75 @@
   position: fixed;
   top: 0px;
   z-index: 10;
+}
+.searchDiv {
+  width: 100%;
+  display: flex;
+  border: 1px solid black;
+  padding: 3px 3px 3px 8px;
+}
+.inputBox {
+  outline: none;
+  border: none;
+  margin: 5px;
+  width: 73%;
+  font-family: ProximaNova-Regular, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+  line-height: 1.6;
+}
+.buttonGroup > button {
+  margin: 10px;
+  color: #e85826;
+  margin-bottom: 20px;
+}
+.button {
+  border: 2px solid #e85826;
+  width: '150px';
+}
+.headerDiv {
+  font-family: ProximaNova-Medium, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
+}
+.locateMe {
+  border: none;
+  outline: none;
+  background-color: white;
+  color: #e85826;
+  font-size: 13px !important;
+  font-family: ProximaNova-Semibold, Helvetica, Arial, sans-serif !important;
+  padding: 0 10px 0 9px !important;
+  line-height: 22px !important;
+  border-left: 1px solid gray;
+  font-weight: 600 !important;
+}
+.helpModalHeader {
+  margin: 0 0 20px;
+  font-size: 14px;
+  color: #000;
+  font-weight: 400;
+  text-align: center;
+}
+.helpModalBody {
+  font-size: 13px;
+  line-height: 1.4;
+  color: #686565;
+  text-align: center;
+  margin: 0;
+}
+.helpDiv {
+  padding: 0px 49px 10px 49px;
+}
+.helpContact {
+  font-size: 16px;
+  color: #e85826;
+  justify-content: center;
 }
 
 .typeIcon {
@@ -68,5 +139,127 @@
 
 .addButton {
   background-color: #e85826;
+  /* color: white; */
+}
+
+.freshClub {
+  background-color: #603b6d;
+  height: 100%;
+}
+
+.placeOrderButton {
+  background-color: #e85826;
   color: white;
+  margin-top: 20px;
+  width: 270px;
+}
+
+.modalLayout {
+  display: flex;
+  padding: 15px 15px 0px 15px;
+  border-bottom: 1px solid gray;
+  justify-content: space-between;
+}
+.modalTitle {
+  font-family: ProximaNova-Semibold, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #4a4a4a;
+}
+.addonsTitle {
+  font-family: ProximaNova-Regular, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #4a4a4a;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  margin-bottom: 13px;
+  padding: 15px 0px 0px 15px;
+}
+.addonValue {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 15px;
+}
+.inputDiv {
+  display: flex;
+  cursor: pointer;
+  position: relative;
+  padding: 0 15px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  line-height: 1.3;
+  color: #4a4a4a;
+}
+.cartHeader {
+  font-family: ProximaNova-Bold, Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  padding: 10px 0px 0px 10px;
+}
+.cartCount {
+  font-size: 12px;
+  float: left;
+  padding: 0px 0px 0px 10px;
+}
+.addonValuePrice {
+  color: #4a4a4a;
+}
+.modalFooter {
+  display: flex;
+  background-color: #f7f7f7;
+  margin-top: 15px;
+  justify-content: space-between;
+  padding: 15px 30px 10px 10px;
+  margin-bottom: 0px;
+}
+.addonsSelected {
+  display: flex;
+  font-size: 16px;
+  font-weight: 600;
+  color: #686565;
+}
+.addonsSelected > div {
+  flex: 1;
+}
+.colorCode {
+  background-color: #e85826;
+}
+.safety {
+  border: 1px solid green;
+  margin: 20px 10px 0px 10px;
+  border-radius: 5px;
+  background-color: #e8f5e9;
+}
+.safety > * {
+  font-size: 15px;
+  text-align: start;
+  padding: 10px;
+  color: green;
+  margin: 0px;
+}
+.emptyHeader {
+  margin-top: 22px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  line-height: 1.2;
+  color: #56595a;
+  font-weight: 500;
+}
+.emptyBody {
+  font-size: 15px;
+  line-height: 1;
+  color: #56595a;
+}
+.browserButton {
+  background-color: #e85826;
+  border: none;
+  border-radius: 2px;
+  font-size: 20px;
+  color: white;
+  padding: 10px 50px 10px 50px;
+  cursor: pointer;
+  margin-top: 25px;
 }

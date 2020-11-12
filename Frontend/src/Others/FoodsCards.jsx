@@ -176,7 +176,6 @@ function FoodsCards( {item} ) {
                                 
                                 }
                             </div>
-                            
                         </div>
                     </div>
                 </div>

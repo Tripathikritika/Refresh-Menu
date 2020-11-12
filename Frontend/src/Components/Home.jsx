@@ -20,10 +20,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     width: "100%",
   },
-  hide: {
-    display: "none",
-    backgroundColor: "red",
-  },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
@@ -75,8 +71,10 @@ const Home = () => {
   return (
     <>
       <div className={classes.root}>
-        <div onClick={handleDrawerOpen} className={clsx(open) }>
-          <img
+        <div edge="end" onClick={handleDrawerOpen} >
+          <img  
+            aria-label="open drawer" 
+            className={clsx(open)}
             src="./carticon.svg"
             alt="carticon.svg"
             style={{
@@ -88,6 +86,8 @@ const Home = () => {
             }}
           />
         </div>
+
+        
         <main
           className={clsx(classes.content, {
             [classes.contentShift]: open,
@@ -154,7 +154,7 @@ const Home = () => {
                       ))}
 
                       <div>
-                       <Link to='/checkout'><button type="button" class={` px-5 btn btn-lg rounded-pill ${styles.placeOrderButton} `}> Place order . {total} </button></Link> 
+                       <Link to='/checkout'><button type="button" class={` px-5 btn btn-lg rounded-pill ${styles.placeOrderButton} `}> Place order . ₹{total} </button></Link> 
                       </div>
                       <div className={styles.safety}>
                         <h5>Safety Assured meals and contactless delivery</h5>
