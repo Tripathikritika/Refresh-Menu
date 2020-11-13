@@ -9,7 +9,7 @@ import cartItemReducer from './Cart/reducer'
 
 let composeEnhancers = compose;
 
-const rootreducer = combineReducers({ reducer, mapReducer, foodReducer,singleFoodReducer,cartItemReducer, otpVerifyReducer});
+const rootreducer = combineReducers({ reducer, mapReducer, foodReducer, cartItemReducer,singleFoodReducer, otpVerifyReducer});
 
 
 
