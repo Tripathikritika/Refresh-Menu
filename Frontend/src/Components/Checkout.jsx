@@ -1,8 +1,9 @@
-import React from "react";
+import React , {useState } from "react";
 import styles from "../Styling/Checkout.module.css";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Axios from "axios";
+import Map from '../Others/Map'
 
 function Checkout() {
   const cartListItem = useSelector((state) => state.cartItemReducer.cartList);
@@ -12,6 +13,7 @@ function Checkout() {
   let CGST = 0;
   let SGST = 0;
   let deliver = Number(25);
+  let [saveButton , setSaveButton] = useState(false)
   for (let i = 0; i < cartListItem.length; i++) {
     total += cartListItem[i].amount * cartListItem[i].qty;
   }
@@ -104,10 +106,14 @@ function Checkout() {
                             className={`p-2 bd-highlight ${styles.delivery}`}
                           >
                             Delivery Address
+                            <Map />
+                            <button className="btn  border rounded-pill " onClick={() => setSaveButton(true)}>Save and Continue</button>
                           </div>
                         </div>
                       </div>
                     </div>
+
+                 
                     <div className="col-12">
                       <div className="card rounded-0 p-4 mt-3">
                         <div className="card-body">
@@ -120,6 +126,7 @@ function Checkout() {
                             >
                               Paymethod Method
                             </div>
+                            
                           </div>
                           <div className={styles.offers}>Offers</div>
                           <div className="d-flex justify-content-between">
@@ -387,7 +394,7 @@ function Checkout() {
                                     role="tabpanel"
                                     aria-labelledby="google-pay-tez"
                                   >
-                                    abd
+                                
                                   </div>
                                   <div
                                     class="tab-pane fade"
@@ -423,7 +430,7 @@ function Checkout() {
                                     role="tabpanel"
                                     aria-labelledby="sodexo-meal-card"
                                   >
-                                    ak
+                                   
                                   </div>
                                   <div
                                     class="tab-pane fade"
@@ -431,7 +438,7 @@ function Checkout() {
                                     role="tabpanel"
                                     aria-labelledby="net-banking"
                                   >
-                                    ap
+                                    
                                   </div>
                                 </div>
                               </div>
@@ -440,6 +447,7 @@ function Checkout() {
                         </div>
                       </div>
                     </div>
+                    
                   </div>
                 </div>
                 <div className="col-5">
