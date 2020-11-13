@@ -10,13 +10,31 @@
 }
 .catergoryList {
   border: 0px solid white;
+  color: #4a4a4a;
+  font-family: ProximaNova-Medium, Helvetica, Arial, sans-serif;
+  text-align: left;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+.catergoryList:hover,
+.catergoryList:focus {
+  color: #4a4a4a;
+  border-bottom: 2px solid #e85826;
+}
+.list-group-item.active {
+  z-index: 2;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
 }
 .categoriesBody {
-  margin-top: 20px;
   width: 100%;
 }
-.categoriesBody > div {
-  margin: 0px 10px 10px 10px;
+.categoriesHeader {
+  font-size: 30px;
+  color: #373737;
 }
 .cards_details {
   display: grid;

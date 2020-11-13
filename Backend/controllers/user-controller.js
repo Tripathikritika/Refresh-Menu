@@ -13,7 +13,7 @@ const Register = async (req, res) => {
   if (emailExists) {
     return res.status(400).send("The email id is already registered.");
   }
-  
+
   const mobileExists = await Users.findOne({ mobile: req.body.mobile });
   if (mobileExists) {
     return res.status(400).send("The mobile number is already registered.");
@@ -40,26 +40,50 @@ const Register = async (req, res) => {
 };
 
 const Login = async (req, res) => {
-  const user = await Users.findOne({ email: req.body.email });
-  if (!user) {
-    return res.status(404).send("User not found");
-  }
-
-  const validPass = await bcrypt.compare(req.body.password, user.password);
-  if (!validPass) return res.status(400).send("Invalid password");
-
-  const userEmail = req.body.email;
-  const email = { email: userEmail };
+  var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  var data = req.params.data;
 
   try {
-    const accessToken = jwt.sign(email, process.env.SECRET_KEY_TO_ACCESS);
-    const data = {
-      accessToken,
-      email: user.email,
-    };
-    res.json({ ...data });
-  } catch (e) {
-    console.log(e);
+    if (data.match(mailformat)) {
+      const user = await Users.findOne({ email: req.params.data });
+      if (user) {
+        const email = user.email;
+        const mobile = user.mobile;
+        const accessToken = jwt.sign(
+          { email, mobile },
+          process.env.SECRET_KEY_TO_ACCESS
+        );
+        const data = {
+          accessToken,
+          email,
+          mobile,
+        };
+        return res.json({ ...data });
+      }
+      return res.status(400).json({ message: "Email id is not registered." });
+    } else if (data.toString().length === 10 && !isNaN(data)) {
+      const mob = await Users.findOne({ mobile: req.params.data });
+      if (mob) {
+        const email = mob.email;
+        const mobile = mob.mobile;
+        const accessToken = jwt.sign(
+          { email, mobile },
+          process.env.SECRET_KEY_TO_ACCESS
+        );
+        const data = {
+          accessToken,
+          email,
+          mobile,
+        };
+        return res.json({ ...data });
+      }
+      return res
+        .status(400)
+        .json({ message: "Phone number is not registered." });
+    }
+    return res.status(400).json({ message: "Invalid data entered." });
+  } catch (err) {
+    return res.status(400).json({ message: err.message });
   }
 };
 

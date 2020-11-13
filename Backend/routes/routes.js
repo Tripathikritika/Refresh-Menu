@@ -9,7 +9,7 @@ router.get("/", getFoods);
 
 router.post("/register", Register);
 
-router.post("/login", Login);
+router.get("/login/:data", Login);
 
 router.get('/singleFoodDetails/:id' , getEachFoodDetails)
 
