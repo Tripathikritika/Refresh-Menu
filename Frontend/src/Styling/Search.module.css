@@ -19,6 +19,7 @@
 .imgSearch {
   width: 360px;
   height: 100px;
+  color: white !important;
 }
 .innerInput {
   border: none;

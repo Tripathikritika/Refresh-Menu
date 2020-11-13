@@ -510,7 +510,7 @@ export default function FoodDetails() {
                           </Modal>
                         </div>
                         <div className="col-3 p-4">
-                          <div type="button" onClick={handleHelpModalOpen}>
+                          <div type="button" >
                             {user.isAuth ? (
                               <img src="/usericon.svg" alt="usericon.svg" />
                             ) : (

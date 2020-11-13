@@ -1,7 +1,7 @@
 import React , {useState } from "react";
 import styles from "../Styling/Checkout.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Axios from "axios";
 import Map from '../Others/Map'
 import { deleteItem } from "../Redux/Cart/action";
@@ -60,6 +60,7 @@ function Checkout() {
     const rzp1 = new window.Razorpay(options);
     rzp1.open();
   };
+ 
 
   return (
     <>
@@ -67,7 +68,10 @@ function Checkout() {
         <div className={styles.mainDiv}>
           <div className={styles.header}>
             <div>
-              <img src="./Logo.jpg" alt="" />
+              <Link to='/'>
+                  <img src="./Logo.jpg" alt="" />
+              </Link>
+              
             </div>
             <div style={{ paddingTop: "1%" }}>
               <img src="./helpicon.svg" alt="help" />

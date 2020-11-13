@@ -42,7 +42,7 @@ function Filter() {
     // console.log(filterItem)
     return (
         <>
-            <div className="container" style={{position:"absolute",top:'40px',right:'-255px',zIndex:10}} >
+            <div className="container" style={{position:"absolute",top:'40px',right:'-50px',zIndex:10,maxHeight:'600px',width:'400px', overflow:'auto'}} >
                 <div className="row">
                     <div className="col">
                         <div className="card" style={{width:'24rem'}}>
@@ -50,29 +50,31 @@ function Filter() {
                                 <li className="list-group-item">
                                     <h6>Food Preference</h6>
                                     <h6 className="text-right" onClick={handleReset}>Reset Filter</h6>
-                                    <div className="btn btn-light border border-dark rounded-pill m-2"  onClick={(e) => handleFilter(e)}>Veg</div>
-                                    <div className="btn btn-light border border-dark rounded-pill m-2 mr-5" onClick={(e) => handleFilter(e)}>Contains-Egg</div>
-                                    <div className="btn btn-light border border-dark rounded-pill m-2"  onClick={(e) => handleFilter(e)}>Non-Veg</div>
+                                    <div className="btn btn-light bg-white border border-dark rounded-pill m-1"  onClick={(e) => handleFilter(e)}>Veg</div>
+                                    <div className="btn btn-light bg-white border border-dark rounded-pill m-1 mr-1" onClick={(e) => handleFilter(e)}>Contains-Egg</div>
+                                    <div className="btn btn-light bg-white border border-dark rounded-pill m-1"  onClick={(e) => handleFilter(e)}>Non-Veg</div>
                                 </li>
                                 <li className="list-group-item m-3" >
                                     <h6>Cuisine</h6>
-                                    <div className="btn btn-light border border-dark rounded-pill m-2" onClick={(e) => handleFilter(e)} >313 cal | Low Calorie</div>
-                                    <div className="btn btn-light border border-dark rounded-pill m-2" onClick={(e ) => handleFilter(e)} >422 cal | Low Calorie</div>
-                                    <div className="btn btn-light border border-dark rounded-pill m-2" onClick={(e) => handleFilter(e)} >Mexican</div>
-                                    <div className="btn btn-light border border-dark rounded-pill m-2" onClick={(e) => handleFilter(e)}>Asian</div>
-                                    <div className="btn btn-light border border-dark rounded-pill m-2" onClick={(e) => handleFilter(e)} >Pan-Asian</div>
-                                    <div className="btn btn-light border border-dark rounded-pill m-2" onClick={(e) => handleFilter(e)}>Fusion</div>
-                                    <div className="btn btn-light border border-dark rounded-pill m-2" onClick={(e) => handleFilter(e)}>World Cuisine</div>
-                                    <div className="btn btn-light border border-dark rounded-pill m-2" onClick={(e) => handleFilter(e)} >AMERICAN</div>
-                                    <div className="btn btn-light border border-dark rounded-pill m-2" onClick={(e) => handleFilter(e)} >Japanese</div>
-                                    <div className="btn btn-light border border-dark rounded-pill m-2" onClick={(e) => handleFilter(e)}>South Indian</div>
-                                    <div className="btn btn-light border border-dark rounded-pill m-2" onClick={(e) => handleFilter(e)}>Oriental</div>
-                                    <div className="btn btn-light border border-dark rounded-pill m-2" onClick={(e) => handleFilter(e)}>North Indian</div>
-                                    <div className="btn btn-light border border-dark rounded-pill m-2" onClick={(e) => handleFilter(e)} >Italian</div>
-                                    <div className="btn btn-light border border-dark rounded-pill m-2" onClick={(e) => handleFilter(e)} >Middle Eastern</div>
-                                    <div className="btn btn-light border border-dark rounded-pill m-2" onClick={(e) => handleFilter(e)} >Universal</div>
+                                    <div className="btn btn-light bg-white border border-dark rounded-pill m-1" onClick={(e) => handleFilter(e)} >313 cal | Low Calorie</div>
+                                    <div className="btn btn-light bg-white border border-dark rounded-pill m-1" onClick={(e ) => handleFilter(e)} >422 cal | Low Calorie</div>
+                                    <div className="btn btn-light bg-white border border-dark rounded-pill m-1" onClick={(e) => handleFilter(e)} >Mexican</div>
+                                    <div className="btn btn-light bg-white border border-dark rounded-pill m-1" onClick={(e) => handleFilter(e)}>Asian</div>
+                                    <div className="btn btn-light bg-white border border-dark rounded-pill m-1" onClick={(e) => handleFilter(e)} >Pan-Asian</div>
+                                    <div className="btn btn-light bg-white border border-dark rounded-pill m-1" onClick={(e) => handleFilter(e)}>Fusion</div>
+                                    <div className="btn btn-light bg-white border border-dark rounded-pill m-1" onClick={(e) => handleFilter(e)}>World Cuisine</div>
+                                    <div className="btn btn-light bg-white border border-dark rounded-pill m-1" onClick={(e) => handleFilter(e)} >AMERICAN</div>
+                                    <div className="btn btn-light bg-white border border-dark rounded-pill m-1" onClick={(e) => handleFilter(e)} >Japanese</div>
+                                    <div className="btn btn-light bg-white border border-dark rounded-pill m-1" onClick={(e) => handleFilter(e)}>South Indian</div>
+                                    <div className="btn btn-light bg-white border border-dark rounded-pill m-1" onClick={(e) => handleFilter(e)}>Oriental</div>
+                                    <div className="btn btn-light bg-white border border-dark rounded-pill m-1" onClick={(e) => handleFilter(e)}>North Indian</div>
+                                    <div className="btn btn-light bg-white border border-dark rounded-pill m-1" onClick={(e) => handleFilter(e)} >Italian</div>
+                                    <div className="btn btn-light bg-white border border-dark rounded-pill m-1" onClick={(e) => handleFilter(e)} >Middle Eastern</div>
+                                    <div className="btn btn-light bg-white border border-dark rounded-pill m-1" onClick={(e) => handleFilter(e)} >Universal</div>
                                 </li>
-                                <li className="list-group-item" onClick={()=> handleApply()}>Apply () Dishes</li>
+                                <div style={{position:'relative'}}>
+                                    <li className="list-group-item" onClick={()=> handleApply()} style={{backgroundImage:'linear-gradient(to right,#f5914e,#e85826)',color: 'dark',textAlign: 'center'}}>Apply for the Dishes</li>
+                                </div>
                             </ul>
                         </div>
                     </div>

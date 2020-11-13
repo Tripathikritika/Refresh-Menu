@@ -75,10 +75,10 @@ function Search() {
                                 searchArray.length === 0 ? 
                                 <div className="row ">
                                 <div classNameName="col-12 col-md-6 col-lg-4">
-                                    <div className="card m-2 text-white">
+                                    <div className="card m-2  text-white">
                                         <img src="./SearchPage.png" className={`card-img img-fluid ${styles.imgSearch}`} alt="Asian" />
                                         <div className="card-img-overlay">
-                                            <h5 className="card-title">Asian</h5>
+                                            <h5 className="card-title text-white">Asian</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -86,7 +86,7 @@ function Search() {
                                     <div className="card m-2 text-white">
                                         <img src="./SearchPage.png" className={`card-img img-fluid ${styles.imgSearch}`} alt="Asian" />
                                         <div className="card-img-overlay">
-                                            <h5 className="card-title">Pan-Asian</h5>
+                                            <h5 className="card-title text-white">Pan-Asian</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -94,7 +94,7 @@ function Search() {
                                     <div className="card m-2 text-white">
                                         <img src="./SearchPage.png" className={`card-img img-fluid ${styles.imgSearch}`} alt="Asian" />
                                         <div className="card-img-overlay">
-                                            <h5 className="card-title">Fusion</h5>
+                                            <h5 className="card-title text-white">Fusion</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -102,7 +102,7 @@ function Search() {
                                     <div className="card m-2 text-white">
                                         <img src="./SearchPage.png" className={`card-img img-fluid ${styles.imgSearch}`} alt="Asian" />
                                         <div className="card-img-overlay">
-                                            <h5 className="card-title">World Cuisine</h5>
+                                            <h5 className="card-title text-white">World Cuisine</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -110,7 +110,7 @@ function Search() {
                                     <div className="card m-2 text-white">
                                         <img src="./SearchPage.png" className={`card-img img-fluid ${styles.imgSearch}`} alt="Asian" />
                                         <div className="card-img-overlay">
-                                            <h5 className="card-title">Indian</h5>
+                                            <h5 className="card-title text-white">Indian</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -118,7 +118,7 @@ function Search() {
                                     <div className="card m-2 text-white">
                                         <img src="./SearchPage.png" className={`card-img img-fluid ${styles.imgSearch}`} alt="Asian" />
                                         <div className="card-img-overlay">
-                                            <h5 className="card-title">Continental</h5>
+                                            <h5 className="card-title text-white">Continental</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -126,7 +126,7 @@ function Search() {
                                     <div className="card m-2 text-white">
                                         <img src="./SearchPage.png" className={`card-img img-fluid ${styles.imgSearch}`} alt="Asian" />
                                         <div className="card-img-overlay">
-                                            <h5 className="card-title">447 cal | High Protein</h5>
+                                            <h5 className="card-title text-white">447 cal | High Protein</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -134,7 +134,7 @@ function Search() {
                                     <div className="card m-2 text-white">
                                         <img src="./SearchPage.png" className={`card-img img-fluid ${styles.imgSearch}`} alt="Asian" />
                                         <div className="card-img-overlay">
-                                            <h5 className="card-title">575 cal | Low Calorie</h5>
+                                            <h5 className="card-title text-white">575 cal | Low Calorie</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -142,7 +142,7 @@ function Search() {
                                     <div className="card m-2 text-white">
                                         <img src="./SearchPage.png" className={`card-img img-fluid ${styles.imgSearch}`} alt="Asian" />
                                         <div className="card-img-overlay">
-                                            <h5 className="card-title">Universal</h5>
+                                            <h5 className="card-title text-white">Universal</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -150,7 +150,7 @@ function Search() {
                                     <div className="card m-2 text-white">
                                         <img src="./SearchPage.png" className={`card-img img-fluid ${styles.imgSearch}`} alt="Asian" />
                                         <div className="card-img-overlay">
-                                            <h5 className="card-title">South Indian</h5>
+                                            <h5 className="card-title text-white">South Indian</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -158,7 +158,7 @@ function Search() {
                                     <div className="card m-2 text-white">
                                         <img src="./SearchPage.png" className={`card-img img-fluid ${styles.imgSearch}`} alt="Asian" />
                                         <div className="card-img-overlay">
-                                            <h5 className="card-title">Oriental</h5>
+                                            <h5 className="card-title text-white">Oriental</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -166,7 +166,7 @@ function Search() {
                                     <div className="card m-2 text-white">
                                         <img src="./SearchPage.png" className={`card-img img-fluid ${styles.imgSearch}`} alt="Asian" />
                                         <div className="card-img-overlay">
-                                            <h5 className="card-title">Mexican</h5>
+                                            <h5 className="card-title text-white">Mexican</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -174,7 +174,7 @@ function Search() {
                                     <div className="card m-2 text-white">
                                         <img src="./SearchPage.png" className={`card-img img-fluid ${styles.imgSearch}`} alt="Asian" />
                                         <div className="card-img-overlay">
-                                            <h5 className="card-title">Middle Eastern</h5>
+                                            <h5 className="card-title text-white">Middle Eastern</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -182,7 +182,7 @@ function Search() {
                                     <div className="card m-2 text-white">
                                         <img src="./SearchPage.png" className={`card-img img-fluid ${styles.imgSearch}`} alt="Asian" />
                                         <div className="card-img-overlay">
-                                            <h5 className="card-title">Japanese</h5>
+                                            <h5 className="card-title text-white">Japanese</h5>
                                         </div>
                                     </div>
                                 </div>  

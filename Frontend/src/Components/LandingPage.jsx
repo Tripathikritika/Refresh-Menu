@@ -86,7 +86,8 @@ function LandingPage() {
                                         </ul>
                                     </div>
                                 </aside>
-                                <main className="container">
+                                <div className="col-12 col-md-9 col-lg-10">
+                                    <main className="container">
                                     <div className="row position-relative">
                                         <div className="col-12">
                                             <div className="tab-content py-3 position-relative" >
@@ -149,6 +150,7 @@ function LandingPage() {
                                         </div>
                                     </div>
                                 </main>
+                                </div>
                             </div>
                         </div>
                     </div>

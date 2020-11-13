@@ -51,6 +51,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 const Home = () => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -68,6 +69,7 @@ const Home = () => {
   for(let i = 0 ; i < cartListItem.length ; i++){
       total +=( cartListItem[i].amount) * (cartListItem[i].qty)
   }
+
   return (
     <>
       <div className={classes.root}>
@@ -86,8 +88,6 @@ const Home = () => {
             }}
           />
         </div>
-
-        
         <main
           className={clsx(classes.content, {
             [classes.contentShift]: open,
