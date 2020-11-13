@@ -1,11 +1,13 @@
 import React from "react";
 import styles from "../Styling/Checkout.module.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Axios from "axios";
-import { deleteData } from "../Redux/Cart/localStorage";
+import { deleteItem } from "../Redux/Cart/action";
+
 
 function Checkout() {
+  const dispatch = useDispatch()
   const cartListItem = useSelector((state) => state.cartItemReducer.cartList);
   let total = 0;
   let packagingfee = Number(30);
@@ -46,8 +48,7 @@ function Checkout() {
         } catch (err) {
           console.log(err);
         } finally {
-          deleteData("cartItem");
-          
+          dispatch(deleteItem())
         }
       },
       theme: {
