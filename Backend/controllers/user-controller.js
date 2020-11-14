@@ -59,6 +59,7 @@ const Login = async (req, res) => {
           mobile,
         };
         return res.json({ ...data });
+        
       }
       return res.status(400).json({ message: "Email id is not registered." });
     } else if (data.toString().length === 10 && !isNaN(data)) {

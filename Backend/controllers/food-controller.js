@@ -17,10 +17,10 @@ const searchFoodItem = async ( req, res )=> {
   try{
     const filteredName = req.query.filteredName.toLowerCase()
     let foods = await FoodsData.find() 
-    let searchedResult = foods.filter((item)=> item.title.toLowerCase().includes(filteredName))
+    let searchedResult = foods.filter((item)=> (item.title.toLowerCase().includes(filteredName)) || (item.cuisine.toLowerCase().includes(filteredName)) )
     res.send(searchedResult)
+    
   }
-
   catch(err){
     res.status(400).send(err.message)
   }

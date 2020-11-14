@@ -35,13 +35,15 @@ const Capture = (req, res) => {
     return request(
       {
         method: "POST",
-        url: `https://${proces.env.RAZORPAY_KEY_ID}:${process.env.RAZORPAY_KEY_SECRET}@api.razorpay.com/v1/payments/${req.params.paymentId}/capture`,
+        url: `https://${process.env.RAZORPAY_KEY_ID}:${process.env.RAZORPAY_KEY_SECRET}@api.razorpay.com/v1/payments/${req.params.paymentId}/capture`,
         form: {
           amount: req.body.price * 100,
           currency: "INR",
         },
       },
       async function (err, res, body) {
+        console.log(req.body)
+        console.log(res)
         if (err) {
           return res.status(500).json({
             message: "Something Went Wrong!",
