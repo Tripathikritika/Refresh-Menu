@@ -622,7 +622,7 @@ export default function FoodDetails() {
                                       <div
                                         className="d-flex px-3"
                                         style={{
-                                          width: "100%",
+                                          width: "80%",
                                           backgroundColor: "#df561d",
                                           borderRadius: "20px",
                                           color: "white",

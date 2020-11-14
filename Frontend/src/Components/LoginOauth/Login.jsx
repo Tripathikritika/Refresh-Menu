@@ -6,6 +6,7 @@ import Oauth from "./Oauth";
 import styles from "./Login.module.css";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import OtpInput from "react-otp-input";
+import {Link} from 'react-router-dom'
 
 const Flexbox = styled.div`
   display: flex;
@@ -92,7 +93,7 @@ const Last = styled.div`
   }
 `;
 
-const Login = ({ handleCloseLogin }) => {
+const Login = ({ handleCloseLogin  ,handleOpenSignup}) => {
   const dispatch = useDispatch();
   const [inp, setInp] = useState("");
   const [otp, setOtp] = useState("");
@@ -110,7 +111,7 @@ const Login = ({ handleCloseLogin }) => {
   } = useSelector((state) => state.otpVerifyReducer);
 
   // console.log(token, email, mobile, isAuth, isLoading, message, isError);
-  console.log(message, isError);
+  // console.log(message, isError);
 
   useEffect(() => {
     if (generatedOtp) {
@@ -241,7 +242,7 @@ const Login = ({ handleCloseLogin }) => {
       <hr />
 
       <Last>
-        Don't have an account? <span>Sign up</span>
+        Don't have an account? <span onClick={handleOpenSignup}>Sign up</span>
       </Last>
     </>
   );

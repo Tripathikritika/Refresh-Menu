@@ -7,7 +7,7 @@ import Checkout from '../Components/Checkout'
 import Location from '../Others/LocationNotFound'
 import Offers from '../Others/Offers'
 import Filter from '../Components/FilterComponent'
-
+import Profile from '../Components/Profile'
 
 const Routing = () => {
   return (
@@ -19,6 +19,7 @@ const Routing = () => {
       <Route path='/location' render={(props) => <Location {...props} /> } />
       <Route path='/offers' render={(props) => <Offers {...props} /> } />
       <Route path = '/filter' render={(props) => <Filter {...props} /> } />
+      <Route path = '/profile' render={(props) => <Profile {...props} /> } />
 
     </Switch>
   );

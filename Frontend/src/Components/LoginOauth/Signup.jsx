@@ -90,14 +90,14 @@ const Fail = styled.div`
   margin-top: 10px;
 `;
 
-const Signup = ({ handleCloseSignup }) => {
+const Signup = ({ handleCloseSignup,handleOpenSignup ,handleOpenLogin}) => {
   const dispatch = useDispatch();
   const { token, isAuth, isLoading, errorMsg, isError } = useSelector(
     (state) => state.reducer
   );
 
   // console.log(token, isAuth, isLoading, errorMsg, isError);
-  console.log(errorMsg, isError);
+  // console.log(errorMsg, isError);
 
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
@@ -182,7 +182,7 @@ const Signup = ({ handleCloseSignup }) => {
       <hr />
 
       <Last>
-        Already have an account? <span>Log in</span>
+        Already have an account? <span onClick={handleOpenLogin}>Log in</span>
       </Last>
     </>
   );

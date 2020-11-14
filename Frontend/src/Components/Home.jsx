@@ -8,7 +8,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import LandingPage from "./LandingPage";
 import Footer from "../Others/Footer.jsx";
 import styles from '../Styling/Home.module.css'
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Search from "./Search";
 
 const { default: Navbar } = require("../Others/NavBar");
@@ -69,7 +69,7 @@ const Home = () => {
   for(let i = 0 ; i < cartListItem.length ; i++){
       total +=( cartListItem[i].amount) * (cartListItem[i].qty)
   }
-
+ 
   return (
     <>
       <div className={classes.root}>
@@ -83,7 +83,7 @@ const Home = () => {
               position: "absolute",
               top: "13.4%",
               right: "12%",
-              zIndex : '10',
+              // zIndex : '10',
               // display : open ? 'none' : 'block'
             }}
           />

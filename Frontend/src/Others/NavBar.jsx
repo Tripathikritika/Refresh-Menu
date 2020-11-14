@@ -11,6 +11,8 @@ import Login from "../Components/LoginOauth/Login";
 import Signup from "../Components/LoginOauth/Signup";
 import styles from "../Styling/NavBar.module.css";
 import {toggleSearch} from '../Redux/FoodList/action'
+import { logoutFunction } from "../Redux/Login/actions";
+import Location from '../Others/LocationNotFound'
 
 const TopDiv = styled.div`
   display: grid;
@@ -188,10 +190,13 @@ const Navbar = ( props ) => {
   const [helpModalOpen, setHelpModalOpen] = React.useState(false);
   const [modalHelpStyle] = React.useState(getHelpModalStyle);
   const dispatch = useDispatch()
-
-  const { token, isAuth, isLoading, errorMsg, isError } = useSelector(
+  const [profileStatus , setProfileStatus] = useState(false)
+  const MAPBOX_TOKEN = 'pk.eyJ1IjoiZmFoZHNoYWlraCIsImEiOiJja2gzYzB3a3YwaXlsMnJvaWJ3ZDdiYzBpIn0.EC5-vAFFL-32D0ZCkCkQFg';
+  const [mapPlace , setMapPlace ]= useState(false)
+  const { isAuth } = useSelector(
     (state) => state.reducer
   );
+
   useEffect(() => {
     axios
       .get(
@@ -204,6 +209,15 @@ const Navbar = ( props ) => {
       .catch((err) => console.log(err));
   }, [locationSearch]);
 
+  useEffect(() => {
+    if(!locationSearch.includes('Bangalore') || !locationSearch.includes('Bengaluru') ){
+        setMapPlace(false)
+    }
+    else{
+      setMapPlace(true)
+    }
+  }, [locationSearch])
+  
   const handleOpenLogin = () => {
     setOpenLogin(true);
   };
@@ -261,11 +275,16 @@ const Navbar = ( props ) => {
   };
 
   function success(pos) {   
-    var crd = pos.coords;
-    console.log('Your current position is:');
-    console.log(`Latitude : ${crd.latitude}`);
-    console.log(`Longitude: ${crd.longitude}`);
-    console.log(`More or less ${crd.accuracy} meters.`);
+    let data = pos.coords;
+    axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${data.longitude},${data.latitude}.json?country=IN&access_token=${MAPBOX_TOKEN}`)
+        .then((res) => {
+          // console.log(res.data.features[0].place_name)
+          setGetLocation(res.data.features[0].place_name)
+
+        } )
+        .catch((err) => console.log(err))
+    // console.log(`Latitude : ${crd.latitude}`);
+    // console.log(`Longitude: ${crd.longitude}`);
   }
   
   function error(err) {
@@ -361,7 +380,7 @@ const Navbar = ( props ) => {
                       className={styles.inputBox}
                       onChange={(e) => setLocationSearch(e.target.value)}
                     />
-                    <button className={styles.locateMe} onClick = {locateMe}>Locate Me</button>
+                    <button className={styles.locateMe} onClick = {locateMe} data-dismiss="modal">Locate Me</button>
                   </div>
                   {query && (
                     <div
@@ -378,7 +397,7 @@ const Navbar = ( props ) => {
                           onClick={(e) => setGetLocation(e.target.textContent)}
                           data-dismiss="modal"
                         >
-                          {res} <hr />
+                         <i class="fas fa-map-marker-alt text-secondary"></i> {res} <hr />
                         </p>
                       ))}
                     </div>
@@ -438,7 +457,7 @@ const Navbar = ( props ) => {
         <div className="bottom-items">
           {!isAuth && (
             /* guest */
-            <div className="">
+            <div data-toggle="tooltip" data-placement="bottom">
               <img src="./guesticon.svg" alt="guesticon.svg" />
               <span className="tooltiptext">
                 <div onClick={handleOpenLogin}>Log In</div>
@@ -448,9 +467,22 @@ const Navbar = ( props ) => {
           )}
           {isAuth && (
             /* user */
-            <div className="">
-              <img src="./usericon.svg" alt="usericon.svg" />
-              <span className="tooltiptext"></span>
+            <div>
+              <img src="./usericon.svg" alt="usericon.svg" onClick={() => setProfileStatus(!profileStatus)} />
+              {/* <span className="tooltiptext"></span> */}
+              {
+                profileStatus ? 
+                  <div style={{position:'absolute',top:'130px',right:'240px'}}>
+                    <ul class="list-group text-left">
+                      <li class="list-group-item text-left">YOUR ACCOUNT</li>
+                      <Link to='/profile'><li class="list-group-item list-group-item text-left">Profile Details</li> </Link>
+                      <li class="list-group-item list-group-item text-left" onClick={() => dispatch(logoutFunction())}>Logout</li>              
+                    </ul>
+                  </div>
+                :
+                ""
+              }
+              
             </div>
           )}
         </div>
@@ -474,7 +506,7 @@ const Navbar = ( props ) => {
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
-          timeout: 500,
+          timeout: 10,
         }}
         style={{
           backgroundColor: "rgba(238, 238, 238)",
@@ -484,7 +516,7 @@ const Navbar = ( props ) => {
       >
         <Fade in={openLogin}>
           <div className={classes.paper}>
-            <Login {...{ handleOpenLogin, handleCloseLogin }} />
+            <Login {...{ handleOpenLogin, handleCloseLogin, handleOpenSignup }} />
           </div>
         </Fade>
       </Modal>
@@ -505,7 +537,7 @@ const Navbar = ( props ) => {
       >
         <Fade in={openSignup}>
           <div className={classes.paper}>
-            <Signup {...{ handleCloseSignup }} />
+            <Signup {...{handleOpenSignup, handleCloseSignup,handleOpenLogin }} />
           </div>
         </Fade>
       </Modal>

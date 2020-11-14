@@ -17,7 +17,6 @@ function Location() {
             <div>
                 <Link to='/'>Try Another Link &#8594;</Link>
             </div>
-            <Footer/>
         </>
 
     )

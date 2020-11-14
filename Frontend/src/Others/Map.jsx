@@ -23,10 +23,10 @@ const Map = () => {
     const data = {}
     data.lat = 13.014509199999999
     data.long = 77.6677641
-
+    console.log(placeName)
     const [viewPort, setViewPort] = useState({
-        width: '450px',
-        height: '450px',
+        width: '100%',
+        height: '200px',
         latitude: 13.014509199999999,
         longitude: 77.6677641,
         zoom:13 ,
@@ -70,7 +70,7 @@ const Map = () => {
 
     const getLocation = (data) => {
         data.map((item, i) => {
-            if (i === 1) {
+            if (i ===0) {
                 var long = item.center[0];
                 var lat = item.center[1];
                 var place_name = item.place_name;
@@ -130,18 +130,45 @@ const Map = () => {
                     padding: '0px',
                 }}
             >
-                <TextField
-                    label='Address'
-                    placeholder=''
-                    fullWidth
-                    variant='outlined'
-                    style={{
-                        marginLeft: '0px',
-                        marginTop: '5px',
-                        borderRadius: '0px',
-                    }}
-                    value={placeName}
-                />
+              <div className="container mt-2">
+                <div className="row">
+                    <div className="col-12">
+                        <div className="input-group mb-3">
+                        <span className="input-group-text rounded-0 bg-white border border-right-0"><img src="./searchicon.svg" alt=""/></span>
+                        <input type="text" className="form-control rounded-0 border-left-0" aria-label="Recipient's username"   value={placeName} aria-describedby="button-addon2"/>
+                            
+                            <div className="input-group-append">
+                                
+                                <button className="btn btn-outline-secondary rounded-0" type="button" id="button-addon2"><img src="./LocateMe.svg" alt="Locate Me" /> Locate Me</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-12">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Door number, Floor Number and Building name" aria-label="Example text with button addon" aria-describedby="button-addon1" />
+                        </div>
+                    </div>
+                    <div className="col-12">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="10 digit Mobile Number" aria-label="Example text with button addon" aria-describedby="button-addon1" />
+                        </div>
+                    </div>
+                    <div className="col-12">
+                        <div className="row">
+
+                            <div className="col-4">
+                                <button type="button" class="btn border border-secondary"><img src="./HouseForCheckout.svg" alt="House"/></button>
+                            </div>
+                            <div className="col-4">
+                                <button type="button" class="btn border border-secondary"><img src="./MobileForCheckout.svg" alt="Mobile"/></button>
+                            </div>
+                            <div className="col-4">
+                                <button type="button" class="btn border border-secondary"><img src="./others.svg" alt="Others"/></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
             </div>
         </>
     );

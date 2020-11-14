@@ -115,3 +115,31 @@ div.sticky {
 .colorCode {
   background-color: #e85826;
 }
+.hoveringImg:hover {
+  transform: scale(1.01);
+}
+.bestOfferDiv {
+  width: 12.1%;
+}
+.bestOfferTitle {
+  position: absolute;
+  color: #fff;
+  font-size: 11px;
+  text-transform: uppercase;
+  background: red;
+  top: 10px;
+  padding: 6px 7px 5px 17px;
+  left: -6px;
+  font-family: ProximaNova-Bold, Helvetica, Arial, sans-serif;
+  height: 22px;
+  box-sizing: border-box;
+}
+.rightShapes {
+  position: absolute;
+  top: 10px;
+  left: 87px;
+  border-width: 11px 8px;
+  box-sizing: border-box;
+  border-color: red transparent;
+  border-style: solid;
+}

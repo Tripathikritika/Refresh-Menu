@@ -28,6 +28,7 @@ const reducer = ( state = initState , action ) => {
             ...state
         }
         case actionConstant.SEARCH_FOOD_LIST_SUCCESS : 
+        // console.log(action.payload)
             return{
                 ...state,
                 searchedItem : action.payload

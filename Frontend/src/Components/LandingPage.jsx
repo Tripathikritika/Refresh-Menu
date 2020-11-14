@@ -140,10 +140,7 @@ function LandingPage() {
                                                         </div>
                                                         </div>
                                                     </div>
-                                                    
-
                                                     <div class="anchor" id="sec4"></div>
-                                                    
                                                     <div class="anchor" id="sec6"></div> 
                                                 </div>
                                             </div>
@@ -154,73 +151,6 @@ function LandingPage() {
                             </div>
                         </div>
                     </div>
-                    {/* <div className={styles.catergoryListBody} >
-                        <div className = 'row'>
-                            <div className="col-12">
-                                <div className="row" style={{position:'relative'}} data-spy="scroll" data-target=".navbar" data-offset="50">
-                                    
-                                    <div id="list-example" className={`list-group col-2 text-left sticky-top ${styles.sticky}`}>
-                                        <a className={`list-group-item list-group-item-action ${styles.catergoryList}`} href="#list-item-1" >Appetizers</a>
-                                        <a className={`list-group-item list-group-item-action ${styles.catergoryList}`} href="#list-item-2">Match Day Combos</a>
-                                        <a className={`list-group-item list-group-item-action ${styles.catergoryList}`} href="#list-item-3">New & Exciting</a>
-                                        <a className={`list-group-item list-group-item-action ${styles.catergoryList}`} href="#list-item-4">Continental</a>
-                                        <a className={`list-group-item list-group-item-action ${styles.catergoryList}`} href="#list-item-5">Big Biriyani Co.</a>
-                                        <a className={`list-group-item list-group-item-action ${styles.catergoryList}`} href="#list-item-6">Fit N Fab</a>
-                                        <a className={`list-group-item list-group-item-action ${styles.catergoryList}`} href="#list-item-7">Indian/ Thalis</a>
-                                        <a className={`list-group-item list-group-item-action ${styles.catergoryList}`} href="#list-item-8">Wok Station</a>
-                                        <a className={`list-group-item list-group-item-action ${styles.catergoryList}`} href="#list-item-9">Large Plates</a>
-                                        <a className={`list-group-item list-group-item-action ${styles.catergoryList}`} href="#list-item-10">Snacks</a>
-                                        <a className={`list-group-item list-group-item-action ${styles.catergoryList}`} href="#list-item-11">Wandercrust Pizzas</a>
-                                        <a className={`list-group-item list-group-item-action ${styles.catergoryList}`} href="#list-item-12">Dessert</a>
-                                        <a className={`list-group-item list-group-item-action ${styles.catergoryList}`} href="#list-item-13">Beverage</a>
-                                    </div>
-
-                                    <div data-offset="0" data-target="#list-example" className="scrollspy-example col-10" style={{overflowY:'hidden' }}>
-                                            {filterItem.length > 0 && filterItem.filter((item) => item.category === 'Appetizers').length === 0 ? ""  : 
-                                            <h4 id="list-item-1" className="text-left">APPETIZERS</h4> }
-                                                <div className={`text-left ${styles.cards_details}`}>
-                                                <div className="row" >
-                                                {
-                                                    filterItem.length === 0 ?  food_List.filter((item) => item.category === 'Appetizers').filter((item) => veg ? item.type === 'VEG' : item  ).map((item) =>  (
-                                                        <FoodsCards item = {item} key={item.id} />
-                                                    )) : filterItem.filter((item) => item.category === 'Appetizers').map((item) => (
-                                                        <FoodsCards item = {item} key={item.id} />
-                                                    ))
-                                                }
-                                                </div>
-                                                </div>
-                                        {filterItem.length > 0 && filterItem.filter((item) => item.category === 'Match Day Combos').length === 0 ? ""  : 
-                                            <h4 id="list-item-2" className="text-left">MATCH DAY COMBOS</h4>
-                                        }
-                                        <div className={`text-left ${styles.cards_details}`}>
-                                        <div className="row">
-                                            {
-                                                 filterItem.length === 0 ? food_List.filter((item) => item.category === 'Match Day Combos').filter((item) => veg ? item.type === 'VEG' : item  ).map((item) =>  (
-                                                    <FoodsCards item = {item} key={item.id}/>
-                                                )) : filterItem.filter((item) => item.category === 'Match Day Combos').map((item) => (
-                                                    <FoodsCards item = {item} key={item.id} />
-                                                ))
-                                            }
-                                        </div>
-                                        </div>
-                                        {filterItem.length > 0 && filterItem.filter((item) => item.category === 'New & Exciting').length === 0 ? ""  : 
-                                            <h4 id="list-item-1" className="text-left">NEW & EXCITING</h4> }
-                                        <div className={`text-left ${styles.cards_details}`}>
-                                        <div className="row">
-                                            {
-                                                filterItem.length === 0 ? food_List.filter((item) => item.category === 'New & Exciting').filter((item) => veg ? item.type === 'VEG' : item  ).map((item) =>  (
-                                                   <FoodsCards item = {item} key={item.id} />
-                                                )) : filterItem.filter((item) => item.category === 'New & Exciting').map((item) => (
-                                                    <FoodsCards item = {item} key={item.id} />
-                                                ))
-                                            }
-                                        </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> */}
                 </div>
             </div>
         </>

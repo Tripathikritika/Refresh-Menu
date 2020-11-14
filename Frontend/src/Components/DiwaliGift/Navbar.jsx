@@ -1,56 +1,49 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import clsx from "clsx";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import { makeStyles } from "@material-ui/core/styles";
 
-const TopDiv = styled.div`
-  display: grid;
-  grid-template-columns: auto auto auto auto auto auto auto auto auto;
-  border-bottom: 1px solid #ececec;
-  align-items: center;
-  font-weight: 600;
-  box-shadow: 0 5px 15px -6px #4a4a4a;
-  position: fixed;
-  width: 100%;
-  background: white;
-  z-index: 1;
-  & > * {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    & img {
-      margin-top: 5px;
-    }
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+  },
+  appBar: {
+    transition: theme.transitions.create(["margin", "width"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    backgroundColor: "white",
   }
-  & #refreshmenu {
-    margin-left: 7%;
-  }
-  & h2 {
-    color: black;
-  }
-  & #logoicon {
-    width: 35px;
-  }
-  & a {
-    text-decoration: none;
-  }
-`;
+}));
 
 const Navbar = () => {
+  const classes = useStyles();
   return (
-    <TopDiv>
-      {/* navbar top div */}
-      <div></div>
-      <Link to="/" id="refreshmenu">
-        <img id="logoicon" src="./logoicon.jpg" alt="logoicon.jpg" />
-        <h2>RefreshMenu</h2>
-      </Link>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </TopDiv>
+    <>
+      <AppBar  position="fixed" className={clsx(classes.appBar)} >
+        <Toolbar>
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-12 text-left">
+                <Link to="/">
+                  <img src="/Logo.jpg" alt="" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </Toolbar>
+      </AppBar>
+      <div className="container-fluid p-0 m-0">
+       <div className="pt-5">
+          <img src="https://s3-ap-southeast-1.amazonaws.com/foodvista.1/e67af689-347e-4a1b-ba6b-784e6e10d483.png" className="img-fluid" width='100%' alt=""/>           
+       </div>
+
+
+      </div>
+    </>
+
   );
 };
 

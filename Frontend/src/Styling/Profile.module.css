@@ -1,0 +1,23 @@
+.listDiv > * {
+  padding: 15px;
+  color: #39393a;
+  text-align: left;
+}
+.leftSideField {
+  font-family: ProximaNova-Semibold, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #9b9b9b;
+  padding-right: 28%;
+  width: 100%;
+}
+.leftSideField {
+  font-family: ProximaNova-Semibold, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #4a4a4a;
+  padding-right: 28%;
+  width: 100%;
+}
+a:hover {
+  color: #39393a;
+  text-decoration: none;
+}

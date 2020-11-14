@@ -5,11 +5,16 @@ import { Link, Redirect } from "react-router-dom";
 import Axios from "axios";
 import Map from '../Others/Map'
 import { deleteItem } from "../Redux/Cart/action";
-
+import { useEffect } from "react";
+// import { } from '../Redux/Login/action'
 
 function Checkout() {
   const dispatch = useDispatch()
   const cartListItem = useSelector((state) => state.cartItemReducer.cartList);
+  const loggedInName = useSelector((state) => state.reducer.userName)
+  const loggedInEmail= useSelector((state) => state.reducer.userEmail)
+  const isAuth = useSelector((state) => state.reducer.isAuth)
+
   let total = 0;
   let packagingfee = Number(30);
   let GST = 0;
@@ -17,9 +22,11 @@ function Checkout() {
   let SGST = 0;
   let deliver = Number(25);
   let [saveButton , setSaveButton] = useState(false)
+
   for (let i = 0; i < cartListItem.length; i++) {
     total += cartListItem[i].amount * cartListItem[i].qty;
   }
+
   GST = Number((total + packagingfee) * 0.05);
   CGST = Number((total + packagingfee) * 0.025);
   SGST = Number((total + packagingfee) * 0.025);
@@ -32,7 +39,7 @@ function Checkout() {
     const { data } = response;
 
     const options = {
-      name: "Omkarnath",
+      name: "RazorPay",
       description: "Payment of items",
       order_id: data.id,
       handler: async (response) => {
@@ -44,14 +51,15 @@ function Checkout() {
           });
           const successObj = JSON.parse(captureResponse.data);
           const captured = successObj.captured;
+          // console.log(successObj)
           if (captured) {
             console.log("Success");
           }
         } catch (err) {
           console.log(err);
-        } finally {
-          dispatch(deleteItem())
-        }
+          } finally {
+            dispatch(deleteItem())
+          }
       },
       theme: {
         color: "#c6203d",
@@ -60,7 +68,10 @@ function Checkout() {
     const rzp1 = new window.Razorpay(options);
     rzp1.open();
   };
- 
+  
+  if( cartListItem.length === 0){
+    return <Redirect to = '/' />
+  }
 
   return (
     <>
@@ -87,38 +98,67 @@ function Checkout() {
             <div className="container pt-5 pb-5">
               <div className="row">
                 <div className="col-7">
-                  <div className="row">
-                    <div className="col-12">
-                      <div className="card rounded-0 p-4">
-                        <div className="card-body d-flex bd-highlight mb-3">
-                          <div className="p-2 bd-highlight">
-                            <img src="./Guest.svg" alt="Guest Icon" />
-                          </div>
-                          <div className={`p-2 bd-highlight ${styles.guest}`}>
-                            Guest
-                          </div>
-                          <div
-                            className={`ml-auto p-2 bd-highlight ${styles.otherButton}`}
-                          >
-                            Change
+                 {!isAuth ? 
+                 <div className="conatiner">
+                    <div className="row">                    
+                      <div className="col-12">
+                        <div className="card rounded-0 p-4">
+                          <div className="card-body d-flex bd-highlight mb-3">
+                            <div className="p-2 bd-highlight">
+                              <img src="./Guest.svg" alt="Guest Icon" />
+                            </div>
+                            <div className={`p-2 bd-highlight ${styles.guest}`}>
+                              Guest
+                            </div>
+                            <div className={`ml-auto p-2 bd-highlight ${styles.otherButton}`}>
+                              Change
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
+                  </div>
+                    : 
+                  <div className="container">
+                    <div className="row">
+                    <div className="col-12" >
+                  <div className="card rounded-0 p-4">
+                    <div className="card-body d-flex bd-highlight mb-3">
+                      <div className="p-2 bd-highlight">
+                        <img src="./Guest.svg" alt="Guest Icon" />
+                      </div>
+                      <div>
+                        <div className={`p-2 bd-highlight ${styles.guest}`}>
+                          Logged In As
+                        </div>
+                        <div className="row">
+                          <div className="col-12 text-left ">
+                            {loggedInName}
+                            <br/>
+                            {loggedInEmail}
+                          </div>
+                        </div>
+                      </div>
+                      {/* <div className={`ml-auto p-2 bd-highlight ${styles.otherButton}`}>
+                        Details
+                      </div> */}
+                    </div>
+                  </div> 
+                  </div>
+                 </div>
+                  </div>
+                 }
                     <div className="col-12">
                       <div className="card rounded-0 p-4 mt-3">
                         <div className="card-body d-flex">
                           <div className="p-2 bd-highlight">
                             <img src="./Location.svg" alt="Guest Icon" />
                           </div>
-                          <div
-                            className={`p-2 bd-highlight ${styles.delivery}`}
-                          >
+                          <div className={`p-2 bd-highlight ${styles.delivery}`}>
                             Delivery Address
-                            <Map />
-                            <button className="btn  border rounded-pill " onClick={() => setSaveButton(true)}>Save and Continue</button>
                           </div>
                         </div>
+                            <Map style={{width:'100%'}}/>
                       </div>
                     </div>
 
@@ -458,7 +498,7 @@ function Checkout() {
                     </div>
                     
                   </div>
-                </div>
+               
                 <div className="col-5">
                   <div className="row">
                     <div className="col-12 mb-3">
@@ -612,7 +652,7 @@ function Checkout() {
             </div>
           </div>
         </div>
-      </div>
+        </div>
     </>
   );
 }

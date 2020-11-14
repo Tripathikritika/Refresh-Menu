@@ -42,7 +42,7 @@ function FoodsCards( {item} ) {
     const handleQuantity = ( val ) => {
         findItem.qty = Number(findItem.qty) + Number(val)
         cartList = cartList.map((qtyItem) => qtyItem.title == findItem.title ? findItem : qtyItem)
-        if(findItem.qty == 1 && val == -1 || findItem.qty === 0 && val == -1){
+        if(findItem.qty === 0 && val === -1){
             cartList = cartList.filter((qtyFilter) => qtyFilter.title !== findItem.title)
             dispatch(cartListItem( cartList ))
             return

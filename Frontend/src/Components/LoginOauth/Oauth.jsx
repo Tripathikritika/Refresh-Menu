@@ -39,18 +39,19 @@ export const Oauth = (props) => {
     <Flex>
       <div>
         <FacebookLogin
-          appId="633585867333844"
+          appId="1596220023834904"
           autoLoad={false}
           fields="name,email,picture"
           callback={responseFacebook}
           icon="fa-facebook"
           cssClass="my-facebook-button-class"
+          className="btn border-0"
         />
         <GoogleLogin
           clientId="70197845692-5vskkc55c3aps93k99q3fmbrf7r89t2k.apps.googleusercontent.com"
           buttonText="Login"
           render={(renderProps) => (
-            <button onClick={renderProps.onClick}>Google</button>
+            <button className="btn " onClick={renderProps.onClick}>Google</button>
           )}
           onSuccess={responseGoogle}
           onFailure={responseGoogle}

@@ -1,4 +1,4 @@
-import { SEND, ERROR, REQUEST } from "./actionTypes";
+import { SEND, ERROR, REQUEST ,LOGOUT } from "./actionTypes";
 import axios from "axios";
 
 export const request = (payload) => ({
@@ -32,3 +32,7 @@ export const apiCall = (payload) => async (dispatch) => {
     dispatch(foundError(err.response.data));
   }
 };
+
+export const logoutFunction = () => ({
+    type : LOGOUT
+})

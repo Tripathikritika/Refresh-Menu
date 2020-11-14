@@ -1,4 +1,4 @@
-import { REQUEST, ERROR, SEND, VERIFIED } from "./actionTypes";
+import { REQUEST, ERROR, SEND } from "./actionTypes";
 
 const initState = {
   token: "",
@@ -11,7 +11,7 @@ const initState = {
 };
 
 const otpVerifyReducer = (state = initState, { type, payload }) => {
-  console.log(payload);
+  // console.log(payload);
   switch (type) {
     case REQUEST:
       return {

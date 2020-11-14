@@ -1,15 +1,19 @@
-import { REQUEST, ERROR, SEND } from "./actionTypes";
+import {loadData, saveData } from "../Cart/localStorage";
+import { REQUEST, ERROR, SEND,LOGOUT } from "./actionTypes";
 
 const initState = {
   token: "",
-  isAuth: false,
+  isAuth: loadData('isAuth') || false,
   isLoading: false,
   isError: false,
   errorMsg: "",
+  userName :loadData('userName') || "",
+  userEmail : loadData('userEmail') ||"",
+  userAvatar :loadData('userAvatar') || ""
 };
 
 const reducer = (state = initState, { type, payload }) => {
-  console.log("signup");
+  // console.log("signup");
   switch (type) {
     case REQUEST:
       return {
@@ -20,12 +24,19 @@ const reducer = (state = initState, { type, payload }) => {
         isError: false,
       };
     case SEND:
+      saveData('isAuth' , true )
+      saveData('userName' ,payload.profileObj.name  ) 
+      saveData('userEmail' ,payload.profileObj.email  ) 
+      saveData('userAvatar' ,payload.profileObj.imageUrl) 
       return {
         ...state,
         token: payload.token || payload.accessToken,
         isAuth: true,
         errorMsg: "",
         isLoading: false,
+        userName : payload.profileObj.name ,
+        userEmail : payload.profileObj.email || "",
+        userAvatar : payload.profileObj.imageUrl || ""
       };
     case ERROR:
       return {
@@ -34,6 +45,18 @@ const reducer = (state = initState, { type, payload }) => {
         errorMsg: payload,
         isError: true,
       };
+    case LOGOUT : 
+      saveData('isAuth',false)
+      saveData('userName',"")
+      saveData('userEmail',"")
+      saveData('userAvatar',"")
+      return {
+        ...state ,
+        isAuth : false,
+        userName : "",
+        userEmail : "",
+        userAvatar : ""
+      }
     default:
       return state;
   }

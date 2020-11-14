@@ -9,4 +9,5 @@ export const saveData = (key , data ) => {
 export const deleteData = (key) => {
     localStorage.removeItem(key);
 }
+
 //When order is placed  cleardata

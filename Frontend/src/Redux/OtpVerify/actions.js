@@ -1,9 +1,8 @@
 import { SEND, ERROR, REQUEST } from "./actionTypes";
 import axios from "axios";
 
-export const request = (payload) => ({
-  type: REQUEST,
-  payload,
+export const request = () => ({
+  type: REQUEST
 });
 
 export const send = (payload) => ({

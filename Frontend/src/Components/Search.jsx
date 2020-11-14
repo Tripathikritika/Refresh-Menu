@@ -13,6 +13,7 @@ function Search() {
     let searchData  = useSelector(state => state.foodReducer.searchedItem)
     const [searchArray , setSearchArray] = useState(searchData) 
     const dispatch = useDispatch()
+    const cuisineArray = ['Asian','Pan-Asian','Fusion','World Cuisine','Indian','Continental','447 cal | High Protein','575 cal | Low Calorie','Universal','South Indian','Oriental','Mexican','Middle Eastern','Japanese']
 
     useEffect(() => {
         if(searchItem !== ""){
@@ -24,6 +25,10 @@ function Search() {
         }
     }, [searchItem])
 
+    useEffect (() => {
+        setSearchArray(searchData)
+    } , [searchData])
+
     return ( 
         <>
             <div div className={styles.mainDiv}>
@@ -31,7 +36,13 @@ function Search() {
                 <div>
                     <div className={styles.bodyDiv}>
                        <div className="container">
-                            <div className="text-right" onClick={() => dispatch(toggleSearch())}>Back To Menu</div>
+                           <div className="row text-right">
+                               <div className="col-12 ">
+                                    <div className="float-right" onClick={() => dispatch(toggleSearch())}>
+                                            Back To Menu
+                                    </div>
+                               </div>
+                           </div>
                             <div className="row" >
                                 <div className="col-12">
                                     <div class="card shadow-none ">
@@ -64,8 +75,6 @@ function Search() {
                                    </div>
                                </div>
                            </div>
-                            
-
                        </div>
                        <div>
                            <h5>TOP CATEGORIES</h5>
@@ -74,125 +83,23 @@ function Search() {
                             {
                                 searchArray.length === 0 ? 
                                 <div className="row ">
-                                <div classNameName="col-12 col-md-6 col-lg-4">
-                                    <div className="card m-2  text-white">
-                                        <img src="./SearchPage.png" className={`card-img img-fluid ${styles.imgSearch}`} alt="Asian" />
-                                        <div className="card-img-overlay">
-                                            <h5 className="card-title text-white">Asian</h5>
+                                    {cuisineArray.map((item)=>(
+                                        <div className="col-12 col-md-6 col-lg-4" key={item} onClick={() => setSearchItem(item)}>
+                                            <div className="card m-2  text-white">
+                                                <img src="./SearchPage.png" className={`card-img img-fluid ${styles.imgSearch}`} alt={item} />
+                                                <div className="card-img-overlay">
+                                                <h5 className="card-title text-white">{item}</h5>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div classNameName="col-12 col-md-6 col-lg-4">
-                                    <div className="card m-2 text-white">
-                                        <img src="./SearchPage.png" className={`card-img img-fluid ${styles.imgSearch}`} alt="Asian" />
-                                        <div className="card-img-overlay">
-                                            <h5 className="card-title text-white">Pan-Asian</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div classNameName="col-12 col-md-6 col-lg-4">
-                                    <div className="card m-2 text-white">
-                                        <img src="./SearchPage.png" className={`card-img img-fluid ${styles.imgSearch}`} alt="Asian" />
-                                        <div className="card-img-overlay">
-                                            <h5 className="card-title text-white">Fusion</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div classNameName="col-12 col-md-6 col-lg-4">
-                                    <div className="card m-2 text-white">
-                                        <img src="./SearchPage.png" className={`card-img img-fluid ${styles.imgSearch}`} alt="Asian" />
-                                        <div className="card-img-overlay">
-                                            <h5 className="card-title text-white">World Cuisine</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div classNameName="col-12 col-md-6 col-lg-4">
-                                    <div className="card m-2 text-white">
-                                        <img src="./SearchPage.png" className={`card-img img-fluid ${styles.imgSearch}`} alt="Asian" />
-                                        <div className="card-img-overlay">
-                                            <h5 className="card-title text-white">Indian</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div classNameName="col-12 col-md-6 col-lg-4">
-                                    <div className="card m-2 text-white">
-                                        <img src="./SearchPage.png" className={`card-img img-fluid ${styles.imgSearch}`} alt="Asian" />
-                                        <div className="card-img-overlay">
-                                            <h5 className="card-title text-white">Continental</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div classNameName="col-12 col-md-6 col-lg-4">
-                                    <div className="card m-2 text-white">
-                                        <img src="./SearchPage.png" className={`card-img img-fluid ${styles.imgSearch}`} alt="Asian" />
-                                        <div className="card-img-overlay">
-                                            <h5 className="card-title text-white">447 cal | High Protein</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div classNameName="col-12 col-md-6 col-lg-4">
-                                    <div className="card m-2 text-white">
-                                        <img src="./SearchPage.png" className={`card-img img-fluid ${styles.imgSearch}`} alt="Asian" />
-                                        <div className="card-img-overlay">
-                                            <h5 className="card-title text-white">575 cal | Low Calorie</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div classNameName="col-12 col-md-6 col-lg-4">
-                                    <div className="card m-2 text-white">
-                                        <img src="./SearchPage.png" className={`card-img img-fluid ${styles.imgSearch}`} alt="Asian" />
-                                        <div className="card-img-overlay">
-                                            <h5 className="card-title text-white">Universal</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div classNameName="col-12 col-md-6 col-lg-4">
-                                    <div className="card m-2 text-white">
-                                        <img src="./SearchPage.png" className={`card-img img-fluid ${styles.imgSearch}`} alt="Asian" />
-                                        <div className="card-img-overlay">
-                                            <h5 className="card-title text-white">South Indian</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div classNameName="col-12 col-md-6 col-lg-4">
-                                    <div className="card m-2 text-white">
-                                        <img src="./SearchPage.png" className={`card-img img-fluid ${styles.imgSearch}`} alt="Asian" />
-                                        <div className="card-img-overlay">
-                                            <h5 className="card-title text-white">Oriental</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div classNameName="col-12 col-md-6 col-lg-4">
-                                    <div className="card m-2 text-white">
-                                        <img src="./SearchPage.png" className={`card-img img-fluid ${styles.imgSearch}`} alt="Asian" />
-                                        <div className="card-img-overlay">
-                                            <h5 className="card-title text-white">Mexican</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div classNameName="col-12 col-md-6 col-lg-4">
-                                    <div className="card m-2 text-white">
-                                        <img src="./SearchPage.png" className={`card-img img-fluid ${styles.imgSearch}`} alt="Asian" />
-                                        <div className="card-img-overlay">
-                                            <h5 className="card-title text-white">Middle Eastern</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div classNameName="col-12 col-md-6 col-lg-4">
-                                    <div className="card m-2 text-white">
-                                        <img src="./SearchPage.png" className={`card-img img-fluid ${styles.imgSearch}`} alt="Asian" />
-                                        <div className="card-img-overlay">
-                                            <h5 className="card-title text-white">Japanese</h5>
-                                        </div>
-                                    </div>
-                                </div>  
-                            </div> : 
-                            <div className="d-flex flex-wrap">
-                               { searchArray && searchArray.map((item)=> 
-                                        <FoodsCards item={item}/>
-                                )}
+                                    ))}
+                                </div>:
+                                <div className="d-flex flex-wrap">
+                                { searchArray && searchArray.map((item)=> 
+                                            <FoodsCards item={item}/>
+                                    )}
 
-                            </div>
+                                </div>
                             }
                        </div>
                     </div>
