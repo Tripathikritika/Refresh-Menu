@@ -41,9 +41,9 @@ const Capture = (req, res) => {
           currency: "INR",
         },
       },
-      async function (err, res, body) {
-        console.log(req.body)
-        console.log(res)
+      async function (err, response, body) {
+        // console.log(req.body)
+        // console.log(res)
         if (err) {
           return res.status(500).json({
             message: "Something Went Wrong!",
@@ -53,9 +53,11 @@ const Capture = (req, res) => {
       }
     );
   } catch (err) {
+    console.log(err.message)
     return res.status(500).json({
       message: "Something went wrong!",
     });
+
   }
 };
 
