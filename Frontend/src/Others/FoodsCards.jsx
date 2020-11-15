@@ -145,6 +145,12 @@ function FoodsCards( {item} ) {
                     <Link to ={`/${item.title}/product/${item.id}`}><img src={item.food_link} alt="Appetizers" className="img-fluid card-img-top rounded"/></Link>
                     <div className="card-body">
                         <h5 className="card-title">{item.title}</h5>
+                        { item.best_offers && <div className ={styles.bestOfferDiv}>
+                                <div className={styles.bestOfferTitle}>
+                                    Best offers
+                                </div>
+                                <div className={styles.rightShapes}></div>
+                        </div>}
                         <div style={{display:'flex',justifyContent:'space-between'}}>
                             <div>
                                 ₹{item.amount} 
