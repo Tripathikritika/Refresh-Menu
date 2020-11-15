@@ -99,8 +99,8 @@ const Home = () => {
             style={{
               position: "absolute",
               top: "13.4%",
-              right: "12%",
-              // zIndex : '10',
+              right: "16%",
+              zIndex : '12',
               // display : open ? 'none' : 'block'
             }}
           />
@@ -110,8 +110,8 @@ const Home = () => {
             [classes.contentShift]: open,
           })}
         >
-          <Navbar openDrawer={handleDrawerOpen} />
-         { !toggleState && (locationFound.includes('Bangalore') || locationFound.includes('Bengaluru'))  ?<LandingPage /> : toggleState && (locationFound.includes('Bangalore') || locationFound.includes('Bengaluru')) ?  <Search/> : <LocationNotFound />} 
+          <Navbar openDrawer={handleDrawerOpen}/>
+         { !toggleState && (locationFound.includes('Bangalore') || locationFound.includes('Bengaluru'))  ?<LandingPage style={{zIndex:10}}/> : toggleState && (locationFound.includes('Bangalore') || locationFound.includes('Bengaluru')) ?  <Search/> : <LocationNotFound />} 
           <Footer />
         </main>
         
@@ -182,7 +182,7 @@ const Home = () => {
                       ))}
 
                       <div>
-                       <Link to='/checkout'><button type="button" class={` px-5 btn btn-lg rounded-pill ${styles.placeOrderButton} `}> Place order . ₹{total} </button></Link> 
+                       <Link to='/checkout'><button type="button" class={`px-5 btn btn-lg rounded-pill ${styles.placeOrderButton} `}> Place order . ₹{total} </button></Link> 
                       </div>
                       <div className={styles.safety}>
                         <h5>Safety Assured meals and contactless delivery</h5>

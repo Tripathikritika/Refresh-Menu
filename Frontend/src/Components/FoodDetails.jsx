@@ -122,6 +122,7 @@ export default function FoodDetails() {
   const [addons, setAddons] = useState([]);
   const [addonsTotalPrice, setAddonsTotalPrice] = useState(0);
   const [modalStyle] = React.useState(getModalStyle);
+  const getLoc = useSelector((state) => state.mapReducer.getLocation)
   let total = 0;
   // console.log(foodItem.addons)
   for (let i = 0; i < cartList.length; i++) {
@@ -362,116 +363,13 @@ export default function FoodDetails() {
                             data-target="#mapLocation"
                           >
                             <div className="text-secondary"> Deliver to:</div>
-                            <span style={{ color: "#e85826" }}>
-                              {getLocation}
+                            <span style={{ color: "#e85826", textOverflow: 'ellipsis' ,whiteSpace: 'nowrap', width:'300px',overflow: 'hidden'}}>
+                              {getLoc}
                             </span>
                             <img src="/downarrow.svg" alt="downarrow.svg" />
                           </div>
-                          <div>
-                            <div
-                              className="modal fade"
-                              id="mapLocation"
-                              style={{
-                                width: "100%",
-                                height: "100%",
-                                backgroundColor: "#f2f3f3",
-                              }}
-                              tabIndex="-1"
-                              aria-labelledby="mapLocationLabel"
-                              aria-hidden="true"
-                            >
-                              <div className="modal-dialog">
-                                <div className="modal-content">
-                                  <div className="modal-header">
-                                    <h3
-                                      className={`modal-title ${styles.headerDiv}`}
-                                      id="mapLocationLabel"
-                                    >
-                                      Enter Your Delivery Location
-                                    </h3>
-                                    <button
-                                      type="button"
-                                      className="close"
-                                      data-dismiss="modal"
-                                      aria-label="Close"
-                                    >
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                  </div>
-                                  <div className="modal-body">
-                                    <div className={styles.buttonGroup}>
-                                      <button
-                                        type="button"
-                                        className={`btn rounded-pill ${styles.button}`}
-                                      >
-                                        Bengaluru
-                                      </button>
-                                      <button
-                                        type="button"
-                                        className={`btn rounded-pill ${styles.button}`}
-                                      >
-                                        Mumbai
-                                      </button>
-                                      <button
-                                        type="button"
-                                        className={`btn rounded-pill ${styles.button}`}
-                                      >
-                                        New Delhi
-                                      </button>
-                                      <button
-                                        type="button"
-                                        className={`btn rounded-pill ${styles.button}`}
-                                      >
-                                        Gurgaon
-                                      </button>
-                                    </div>
-                                    <div className={styles.searchDiv}>
-                                      <img
-                                        src="https://www.freshmenu.com/pages/common/images/icn-search.svg"
-                                        alt="Search Icons"
-                                      />
-                                      <input
-                                        type="text"
-                                        placeholder="Enter min 5 characters to search your location"
-                                        className={styles.inputBox}
-                                        onChange={(e) =>
-                                          setLocationSearch(e.target.value)
-                                        }
-                                      />
-                                      <button className={styles.locateMe}>
-                                        Locate Me
-                                      </button>
-                                    </div>
-                                    {query && (
-                                      <div
-                                        style={{
-                                          width: "100%",
-                                          minHeight: "50px",
-                                          border: "1px solid black",
-                                          textAlign: "left",
-                                        }}
-                                      >
-                                        {query.map((res) => (
-                                          <p
-                                            className="pl-3 text-dark"
-                                            onClick={(e) =>
-                                              setGetLocation(
-                                                e.target.textContent
-                                              )
-                                            }
-                                            data-dismiss="modal"
-                                          >
-                                            {res}
-                                            <hr />
-                                          </p>
-                                        ))}
-                                      </div>
-                                    )}
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                          
+                        
                         </div>
                       </div>
                     </div>

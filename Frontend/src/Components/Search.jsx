@@ -38,8 +38,8 @@ function Search() {
                        <div className="container">
                            <div className="row text-right">
                                <div className="col-12 ">
-                                    <div className="float-right" onClick={() => dispatch(toggleSearch())}>
-                                            Back To Menu
+                                    <div className={`float-right ${styles.links} mb-2 `} onClick={() => dispatch(toggleSearch())} >
+                                        Back To Menu
                                     </div>
                                </div>
                            </div>
@@ -55,7 +55,7 @@ function Search() {
                                                     <input type="text"  className={`form-control shadow-none  ${styles.innerInput}`} value={searchItem} placeholder="Search" onChange={(e) => setSearchItem(e.target.value)}/>
                                                 </div>
                                                 <div className="col-1">
-                                                   <p onClick={() => setSearchItem("")}>Clear</p> 
+                                                   <p onClick={() => setSearchItem("")} className = {styles.clearlinks}>Clear</p> 
                                                 </div>
                                             </div>
                                         </div>

@@ -450,6 +450,7 @@ console.log(mobile)
                                     id="v-pills-razor"
                                     role="tabpanel"
                                     aria-labelledby="razor-ticket"
+                                  
                                   >
                                     <img
                                       src="./razorPay.jpg"
@@ -459,6 +460,7 @@ console.log(mobile)
                                     <Link to="#">
                                       <button
                                         type="button"
+                                      
                                         onClick={paymentHandler}
                                         disabled = {mobile.length < 10 ? true : false}
                                         class={` px-5 btn btn-lg rounded-pill ${styles.placeOrderButton} `}

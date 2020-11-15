@@ -19,8 +19,8 @@ export const Oauth = (props) => {
   const dispatch = useDispatch();
 
   const responseGoogle = (response) => {
-    console.log(response);
-    console.log(props);
+    // console.log(response);
+    // console.log(props);
     if (response.accessToken) {
       props.handleCloseSignup && props.handleCloseSignup();
       props.handleCloseLogin && props.handleCloseLogin();
@@ -43,15 +43,20 @@ export const Oauth = (props) => {
           autoLoad={false}
           fields="name,email,picture"
           callback={responseFacebook}
-          icon="fa-facebook"
+          // render={(renderProps) => (
+          //   <img onClick={renderProps.onClick} src="./SignInGoogle.png" alt =" " />
+          // )}
+          textButton = {
+            <img src="./SignInFacebook.png" alt =" " width="100px"/>
+          }
           cssClass="my-facebook-button-class"
-          className="btn border-0"
+
         />
         <GoogleLogin
           clientId="70197845692-5vskkc55c3aps93k99q3fmbrf7r89t2k.apps.googleusercontent.com"
           buttonText="Login"
           render={(renderProps) => (
-            <button className="btn " onClick={renderProps.onClick}>Google</button>
+            <img onClick={renderProps.onClick} src="./SignInGoogle.png" alt =" " />
           )}
           onSuccess={responseGoogle}
           onFailure={responseGoogle}
