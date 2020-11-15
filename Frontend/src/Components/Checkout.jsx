@@ -14,13 +14,14 @@ function Checkout() {
   const loggedInName = useSelector((state) => state.reducer.userName)
   const loggedInEmail= useSelector((state) => state.reducer.userEmail)
   const isAuth = useSelector((state) => state.reducer.isAuth)
+  const [ mobile,setMobile ] = useState("")
 
-  let total = 0;
-  let packagingfee = Number(30);
+  let total = 0; 
+  let packagingfee = cartListItem.length > 0 ? Number(30) : 0;
   let GST = 0;
   let CGST = 0;
   let SGST = 0;
-  let deliver = Number(25);
+  let deliver = cartListItem.length > 0 ? Number(25) : 0;
   let [saveButton , setSaveButton] = useState(false)
 
   for (let i = 0; i < cartListItem.length; i++) {
@@ -37,9 +38,9 @@ function Checkout() {
       `${API_URL}order/${(total + packagingfee + deliver + GST).toFixed(2)}`
     );
     const { data } = response;
-
+      console.log(response)
     const options = {
-      name: "RazorPay",
+      name: "Refresh-Menu",
       description: "Payment of items",
       order_id: data.id,
       handler: async (response) => {
@@ -51,18 +52,16 @@ function Checkout() {
           });
           const successObj = JSON.parse(captureResponse.data);
           const captured = successObj.captured;
-          // console.log(successObj)
           if (captured) {
-            console.log("Success");
+            dispatch(deleteItem())
+            alert("Successfully!! ")
           }
         } catch (err) {
           console.log(err);
-          } finally {
-            dispatch(deleteItem())
-          }
+        }
       },
       theme: {
-        color: "#c6203d",
+        color: "#E85826",
       },
     };
     const rzp1 = new window.Razorpay(options);
@@ -72,7 +71,7 @@ function Checkout() {
   if( cartListItem.length === 0){
     return <Redirect to = '/' />
   }
-
+console.log(mobile)
   return (
     <>
       <div>
@@ -158,7 +157,7 @@ function Checkout() {
                             Delivery Address
                           </div>
                         </div>
-                            <Map style={{width:'100%'}}/>
+                            <Map mobile = {mobile} setMobile = {setMobile} style={{width:'100%'}}/>
                       </div>
                     </div>
 
@@ -316,7 +315,8 @@ function Checkout() {
                                       <button
                                         type="button"
                                         class={` px-5 btn btn-lg rounded-pill ${styles.placeOrderButton} `}
-                                      >
+                                        onClick={() => dispatch(deleteItem())}
+                                     >
                                         {" "}
                                         PLACE ORDER . ₹
                                         {(
@@ -460,6 +460,7 @@ function Checkout() {
                                       <button
                                         type="button"
                                         onClick={paymentHandler}
+                                        disabled = {mobile.length < 10 ? true : false}
                                         class={` px-5 btn btn-lg rounded-pill ${styles.placeOrderButton} `}
                                       >
                                         {" "}
@@ -495,7 +496,7 @@ function Checkout() {
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div>  
                     
                   </div>
                
@@ -613,7 +614,8 @@ function Checkout() {
                               <div>Payable</div>
                             </div>
                             <div>
-                              <div>₹{total}.00</div>
+                              
+                               <div>₹{ total.toFixed(2)}</div>
                               <div>+₹{packagingfee}.00</div>
                               <div>+₹{deliver}.00</div>
                               <div>+₹{GST.toFixed(2)}</div>

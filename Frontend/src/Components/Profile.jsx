@@ -62,7 +62,7 @@ function Profile() {
                         <div className="mb-3"><img src={userImage} className="rounded-pill" alt={userImage}/></div>
                         <div class=" text-left">{name}</div>
                         <div class={`list-group ${styles.listDiv} `} id="list-tab" role="tablist" >
-                            <a id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile"><img src="./Profile.svg" alt="Profile Icon" className="img-fluid"/> My Profile</a>
+                            <a id="list-profile-list active" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile"><img src="./Profile.svg" alt="Profile Icon" className="img-fluid"/> My Profile</a>
                             <a id="list-address-list" data-toggle="list" href="#list-address" role="tab" aria-controls="address"><img src="./AddressBook.svg" alt="Profile Icon" className="img-fluid"/>Address Book</a>
                             <a id="list-fresh-list" data-toggle="list" href="#list-fresh" role="tab" aria-controls="fresh"><img src="./FreshMoney.svg" alt="Profile Icon" className="img-fluid"/> Fresh Money(₹0)</a>
                             <a id="list-fav-list" data-toggle="list" href="#list-fav" role="tab" aria-controls="fav"><i className="far fa-heart pl-2" ></i> Favourite</a>
@@ -70,7 +70,7 @@ function Profile() {
                     </div>
                     <div className="col-8 mt-5 pt-5">
                         <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                            <div class="tab-pane active fade show" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
                                 <div className="container text-left">
                                     <div className="row">
                                         <div className="col-12">
