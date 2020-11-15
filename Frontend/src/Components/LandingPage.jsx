@@ -124,7 +124,6 @@ function LandingPage() {
                                                         </div>
                                                     </div>
                                                     
-
                                                     <div className="anchor" id="New_&_Exciting">
                                                         {filterItem.length > 0 && filterItem.filter((item) => item.category === 'New & Exciting').length === 0 ? ""  : 
                                                             <h4 className="text-left">NEW & EXCITING</h4> }
@@ -140,8 +139,66 @@ function LandingPage() {
                                                         </div>
                                                         </div>
                                                     </div>
-                                                    <div class="anchor" id="sec4"></div>
-                                                    <div class="anchor" id="sec6"></div> 
+                                                    <div class="anchor" id="Continental">
+                                                        {filterItem.length > 0 && filterItem.filter((item) => item.category === 'Continental').length === 0 ? ""  : 
+                                                            <h4 className="text-left">Continental</h4> }
+                                                        <div className={`text-left ${styles.cards_details}`}>
+                                                        <div className="row">
+                                                            {
+                                                                filterItem.length === 0 ? food_List.filter((item) => item.category === 'Continental').filter((item) => veg ? item.type === 'VEG' : item  ).map((item) =>  (
+                                                                <FoodsCards item = {item} key={item.id} />
+                                                                )) : filterItem.filter((item) => item.category === 'Continental').map((item) => (
+                                                                    <FoodsCards item = {item} key={item.id} />
+                                                                ))
+                                                            }
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="anchor" id="Big_Biriyani_Co.">
+                                                        {filterItem.length > 0 && filterItem.filter((item) => item.category === 'Big Biriyani Co.').length === 0 ? ""  : 
+                                                            <h4 className="text-left">Big Biriyani Co.</h4> }
+                                                        <div className={`text-left ${styles.cards_details}`}>
+                                                        <div className="row">
+                                                            {
+                                                                filterItem.length === 0 ? food_List.filter((item) => item.category === 'Big Biriyani Co.').filter((item) => veg ? item.type === 'VEG' : item  ).map((item) =>  (
+                                                                <FoodsCards item = {item} key={item.id} />
+                                                                )) : filterItem.filter((item) => item.category === 'Big_Biriyani_Co.').map((item) => (
+                                                                    <FoodsCards item = {item} key={item.id} />
+                                                                ))
+                                                            }
+                                                        </div>
+                                                        </div>
+                                                    </div>   
+                                                    <div class="anchor" id="Fit_N_Fab">
+                                                        {filterItem.length > 0 && filterItem.filter((item) => item.category === 'Fit N fab').length === 0 ? ""  : 
+                                                            <h4 className="text-left">Fit N Fab</h4> }
+                                                        <div className={`text-left ${styles.cards_details}`}>
+                                                        <div className="row">
+                                                            {
+                                                                filterItem.length === 0 ? food_List.filter((item) => item.category === 'Fit N fab').filter((item) => veg ? item.type === 'VEG' : item  ).map((item) =>  (
+                                                                <FoodsCards item = {item} key={item.id} />
+                                                                )) : filterItem.filter((item) => item.category === 'Fit N fab').map((item) => (
+                                                                    <FoodsCards item = {item} key={item.id} />
+                                                                ))
+                                                            }
+                                                        </div>
+                                                        </div>
+                                                    </div>       
+                                                    <div class="anchor" id="Dessert">
+                                                        {filterItem.length > 0 && filterItem.filter((item) => item.category === 'Dessert').length === 0 ? ""  : 
+                                                            <h4 className="text-left">Dessert</h4> }
+                                                        <div className={`text-left ${styles.cards_details}`}>
+                                                        <div className="row">
+                                                            {
+                                                                filterItem.length === 0 ? food_List.filter((item) => item.category === 'Dessert').filter((item) => veg ? item.type === 'VEG' : item  ).map((item) =>  (
+                                                                <FoodsCards item = {item} key={item.id} />
+                                                                )) : filterItem.filter((item) => item.category === 'Dessert').map((item) => (
+                                                                    <FoodsCards item = {item} key={item.id} />
+                                                                ))
+                                                            }
+                                                        </div>
+                                                        </div>
+                                                    </div>          
                                                 </div>
                                             </div>
                                         </div>
