@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import clsx from "clsx";
 import Drawer from "@material-ui/core/Drawer";
 import IconButton from "@material-ui/core/IconButton";
@@ -10,6 +10,8 @@ import Footer from "../Others/Footer.jsx";
 import styles from '../Styling/Home.module.css'
 import { Link, Redirect } from "react-router-dom";
 import Search from "./Search";
+import {cartListItem as updatedCartList} from '../Redux/Cart/action'
+import LocationNotFound from '../Others/LocationNotFound'
 
 const { default: Navbar } = require("../Others/NavBar");
 
@@ -55,9 +57,12 @@ const useStyles = makeStyles((theme) => ({
 const Home = () => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const cartListItem = useSelector((state) => state.cartItemReducer.cartList)
+  let cartListItem = useSelector((state) => state.cartItemReducer.cartList)
   const toggleState = useSelector((state) => state.foodReducer.toggleSearchStatus)
   let total = 0
+  const dispatch = useDispatch()
+  let locationFound = useSelector((state) => state.mapReducer.getLocation)
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -70,6 +75,18 @@ const Home = () => {
       total +=( cartListItem[i].amount) * (cartListItem[i].qty)
   }
  
+  const handleQuantity = ( res,val) =>{
+     let findItem =  cartListItem.find((item) => item.title === res.title)
+     findItem.qty = Number(findItem.qty) + val
+     cartListItem = cartListItem.map((item) => item.title === res.title ? findItem : item)
+     if(findItem.qty === 0 && val === -1){
+      cartListItem = cartListItem.filter((qtyFilter) => qtyFilter.title !== findItem.title)
+      dispatch(updatedCartList( cartListItem ))
+      return
+  }
+     dispatch(updatedCartList( cartListItem ))
+
+    }
   return (
     <>
       <div className={classes.root}>
@@ -94,9 +111,10 @@ const Home = () => {
           })}
         >
           <Navbar openDrawer={handleDrawerOpen} />
-         { !toggleState ?<LandingPage /> : <Search/>} 
+         { !toggleState && (locationFound.includes('Bangalore') || locationFound.includes('Bengaluru'))  ?<LandingPage /> : toggleState && (locationFound.includes('Bangalore') || locationFound.includes('Bengaluru')) ?  <Search/> : <LocationNotFound />} 
           <Footer />
         </main>
+        
         <Drawer
           className={classes.drawer}
           variant="persistent"
@@ -145,7 +163,17 @@ const Home = () => {
                               {res.type === 'VEG' ? <img src="./vegIcon.png" alt="Vegetarian" className={styles.typeIcon}/>  : 
                               <img src="/non-vegetarian.png" alt="Non Veg" className={styles.typeIcon}/>}</div>
                             <div> {res.title}</div>
-                            <div> {res.qty}</div>
+                            <div style={{display:'flex' , border:'1px solid black',width:'30%'}} className="rounded-pill p-1 border border-secondary">
+                                <div style={{width:'30%'}} onClick={() => handleQuantity(res,-1)}>
+                                  <b style={{color:'#df561d'}}>-</b> 
+                                </div>
+                                <div style={{width:'40%'}}>
+                                  <b>{res.qty}</b>
+                                </div>
+                                <div style={{width:'30%'}} onClick={() => handleQuantity(res,1)}>
+                                  <b style={{color:'#df561d'}}>+</b> 
+                                </div>
+                                </div>
                           </div>
                           <div className= "text-left pl-3 " >
                              <b>₹{res.amount}</b> 

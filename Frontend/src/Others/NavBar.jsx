@@ -12,6 +12,7 @@ import Signup from "../Components/LoginOauth/Signup";
 import styles from "../Styling/NavBar.module.css";
 import {toggleSearch} from '../Redux/FoodList/action'
 import { logoutFunction } from "../Redux/Login/actions";
+import { getLocation as getActionsLocation} from '../Redux/MapIntegration/action'
 import Location from '../Others/LocationNotFound'
 
 const TopDiv = styled.div`
@@ -186,7 +187,7 @@ const Navbar = ( props ) => {
   const [openSignup, setOpenSignup] = useState(false);
   const [query, setQuery] = useState("");
   const [locationSearch, setLocationSearch] = useState("");
-  const [getLocation, setGetLocation] = useState("Bangalore Karnataka");
+  const getLocation = useSelector((state) => state.mapReducer.getLocation)
   const [helpModalOpen, setHelpModalOpen] = React.useState(false);
   const [modalHelpStyle] = React.useState(getHelpModalStyle);
   const dispatch = useDispatch()
@@ -196,7 +197,6 @@ const Navbar = ( props ) => {
   const { isAuth } = useSelector(
     (state) => state.reducer
   );
-
   useEffect(() => {
     axios
       .get(
@@ -279,7 +279,7 @@ const Navbar = ( props ) => {
     axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${data.longitude},${data.latitude}.json?country=IN&access_token=${MAPBOX_TOKEN}`)
         .then((res) => {
           // console.log(res.data.features[0].place_name)
-          setGetLocation(res.data.features[0].place_name)
+          dispatch(getActionsLocation(res.data.features[0].place_name))
 
         } )
         .catch((err) => console.log(err))
@@ -394,7 +394,7 @@ const Navbar = ( props ) => {
                       {query.map((res) => (
                         <p
                           className="pl-3"
-                          onClick={(e) => setGetLocation(e.target.textContent)}
+                          onClick={(e) => dispatch(getActionsLocation(e.target.textContent))}
                           data-dismiss="modal"
                         >
                          <i class="fas fa-map-marker-alt text-secondary"></i> {res} <hr />
