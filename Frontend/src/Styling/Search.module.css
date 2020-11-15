@@ -28,3 +28,14 @@ textarea:focus,
 input:focus {
   outline: none;
 }
+.links {
+  font-size: 15px;
+  font-weight: 700;
+  border-bottom: 1.5px solid;
+  color: #e85826;
+}
+.clearlinks {
+  color: #e85826;
+  font-family: ProximaNova-Semibold, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
