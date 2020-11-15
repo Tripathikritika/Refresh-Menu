@@ -296,8 +296,8 @@ const Navbar = ( props ) => {
   }
   
   return (
-    <>
-      <TopDiv style={{ width: "85%", margin: "auto" }}>
+    <div>
+      <TopDiv style={{ width: "90%", margin: "auto" }}>
         {/* navbar top div */}
         <div></div>
         <Link to="/" id="refreshmenu">
@@ -415,7 +415,7 @@ const Navbar = ( props ) => {
               src="./discountoffer.svg"
               alt="discountoffer.svg"
             />
-            <div>Diwali Gift</div>
+            <div className="text-white">Diwali Gift</div>
           </Link>
           <Link to="#" id="downloadapp">
             Download App
@@ -431,13 +431,13 @@ const Navbar = ( props ) => {
           {/* search */}
           <div onClick={() => dispatch(toggleSearch())} style={{display:'flex',textDecoration:'none',color: '#4a4a4a'}}>
             <img src="./searchicon.svg" alt="searchicon.svg" />
-            <div>Search</div>
+            <div className="text-muted">Search</div>
           </div >
         </div>
         <div className="bottom-items">
           {/* offers */}
           <Link to='/offers' target='_Blank' style={{display:'flex',textDecoration:'none',color: '#4a4a4a'}}>
-            <div>Offers</div>
+            <div className="text-muted" >Offers</div>
           </Link >
         </div>
         <div className="bottom-items">
@@ -472,7 +472,7 @@ const Navbar = ( props ) => {
               {/* <span className="tooltiptext"></span> */}
               {
                 profileStatus ? 
-                  <div style={{position:'absolute',top:'130px',right:'240px'}}>
+                  <div style={{position:'absolute',top:'130px',right:'240px',zIndex:10}}>
                     <ul class="list-group text-left">
                       <li class="list-group-item text-left">YOUR ACCOUNT</li>
                       <Link to='/profile'><li class="list-group-item list-group-item text-left">Profile Details</li> </Link>
@@ -541,7 +541,7 @@ const Navbar = ( props ) => {
           </div>
         </Fade>
       </Modal>
-    </>
+    </div>
   );
 };
 export default Navbar;
