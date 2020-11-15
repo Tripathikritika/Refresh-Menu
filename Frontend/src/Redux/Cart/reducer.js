@@ -1,5 +1,5 @@
 import actionConstant from "./actionTypes";
-import { deleteData, loadData, saveData } from "./localStorage";
+import { loadData, saveData } from "./localStorage";
 
 export const initState = {
   cartList: loadData("cartItem") || [],
@@ -15,7 +15,7 @@ const reducer = (state = initState, action) => {
       };
 
     case actionConstant.DELETE_ITEM:
-      deleteData("cartItem");
+      saveData("cartItem" , []);
       return {
         ...state,
         cartList: [],
