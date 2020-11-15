@@ -10,7 +10,7 @@ const food_details = [
         "cuisine" : "INDIAN",
         "type" : "VEG",
         "location" : "Bangalore",
-        "best_offers" : false,
+        "best_offers" : true,
         "addons" : true,
         "addons_value" : [
             {
@@ -203,6 +203,7 @@ const food_details = [
         "location" : "",
         "best_offers" : false,
         "addons" : false,
+        "addons_value" : []
     },
     {
         "id" : 8,
@@ -215,8 +216,9 @@ const food_details = [
         "cuisine" : "CONTINENTAL",
         "type" : "NON-VEG",
         "location" : "",
-        "best_offers" : false,
+        "best_offers" : true,
         "addons" : false,
+        "addons_value" : []
     },
     {
         "id" : 9,
@@ -454,6 +456,7 @@ const food_details = [
             }
         ]
     },
+
     {
         "id" : 19,
         "title": "Mango Lassi",
@@ -495,7 +498,7 @@ const food_details = [
         "cuisine" : "INDIAN",
         "type" : "VEG",
         "location" : "",
-        "best_offers" : false,
+        "best_offers" : true,
         "addons" : false,
         "addons_value" : []
     },
@@ -510,7 +513,7 @@ const food_details = [
         "cuisine" : "WORLD CUISINE",
         "type" : "VEG",
         "location" : "",
-        "best_offers" : false,
+        "best_offers" : true,
         "addons" : false,
         "addons_value" : []
     },
@@ -525,7 +528,7 @@ const food_details = [
         "cuisine" : "WORLD CUISINE",
         "type" : "VEG",
         "location" : "",
-        "best_offers" : false,
+        "best_offers" : true,
         "addons" : false,
         "addons_value" : []
     },
@@ -544,6 +547,900 @@ const food_details = [
         "addons" : false,
         "addons_value" : []
     },
+
+    {
+        "id" : 25,
+        "title": "Penne Arrabbiata",
+        "category": "Continental",
+        "details": "A handful of seasonal vegetables and penne done just right are tossed in a chunky tomato-concasse simmered in chilli oil. Finished with a glug of olive oil, torn basil, chilli flakes and cheese, our Penne Arrabbiata will pleasantly surprise you!",
+        "ingredients": "Penne, Tomato, Zucchini, Red Chilli Flakes, Bell Pepper, Broccoli, Carrot, Basil, Oregano, White Wine Vinegar, Olive Oil",
+        "food_link" : "https://d3gy1em549lxx2.cloudfront.net/c235c0c4-0098-46ce-8114-879d7c09cc58.JPG",
+        "amount": 209,
+        "cuisine" : "309 CAL | LOW CALORIE",
+        "type" : "VEG",
+        "location" : "",
+        "best_offers" : false,
+        "addons" : true,
+        "addons_value" : [
+            {
+                "name" : "Choco-Walnut-Brownie",
+                "price" : 69
+            },
+            {
+                "name" : "Homemade-Chocolate Cake",
+                "price" : 69
+            },
+            {
+                "name" : "Chicken-Nuggets",
+                "price" : 129
+            },
+            {
+                "name" : "Mint-Chaas",
+                "price" : 59
+            },
+            {
+                "name" : "Masala-Lemonade",
+                "price" : 69
+            },
+            {
+                "name" : "Blueberry Oatmeal-Cake",
+                "price" : 69
+            },
+           
+        ]
+    },
+    {
+        "id" : 26,
+        "title": "Chef's Signature Grilled Chicken",
+        "category": "Continental",
+        "details": "Feast on succulent chicken breasts that are marinated overnight, seared on a hot plate and finished in an oven. Cooked in an exquisite 'Chef's Signature White Wine Sauce' and served on a bed of aromatic herbed rice and crunchy sautéed veggies. Serves 1.",
+        "ingredients": "Garlic , Rosemary , BBQ Sauce, , Worcestershire Sauce , Dijon Mustard, Butter, Zucchini, Bell Pepper, Mushroom, Broccoli",
+        "food_link" : "https://d3gy1em549lxx2.cloudfront.net/b440cfb1-20c0-4e10-8aa4-ad92405d2253.jpg",
+        "amount": 249,
+        "cuisine" : "CONTINENTAL",
+        "type" : "NON-VEG",
+        "location" : "",
+        "best_offers" : true,
+        "addons" : true,
+        "addons_value" : [
+            {
+                "name" : "Choco-Walnut-Brownie",
+                "price" : 69
+            },
+            {
+                "name" : "Homemade-Chocolate Cake",
+                "price" : 69
+            },
+            {
+                "name" : "Chicken-Nuggets",
+                "price" : 129
+            },
+            {
+                "name" : "Mint-Chaas",
+                "price" : 59
+            },
+            {
+                "name" : "Masala-Lemonade",
+                "price" : 69
+            },
+            {
+                "name" : "Blueberry Oatmeal-Cake",
+                "price" : 69
+            },
+           
+        ]
+    },
+    {
+        "id" : 27,
+        "title": "Creamy Mushroom Pasta",
+        "category": "Continental",
+        "details": "From Italy with love. This classic pasta is made with everything from zucchini to mushrooms. Then mixed with creamy mushroom sauce for flavour and generous amounts of parmesan cheese. Garnished with black olives.",
+        "ingredients": "Penne Pasta, Zuchhini, Mushrooms, Olives, Fresh Basil, Fresh Cream, Herbs",
+        "food_link" : "https://d3gy1em549lxx2.cloudfront.net/aa9b43ab-c837-41f3-b82e-aa182315f7a6.JPG",
+        "amount": 219,
+        "cuisine" : "CONTINENTAL",
+        "type" : "VEG",
+        "location" : "",
+        "best_offers" : false,
+        "addons" : true,
+        "addons_value" : [
+            {
+                "name" : "Choco-Walnut-Brownie",
+                "price" : 69
+            },
+            {
+                "name" : "Homemade-Chocolate Cake",
+                "price" : 69
+            },
+            {
+                "name" : "Chicken-Nuggets",
+                "price" : 129
+            },
+            {
+                "name" : "Mint-Chaas",
+                "price" : 59
+            },
+            {
+                "name" : "Masala-Lemonade",
+                "price" : 69
+            },
+            {
+                "name" : "Blueberry Oatmeal-Cake",
+                "price" : 69
+            },
+           
+        ]
+    },
+    {
+        "id" : 28,
+        "title": "Creamy Tuscan Chicken Spaghetti",
+        "category": "Continental",
+        "details": "ENERGY (KCAL) 538.03, Fat (g)18.26 , Carbs (g) 64.73, Fiber (g) 3.23 , Protein (g) 28.46 A Tuscan-style hearty-spaghetti meal with creamy, cheesy béchamel, herbed roasted chicken, spinach, sun-dried tomatoes, topped with parmesan and parsley.",
+        "ingredients": "Parmesan,, Dijon Mustard, Olive, Béchamel, Sun-Dried Tomato, Spinach, Thyme, Spaghetti, Parsley, Cream, Butter",
+        "food_link" : "https://d3gy1em549lxx2.cloudfront.net/661f53cb-ba96-411b-82f6-019e34fe1f89.JPG",
+        "amount": 239,
+        "cuisine" : "CONTINENTAL",
+        "type" : "NON-VEG",
+        "location" : "",
+        "best_offers" : true,
+        "addons" : true,
+        "addons_value" : [
+            {
+                "name" : "Homemade-Chocolate Cake",
+                "price" : 69
+            },
+            {
+                "name" : "Masala-Lemonade",
+                "price" : 69
+            },
+            {
+                "name" : "Choco-Walnut-Brownie",
+                "price" : 69
+            },
+            {
+                "name" : "Mint-Chaas",
+                "price" : 59
+            },           
+            {
+                "name" : "Blueberry Oatmeal-Cake",
+                "price" : 69
+            },
+           
+        ]
+    },
+    {
+        "id" : 29,
+        "title": "Ultimate Burrito Bowl",
+        "category": "Continental",
+        "details": "ENERGY (KCAL) 637.24, Fat (g) 40.23, Carbs (g) 64.38, Fiber (g) 4.12Protein (g) 14.78 Sugar(g) 2.16 This bowl contains mexican tomato rice loaded with toppings to give you a full-satisfying meal. Fresh paneer cubes, corn-bean,tangy tomato salsa and sour cream garnished with jalapeno and cheese. Packed with a burst of flavours.",
+        "ingredients": "Basmati Rice, Tomato, Paneer,Sweet Corn, Onion, Jalapeno,Black Olives, Red-Kidney Beans , Cheese, Sour Cream",
+        "food_link" : "https://d3gy1em549lxx2.cloudfront.net/653c3068-1cf9-459b-ba83-d9dd68c76415.JPG",
+        "amount": 209,
+        "cuisine" : "Mexican ",
+        "type" : "VEG",
+        "location" : "",
+        "best_offers" : false,
+        "addons" : true,
+        "addons_value" : [
+            {
+                "name" : "Homemade-Chocolate Cake",
+                "price" : 69
+            },
+            {
+                "name" : "Masala-Lemonade",
+                "price" : 69
+            },
+            {
+                "name" : "Choco-Walnut-Brownie",
+                "price" : 69
+            },
+            {
+                "name" : "Mint-Chaas",
+                "price" : 59
+            },           
+            {
+                "name" : "Blueberry Oatmeal-Cake",
+                "price" : 69
+            },
+           
+        ]
+    },
+    {
+        "id" : 30,
+        "title": "Baked Bean Mac 'n' Cheese",
+        "category": "Continental",
+        "details": "We pair Mac and Cheese with Texas’ official dish: 'Chilli,' to treat you to a scrumptious bowl of one-pot Mac and Chilli! Haricot beans, zucchini, golden corn kernels, kidney beans, macaroni and basil, stir-fried with chilli-oil and tossed in a cheesy sauce will carry you to your happy place! Serves 1.",
+        "ingredients": "Macaroni, Mozzarella, Haricot Bean, Carrot, Zucchini,, Golden Corn, Red Kidney Bean, Basil",
+        "food_link" : "https://d3gy1em549lxx2.cloudfront.net/a01def01-504a-464a-b140-9b43910705d4.JPG",
+        "amount": 219,
+        "cuisine" : "Continental",
+        "type" : "VEG",
+        "location" : "",
+        "best_offers" : false,
+        "addons" : true,
+        "addons_value" : [
+            {
+                "name" : "Homemade-Chocolate Cake",
+                "price" : 69
+            },
+            {
+                "name" : "Masala-Lemonade",
+                "price" : 69
+            },
+            {
+                "name" : "Choco-Walnut-Brownie",
+                "price" : 69
+            },
+            {
+                "name" : "Mint-Chaas",
+                "price" : 59
+            },           
+            {
+                "name" : "Blueberry Oatmeal-Cake",
+                "price" : 69
+            },
+            {
+                "name" : "Chicken-Nuggets",
+                "price" : 129
+            },
+           
+        ]
+    },
+
+    {
+        "id" : 31,
+        "title": "Hyderabadi Dum Chicken Biriyani",
+        "category": "Big Biriyani Co.",
+        "details": "Chicken dum biryani is an evergreen classic. Marinated chicken curry cut is cooked with Indian spices and the biriyani gravy, layered with rice and topped with mint coriander leaves and brown onion. It not only sounds yummy but tastes too. Order now!",
+        "ingredients": "Basmati Rice, Chicken, Green Cardamom , Cumin , Bayleaf , Black Pepper , Cloves , Green Chilli Paste , Ginger Garlic Paste , Mint Leaves , Coriander Leaves , Ghee , Turmeric , Garam Masala , Curd , Lemon Juice , Rose Water",
+        "food_link" : "https://d3gy1em549lxx2.cloudfront.net/a01def01-504a-464a-b140-9b43910705d4.JPG",
+        "amount": 219,
+        "cuisine" : "North Indian",
+        "type" : "NON-VEG",
+        "location" : "",
+        "best_offers" : false,
+        "addons" : true,
+        "addons_value" : [
+            {
+                "name" : "Classic-Rabdi Gulab-Jamun",
+                "price" : 69
+            },
+            {
+                "name" : "Masala-Lemonade",
+                "price" : 69
+            },
+            {
+                "name" : "Choco-Walnut-Brownie",
+                "price" : 69
+            },
+            {
+                "name" : "Mint-Chaas",
+                "price" : 59
+            },           
+            {
+                "name" : "Blueberry Oatmeal-Cake",
+                "price" : 69
+            },
+            {
+                "name" : "Dutch-Truffle Cake",
+                "price" : 79
+            },
+            {
+                "name" : "Homemade-Chocolate Cake",
+                "price" : 79
+            },
+            {
+                "name" : "Cheesy Jalapeno Corn",
+                "price" : 49
+            },
+            
+           
+        ]
+    },
+    {
+        "id" : 32,
+        "title": "Chicken-Tikka Dum Biriyani",
+        "category": "Big Biriyani Co.",
+        "details": "Most-loved juicy chicken tikkas with freshly ground biriyani masala and premium basmati steamed shut in the age-old dum phukt style – a delicious fare of delectable flavours.",
+        "ingredients": "Chicken Tikka, Freshly Ground In-House Biriyani Masala,, Premium Basmati",
+        "food_link" : "https://d3gy1em549lxx2.cloudfront.net/a01def01-504a-464a-b140-9b43910705d4.JPG",
+        "amount": 219,
+        "cuisine" : "Indian",
+        "type" : "NON-VEG",
+        "location" : "",
+        "best_offers" : true,
+        "addons" : true,
+        "addons_value" : [
+            {
+                "name" : "Classic-Rabdi Gulab-Jamun",
+                "price" : 69
+            },
+            {
+                "name" : "Masala-Lemonade",
+                "price" : 69
+            },
+            {
+                "name" : "Choco-Walnut-Brownie",
+                "price" : 69
+            },
+            {
+                "name" : "Mint-Chaas",
+                "price" : 59
+            },           
+            {
+                "name" : "Blueberry Oatmeal-Cake",
+                "price" : 69
+            },
+            {
+                "name" : "Dutch-Truffle Cake",
+                "price" : 79
+            },
+            {
+                "name" : "Homemade-Chocolate Cake",
+                "price" : 79
+            },
+            {
+                "name" : "Cheesy Jalapeno Corn",
+                "price" : 49
+            },
+            
+           
+        ]
+    },
+    {
+        "id" : 33,
+        "title": "Masala Anda Biriyani",
+        "category": "Big Biriyani Co.",
+        "details": "Assembling a Masala Anda Biriyani is often considered as a test of culinary expertise – some believe to have mastered it, others continue to strive to find the perfect balance of flavours. A mouthful of our Masala Anda Biriyani is a testament of how far our chefs have come!",
+        "ingredients": "Rice, Cumin Whole ,Onion ,Tomato,Garlic ,Ginger ,Chilly ,Cardamom ,Cloves,Turmeric Powder,Curd,Ghee, Coriander Leaves",
+        "food_link" : "https://d3gy1em549lxx2.cloudfront.net/a01def01-504a-464a-b140-9b43910705d4.JPG",
+        "amount": 189,
+        "cuisine" : "Indian",
+        "type" : "NON-VEG",
+        "location" : "",
+        "best_offers" : true,
+        "addons" : true,
+        "addons_value" : [
+            {
+                "name" : "Classic-Rabdi Gulab-Jamun",
+                "price" : 69
+            },
+            {
+                "name" : "Masala-Lemonade",
+                "price" : 69
+            },
+            {
+                "name" : "Choco-Walnut-Brownie",
+                "price" : 69
+            },
+            {
+                "name" : "Mint-Chaas",
+                "price" : 59
+            },           
+            {
+                "name" : "Blueberry Oatmeal-Cake",
+                "price" : 69
+            },
+            {
+                "name" : "Dutch-Truffle Cake",
+                "price" : 79
+            },
+            {
+                "name" : "Homemade-Chocolate Cake",
+                "price" : 79
+            },
+            {
+                "name" : "Cheesy Jalapeno Corn",
+                "price" : 49
+            },
+            
+           
+        ]
+    },
+    {
+        "id" : 34,
+        "title": "Ghee-Roast Chicken Biriyani (1 KG)",
+        "category": "Big Biriyani Co.",
+        "details": "Chicken ghee roast is a very popular dish. Cooked chicken and rice are layered in a pot and then dum cooked for sometime. This is an absolute delight to eat. Paired with Raita.",
+        "ingredients": "Chicken Leg Boneless, Hung Curd, Ghee, Coriander, Curry Leaves And Haricot Beans, Carrot",
+        "food_link" : "https://d3gy1em549lxx2.cloudfront.net/a01def01-504a-464a-b140-9b43910705d4.JPG",
+        "amount": 499,
+        "cuisine" : "South Indian",
+        "type" : "NON-VEG",
+        "location" : "",
+        "best_offers" : true,
+        "addons" : true,
+        "addons_value" : [
+            {
+                "name" : "Classic-Rabdi Gulab-Jamun",
+                "price" : 69
+            },
+            {
+                "name" : "Masala-Lemonade",
+                "price" : 69
+            },
+            {
+                "name" : "Choco-Walnut-Brownie",
+                "price" : 69
+            },
+            {
+                "name" : "Mint-Chaas",
+                "price" : 59
+            },           
+            {
+                "name" : "Blueberry Oatmeal-Cake",
+                "price" : 69
+            },
+            {
+                "name" : "Dutch-Truffle Cake",
+                "price" : 79
+            },
+            {
+                "name" : "Homemade-Chocolate Cake",
+                "price" : 79
+            },
+            {
+                "name" : "Cheesy Jalapeno Corn",
+                "price" : 49
+            },  
+        ]
+    },
+    {
+        "id" : 35,
+        "title": "Masala Pepper Chicken-Biriyani",
+        "category": "Big Biriyani Co.",
+        "details": "Tender pieces of chicken tossed in fiery hot indian spices and onion-tomato gravy, is dum-cooked and topped on the biriyani rice. Get your hands on to enjoy this biriyani. It's surely a hot-seller!",
+        "ingredients": "Chicken, Basmati Rice, Onion, Indian Spices, Pepper, Tomato, Curry Leaves, Chilli",
+        "food_link" : "https://d3gy1em549lxx2.cloudfront.net/0987c7dc-6233-48b2-9e3d-39d3d207e499.jpg",
+        "amount": 219,
+        "cuisine" : "Indian ",
+        "type" : "NON-VEG",
+        "location" : "",
+        "best_offers" : false,
+        "addons" : true,
+        "addons_value" : [
+            {
+                "name" : "Classic-Rabdi Gulab-Jamun",
+                "price" : 69
+            },
+            {
+                "name" : "Masala-Lemonade",
+                "price" : 69
+            },
+            {
+                "name" : "Choco-Walnut-Brownie",
+                "price" : 69
+            },
+            {
+                "name" : "Mint-Chaas",
+                "price" : 59
+            },           
+            {
+                "name" : "Blueberry Oatmeal-Cake",
+                "price" : 69
+            },
+            {
+                "name" : "Dutch-Truffle Cake",
+                "price" : 79
+            },
+            {
+                "name" : "Homemade-Chocolate Cake",
+                "price" : 79
+            },
+            {
+                "name" : "Cheesy Jalapeno Corn",
+                "price" : 49
+            },  
+        ]
+    },
+    {
+        "id" : 36,
+        "title": "Ghee-Roast Chicken Biriyani",
+        "category": "Big Biriyani Co.",
+        "details": "Chicken ghee roast is a very popular dish. Cooked chicken and rice are layered in a pot and then dum cooked for sometime. This is an absolute delight to eat. Paired with Raita.",
+        "ingredients": "Chicken Leg Bonelessr, Hung Curd, Ghee, Coriander, Curry Leaves And Haricot Beans, Carrot",
+        "food_link" : "https://d3gy1em549lxx2.cloudfront.net/1aff453a-b8a1-4404-81a5-954dabeaa344.jpg",
+        "amount": 219,
+        "cuisine" : "South Indian",
+        "type" : "NON-VEG",
+        "location" : "",
+        "best_offers" : false,
+        "addons" : true,
+        "addons_value" : [
+            {
+                "name" : "Classic-Rabdi Gulab-Jamun",
+                "price" : 69
+            },
+            {
+                "name" : "Masala-Lemonade",
+                "price" : 69
+            },
+            {
+                "name" : "Choco-Walnut-Brownie",
+                "price" : 69
+            },
+            {
+                "name" : "Mint-Chaas",
+                "price" : 59
+            },           
+            {
+                "name" : "Blueberry Oatmeal-Cake",
+                "price" : 69
+            },
+            {
+                "name" : "Dutch-Truffle Cake",
+                "price" : 79
+            },
+            {
+                "name" : "Homemade-Chocolate Cake",
+                "price" : 79
+            },
+            {
+                "name" : "Cheesy Jalapeno Corn",
+                "price" : 49
+            },  
+        ]
+    },
+
+    {
+        "id" : 37,
+        "title": "Coconut Milk Yogurt - 90 Gms",
+        "category": "Fit N fab",
+        "details": "Epigamia Coconut Milk Yogurt",
+        "ingredients": "Coconut Milk,, Yogurt, Jaggery",
+        "food_link" : "https://d3gy1em549lxx2.cloudfront.net/360dba19-6779-4801-97a1-34090543c9f7.jpg",
+        "amount": 67,
+        "cuisine" : "World Cuisine",
+        "type" : "VEG",
+        "location" : "",
+        "best_offers" : true,
+        "addons" : true,
+        "addons_value" : [
+            {
+                "name" : "Mini Fruit-Parfait",
+                "price" : 49
+            }
+        ]
+    },
+    {
+        "id" : 38,
+        "title": "Teriyaki-Chicken-Quinoa-Superbowl",
+        "category": "Fit N fab",
+        "details": "This Teriyaki Chicken Quinoa Bowl is a perfect healthy meal option for lunch or dinner. Featuring a juicy chicken leg, diced and marinated in Teriyaki sauce. Served with a delicious bell pepper quinoa brown rice. It's high in protein, fiber, healthy and delicious! ENERGY (KCAL): 624, Fat (g)- 19, Carbs (g)-76, Fiber (g)-4, Protein (g)- 28.",
+        "ingredients": "Chicken Leg Boneless, Quinoa Brown Rice,Light Soy , Chilli Paste , Garlic , Sesame Seeds., Egg, Bell Peppers, Onion, Leeks.",
+        "food_link" : "https://d3gy1em549lxx2.cloudfront.net/ed378c28-1f6f-4590-93fc-6b19c813a211.jpg",
+        "amount": 249,
+        "cuisine" : "PAN-ASIAN",
+        "type" : "NON-VEG",
+        "location" : "",
+        "best_offers" : true,
+        "addons" : true,
+        "addons_value" : [
+            {
+                "name" : "Classic-Rabdi Gulab-Jamun",
+                "price" : 69
+            },
+            {
+                "name" : "Masala-Lemonade",
+                "price" : 69
+            },
+            {
+                "name" : "Choco-Walnut-Brownie",
+                "price" : 69
+            },
+            {
+                "name" : "Mint-Chaas",
+                "price" : 59
+            },           
+            {
+                "name" : "Blueberry Oatmeal-Cake",
+                "price" : 69
+            },
+            {
+                "name" : "Dutch-Truffle Cake",
+                "price" : 79
+            },
+            {
+                "name" : "Homemade-Chocolate Cake",
+                "price" : 79
+            },
+            {
+                "name" : "Cheesy Jalapeno Corn",
+                "price" : 49
+            },  
+        ]
+    },
+    {
+        "id" : 39,
+        "title": "Roasted Garlic Chicken Soup",
+        "category": "Fit N fab",
+        "details": "We give the ultimate comfort food a creamy, garlicky spin, making it even more delectable. Topped off with cream, butter and a good sprinkle of fresh parsley, our Roasted Garlic Chicken Soup is what will perk you up even if you aren’t ill. Serves 1.",
+        "ingredients": "Chicken, Garlic, Leek, Béchamel, Thyme, Carrot, Celery",
+        "food_link" : "https://d3gy1em549lxx2.cloudfront.net/83b7c7d2-5fac-4a2e-ac50-c66969b676b9.jpg",
+        "amount": 149,
+        "cuisine" : "PAN-ASIAN",
+        "type" : "NON-VEG",
+        "location" : "",
+        "best_offers" : false,
+        "addons" : true,
+        "addons_value" : [
+            {
+                "name" : "Keto Nutty-Bomb",
+                "price" : 69
+            },
+            {
+                "name" : "Masala-Lemonade",
+                "price" : 69
+            },
+            {
+                "name" : "Choco-Walnut-Brownie",
+                "price" : 69
+            },
+            {
+                "name" : "Mint-Chaas",
+                "price" : 59
+            },           
+            {
+                "name" : "Blueberry Oatmeal-Cake",
+                "price" : 69
+            },
+            {
+                "name" : "Dutch-Truffle Cake",
+                "price" : 79
+            },
+            {
+                "name" : "Homemade-Chocolate Cake",
+                "price" : 79
+            },
+            {
+                "name" : "Cheesy Jalapeno Corn",
+                "price" : 49
+            },  
+        ]
+    },
+    {
+        "id" : 40,
+        "title": "Dragon Chicken Soup",
+        "category": "Fit N fab",
+        "details": "ENERGY (KCAL) 220, Fat (g) 23, Carbs (g) 65, Fiber (g) 4, Protein (g) 16 What’s Indo-Chinese food without the all-essential ‘heat’? Julienne chicken breast (boiled), crunchy veggies boiled in a dangerously red chili-infused stock, along with beaten eggs, giving a dragon flavoured soup. Slurrp-it up!",
+        "ingredients": "Chicken, Carrot, Celery, Cabbage, Bokchoy, Mushroom, Spring Onion, Chilli, Soya, Eggs, Garlic, Ginger",
+        "food_link" : "https://d3gy1em549lxx2.cloudfront.net/da634778-7fe8-4918-a53f-496ea16ae3a8.JPG",
+        "amount": 149,
+        "cuisine" : "PAN-ASIAN",
+        "type" : "NON-VEG",
+        "location" : "",
+        "best_offers" : false,
+        "addons" : true,
+        "addons_value" : [
+            {
+                "name" : "Keto Nutty-Bomb",
+                "price" : 69
+            },
+            {
+                "name" : "Masala-Lemonade",
+                "price" : 69
+            },
+            {
+                "name" : "Choco-Walnut-Brownie",
+                "price" : 69
+            },
+            {
+                "name" : "Mint-Chaas",
+                "price" : 59
+            },           
+            {
+                "name" : "Blueberry Oatmeal-Cake",
+                "price" : 69
+            },
+            {
+                "name" : "Dutch-Truffle Cake",
+                "price" : 79
+            },
+            {
+                "name" : "Homemade-Chocolate Cake",
+                "price" : 79
+            },
+            {
+                "name" : "Cheesy Jalapeno Corn",
+                "price" : 49
+            },  
+        ]
+    },
+    {
+        "id" : 41,
+        "title": "Corn-Cucumber-Bean Salad",
+        "category": "Fit N fab",
+        "details": "This hearty, refreshing salad is all you need this summer. Diced cucumber, tomatoes, jalapeno, olives, roasted corn, kidney beans are tossed with lettuce and seasoned to perfection. Served with cumin-vinaigrette dressing.ENERGY (KCAL):275, Fat (g):11, Carbs (g):33, Fiber (g):7, Protein (g):7",
+        "ingredients": "Sweet Corn, Kidney Beans, Cucumber, Tomato, Purple Cabbage, Jalapeno, Olives, Lettuce,, Cumin Vinaigrette Dressing",
+        "food_link" : "https://d3gy1em549lxx2.cloudfront.net/9f931ed7-6caa-4241-a8ca-38db6e4d6185.jpg",
+        "amount": 189,
+        "cuisine" : "PAN-ASIAN",
+        "type" : "VEG",
+        "location" : "",
+        "best_offers" : false,
+        "addons" : true,
+        "addons_value" : [
+            {
+                "name" : "Keto Nutty-Bomb",
+                "price" : 69
+            },
+            {
+                "name" : "Masala-Lemonade",
+                "price" : 69
+            },
+            {
+                "name" : "Choco-Walnut-Brownie",
+                "price" : 69
+            },
+            {
+                "name" : "Mint-Chaas",
+                "price" : 59
+            },           
+            {
+                "name" : "Blueberry Oatmeal-Cake",
+                "price" : 69
+            },
+            {
+                "name" : "Dutch-Truffle Cake",
+                "price" : 79
+            },
+            {
+                "name" : "Homemade-Chocolate Cake",
+                "price" : 79
+            },
+            {
+                "name" : "Cheesy Jalapeno Corn",
+                "price" : 49
+            },  
+        ]
+    },
+    {
+        "id" : 42,
+        "title": "Italian-Garden-Pizza Bowl",
+        "category": "Fit N fab",
+        "details": "A crustless pizza in a bowl with all of your favorite toppings. Assorted veggies are sauteed with tomato concasse, then topped with mozzarella cheese and more veggie toppings along with paneer dices. Baked to perfection for a drooling meal!",
+        "ingredients": "Tri Bell Peppers, Paneer, Zucchini, Broccoli, Black Olives, Cheese Sauce, Tomato Concasse, Mozzarella Cheese, Oregano Sprinklers",
+        "food_link" : "https://d3gy1em549lxx2.cloudfront.net/5a3cef3b-1a33-4641-bb5a-004e01929307.jpeg",
+        "amount": 225,
+        "cuisine" : "ITALIAN",
+        "type" : "VEG",
+        "location" : "",
+        "best_offers" : false,
+        "addons" : true,
+        "addons_value" : [
+            {
+                "name" : "Keto Nutty-Bomb",
+                "price" : 69
+            },
+            {
+                "name" : "Masala-Lemonade",
+                "price" : 69
+            },
+            {
+                "name" : "Choco-Walnut-Brownie",
+                "price" : 69
+            },
+            {
+                "name" : "Mint-Chaas",
+                "price" : 59
+            },           
+            {
+                "name" : "Blueberry Oatmeal-Cake",
+                "price" : 69
+            },
+            {
+                "name" : "Dutch-Truffle Cake",
+                "price" : 79
+            },
+            {
+                "name" : "Homemade-Chocolate Cake",
+                "price" : 79
+            },
+            {
+                "name" : "Cheesy Jalapeno Corn",
+                "price" : 49
+            },  
+        ]
+    },
+
+    {
+        "id" : 43,
+        "title": "Italian-Garden-Pizza Bowl",
+        "category": "Dessert",
+        "details": "Chocolate sponge layered with a bed of pitted and chopped sweet cherries folded in vanilla cream and adorned with chocolate shavings – lie to us that you aren’t in love? Serves 1.",
+        "ingredients": "Dark Chocolate Sponge, Vanilla Cream, Chocolate Shavings, Cherry Compote, Butter",
+        "food_link" : "https://d3gy1em549lxx2.cloudfront.net/b5c75319-b4a0-4b54-9ec9-5d523deb1836.JPG",
+        "amount": 61,
+        "cuisine" : "WORLD CUISINE",
+        "type" : "VEG",
+        "location" : "",
+        "best_offers" : false,
+        "addons" : true,
+        "addons_value" : []
+    },
+    {
+        "id" : 44,
+        "title": "Rainbow Pastry",
+        "category": "Dessert",
+        "details": "If you’ve ever wondered what a rainbow tasted like, well, now you can finally know. Layers of vanilla pound-cake coloured in the shades of the rainbow are blanketed with sweet cream-cheese and topped off with red-velvet crumble. Tell us if you spot a unicorn, okay? Serves 1.",
+        "ingredients": "Vanilla Sponge, Whipped Cream, Cream Cheese , Red Velvet Pastry Crumble",
+        "food_link" : "https://d3gy1em549lxx2.cloudfront.net/b6cc0f0a-251a-4b5f-adcf-0dd729528a9d.jpg",
+        "amount": 99,
+        "cuisine" : "WORLD CUISINE",
+        "type" : "VEG",
+        "location" : "",
+        "best_offers" : false,
+        "addons" : true,
+        "addons_value" : []
+    },
+    {
+        "id" : 45,
+        "title": "Dutch Truffle Cake",
+        "category": "Dessert",
+        "details": "Love chocolate? Then this tender, luxurious layer cake is for you. With a ganache glaze and a fabulous filling, the indulgence is so worth it, freshly baked with much love by our chefs in-house!",
+        "ingredients": "Dark Chocolate, Sponge, Sugar, Brownie, Cream",
+        "food_link" : "https://d3gy1em549lxx2.cloudfront.net/b6cc0f0a-251a-4b5f-adcf-0dd729528a9d.jpg",
+        "amount": 99,
+        "cuisine" : "WORLD CUISINE",
+        "type" : "VEG",
+        "location" : "",
+        "best_offers" : true,
+        "addons" : true,
+        "addons_value" : []
+    },
+    {
+        "id" : 46,
+        "title": "Lemon Tart",
+        "category": "Dessert",
+        "details": "The French say a good lemon tart is the way to a woman’s heart. And for that, a calming yet contrasting balance between the lemons and a flaky, sweet base is essential. Try our Lemon Tart and you’ll probably give in to a dozen more – a rich lemony custard graces a crumbly tart before being baked till the sweet, citrusy aromas remind us that the tarts are done! Serves 1.",
+        "ingredients": "Egg, Lemon, Sugar, Tart Shell",
+        "food_link" : "https://d3gy1em549lxx2.cloudfront.net/47f7c3c5-f04d-4bf5-abd2-abce090b0195.jpg",
+        "amount": 99,
+        "cuisine" : "WORLD CUISINE",
+        "type" : "NON-VEG",
+        "location" : "",
+        "best_offers" : true,
+        "addons" : true,
+        "addons_value" : []
+    },
+    {
+        "id" : 47,
+        "title": "Hazelnut Truffle Jar (Sugarfree)",
+        "category": "Dessert",
+        "details": "This signature exclusive dessert prepared with slow home toasted hazelnuts combined with cocoa butter and premium sugar-free dark chocolate for the perfect taste. Indulge...",
+        "ingredients": "Hazelnut Paste,Almond Flakes, Hazelnut Flakes, Fresh Cream, Sugarfree Chocolate",
+        "food_link" : "https://d3gy1em549lxx2.cloudfront.net/dbc281af-fe92-4b7d-ba09-c5a5a88a9014.JPG",
+        "amount": 249,
+        "cuisine" : "WORLD CUISINE",
+        "type" : "VEG",
+        "location" : "",
+        "best_offers" : false,
+        "addons" : true,
+        "addons_value" : []
+    },
+    {
+        "id" : 48,
+        "title": "Shahi-Tukda",
+        "category": "Dessert",
+        "details": "Shahi tukda is a rich, royal Mughlai dessert to indulge this festive season. Sugar coated bread topped and soaked with fragrant creamy sweet thickened milk or rabri and garnished with dry fruits. Order now",
+        "ingredients": "Bread, Milk, Pistachio Silvers, Sugar",
+        "food_link" : "https://d3gy1em549lxx2.cloudfront.net/b6cc0f0a-251a-4b5f-adcf-0dd729528a9d.jpg",
+        "amount": 61,
+        "cuisine" : "INDIAN",
+        "type" : "VEG",
+        "location" : "",
+        "best_offers" : true,
+        "addons" : true,
+        "addons_value" : []
+    },
+
+
+
+
+
+
+
+
 ]
 
 module.exports = food_details
