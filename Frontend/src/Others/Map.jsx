@@ -7,6 +7,7 @@ import ReactMapGL, {
 import styled from 'styled-components';
 import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
+import { useSelector } from 'react-redux';
 
 const Loc = styled.img`
     height: 20px;
@@ -16,14 +17,16 @@ const Loc = styled.img`
 const MAPBOX_TOKEN =
     'pk.eyJ1IjoiZmFoZHNoYWlraCIsImEiOiJja2gzYzB3a3YwaXlsMnJvaWJ3ZDdiYzBpIn0.EC5-vAFFL-32D0ZCkCkQFg';
 
-const Map = () => {
+const Map = ({mobile , setMobile}) => {
     const [customerCoords, setCustomerCoords] = useState({});
     const [placeName, setPlaceName] = useState('');
+   
+    let locationGot = useSelector((state) => state.mapReducer.getLocation)
     // const data = JSON.parse(localStorage.getItem('Coordinates'));
     const data = {}
     data.lat = 13.014509199999999
     data.long = 77.6677641
-    console.log(placeName)
+    // console.log(placeName)
     const [viewPort, setViewPort] = useState({
         width: '100%',
         height: '200px',
@@ -51,6 +54,9 @@ const Map = () => {
         Geolocation(customerCoords);
     }, [customerCoords]);
 
+    useEffect(()=>{
+        setPlaceName(locationGot)
+    },[locationGot])
     const Geolocation = (data) => {
         var config = {
             method: 'get',
@@ -150,19 +156,19 @@ const Map = () => {
                     </div>
                     <div className="col-12">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="10 digit Mobile Number" aria-label="Example text with button addon" aria-describedby="button-addon1" />
+                            <input type="text" value={mobile} class="form-control" placeholder="10 digit Mobile Number" onChange = {(e) =>setMobile(e.target.value)}/>
                         </div>
                     </div>
                     <div className="col-12">
                         <div className="row">
 
-                            <div className="col-4">
+                            <div className="col-12 col-md-6 col-lg-4">
                                 <button type="button" class="btn border border-secondary"><img src="./HouseForCheckout.svg" alt="House"/></button>
                             </div>
-                            <div className="col-4">
+                            <div className="col-12 col-md-6 col-lg-4">
                                 <button type="button" class="btn border border-secondary"><img src="./MobileForCheckout.svg" alt="Mobile"/></button>
                             </div>
-                            <div className="col-4">
+                            <div className="col-12 col-md-6 col-lg-4">
                                 <button type="button" class="btn border border-secondary"><img src="./others.svg" alt="Others"/></button>
                             </div>
                         </div>
