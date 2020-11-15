@@ -161,7 +161,7 @@ function FoodsCards( {item} ) {
                                    <div>
                                     {
                                         (findItem == undefined ) ? 
-                                        <button type="button" className={`btn float-right rounded-pill text-white ${styles.colorCode}`} onClick = {handleOpen}>ADD +</button> :
+                                        <button type="button" className={`btn float-right rounded-pill px-3 text-white ${styles.colorCode}`} onClick = {handleOpen}>ADD +</button> :
                                         <div className='d-flex px-3' style={{ width:'100%',backgroundColor:'#df561d',borderRadius:'20px',color:'white'}}>
                                         <button className="px-2 py-2" onClick={() => handleQuantity(-1)} style={{width:'100%', borderRadius:'20px 0px 0px 20px',border:'none',backgroundColor:'#df561d' ,color:'white'}}>-</button>
                                         <span className="px-3 py-2" style={{display:'inline' ,width:"100%", borderRadius:'50%',border:'none',backgroundColor:'#df561d',backgroundImage:' linear-gradient(to left,#fe7c18,#df561d)',color:'white'}}>{findItem.qty}</span>
@@ -172,7 +172,7 @@ function FoodsCards( {item} ) {
                                 :                           
                                     <div>
                                        { findItem == undefined ? 
-                                        <button type="button" className={`btn float-right rounded-pill text-white ${styles.colorCode}`} onClick ={handleAddItem}>ADD</button> : 
+                                        <button type="button" className={`btn float-right rounded-pill px-4 text-white ${styles.colorCode}`} onClick ={handleAddItem}>ADD</button> : 
                                         <div className='d-flex px-3' style={{ width:'100%',backgroundColor:'#df561d',borderRadius:'20px',color:'white'}}>
                                             <button className="px-2 py-2" onClick={() => handleQuantity(-1)} style={{width:'100%', borderRadius:'20px 0px 0px 20px',border:'none',backgroundColor:'#df561d' ,color:'white'}}>-</button>
                                             <span className="px-3 py-2" style={{display:'inline' ,width:"100%", borderRadius:'50%',border:'none',backgroundColor:'#df561d',backgroundImage:' linear-gradient(to left,#fe7c18,#df561d)',color:'white'}}>{findItem.qty}</span>

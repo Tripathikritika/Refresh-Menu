@@ -153,6 +153,9 @@
   margin-top: 20px;
   width: 270px;
 }
+.placeOrderButton:hover {
+  color: white;
+}
 
 .modalLayout {
   display: flex;

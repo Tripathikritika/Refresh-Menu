@@ -8,6 +8,7 @@ import Location from '../Others/LocationNotFound'
 import Offers from '../Others/Offers'
 import Filter from '../Components/FilterComponent'
 import Profile from '../Components/Profile'
+import {Error} from '../Others/Error'
 
 const Routing = () => {
   return (
@@ -20,7 +21,7 @@ const Routing = () => {
       <Route path='/offers' render={(props) => <Offers {...props} /> } />
       <Route path = '/filter' render={(props) => <Filter {...props} /> } />
       <Route path = '/profile' render={(props) => <Profile {...props} /> } />
-
+      <Route render = { (props) => <Error />}  />
     </Switch>
   );
 };

@@ -7,7 +7,7 @@ import { getFoodList ,toggleFilter} from '../Redux/FoodList/action'
 import FoodsCards from '../Others/FoodsCards'
 import  styles from '../Styling/LandingPage.module.css'
 import FilterComponent from './FilterComponent'
-
+import Slider from "infinite-react-carousel";
 
 function LandingPage() {
     const dispatch = useDispatch()
@@ -26,8 +26,8 @@ function LandingPage() {
         
         <>
         {/* First part */}
-            <div style={{width:'85%' , margin : 'auto'}} >
-                <div className={styles.carouselCards}>
+            <div style={{width:'90%' , margin : 'auto'}} >
+                <div className={`${styles.carouselCards}` }>
                     <div>
                         <img src="https://s3-ap-southeast-1.amazonaws.com/foodvista.1/a7918f75-63a3-4923-8879-b27f104fa10d.jpg" height = "300px" alt="Desert 40 % Off"/>
                     </div>
@@ -37,13 +37,6 @@ function LandingPage() {
                     <div>
                         <img src="https://s3-ap-southeast-1.amazonaws.com/foodvista.1/64f2ee38-bbba-460f-976b-cb60b532e507.jpg" height = "300px" alt="Bowls"/>
                     </div>
-                     {/* <div>
-                        <img src="https://s3-ap-southeast-1.amazonaws.com/foodvista.1/1635b32e-b727-489a-bcd6-870941b29c40.jpg" height = "300px" alt="Desert 40 % Off"/>
-                    </div>
-                    
-                    <div>
-                        <img src="https://s3-ap-southeast-1.amazonaws.com/foodvista.1/a8d84480-dc3b-42c2-80d3-d3c3f4f2740e.jpg" height = "300px" alt="Order Today"/>
-                    </div> */}
                 </div>
                 <div className="container-fluid mt-5 position-relative">
                     <div className="row sticky-top" id="side" style={{backgroundColor:'white'}}>
@@ -55,7 +48,7 @@ function LandingPage() {
                                 color: veg?`#2ebd59`: `rgba(74,74,74,.7)`,
                                 border: veg?`1px solid #2ebd59`:`1px solid #000`,
                                 borderRadius: `5px`
-                            }} className= "px-2 py-1 m-1" onClick = {() => setVeg(!veg)} >VEG</button>
+                            }} className= "px-2 py-1 m-1 bg-white" onClick = {() => setVeg(!veg)} > VEG</button>
                             <div className="px-1" onClick={() => dispatch(toggleFilter())}>
                                 <img src="./funnel.svg" alt="funnel" className="py-1"/>
                                 <button className="py-1 bg-white border border-0" style={{fontSize: '19px'}} >FILTERS</button>
@@ -109,7 +102,7 @@ function LandingPage() {
                                                     </div>
                                                     <div className="anchor" id="Match_Day_Combos">
                                                         {filterItem.length > 0 && filterItem.filter((item) => item.category === 'Match Day Combos').length === 0 ? ""  : 
-                                                            <h4  className="text-left">MATCH DAY COMBOS</h4>
+                                                            <h4  className={`${styles.categoriesHeader} text-left`}>MATCH DAY COMBOS</h4>
                                                         }
                                                         <div className={`text-left ${styles.cards_details}`}>
                                                         <div className="row">
@@ -126,7 +119,7 @@ function LandingPage() {
                                                     
                                                     <div className="anchor" id="New_&_Exciting">
                                                         {filterItem.length > 0 && filterItem.filter((item) => item.category === 'New & Exciting').length === 0 ? ""  : 
-                                                            <h4 className="text-left">NEW & EXCITING</h4> }
+                                                            <h4 className={`${styles.categoriesHeader} text-left`}>NEW & EXCITING</h4> }
                                                         <div className={`text-left ${styles.cards_details}`}>
                                                         <div className="row">
                                                             {
@@ -141,7 +134,7 @@ function LandingPage() {
                                                     </div>
                                                     <div class="anchor" id="Continental">
                                                         {filterItem.length > 0 && filterItem.filter((item) => item.category === 'Continental').length === 0 ? ""  : 
-                                                            <h4 className="text-left">Continental</h4> }
+                                                            <h4 className={`${styles.categoriesHeader} text-left`}>Continental</h4> }
                                                         <div className={`text-left ${styles.cards_details}`}>
                                                         <div className="row">
                                                             {
@@ -156,7 +149,7 @@ function LandingPage() {
                                                     </div>
                                                     <div class="anchor" id="Big_Biriyani_Co.">
                                                         {filterItem.length > 0 && filterItem.filter((item) => item.category === 'Big Biriyani Co.').length === 0 ? ""  : 
-                                                            <h4 className="text-left">Big Biriyani Co.</h4> }
+                                                            <h4 className={`${styles.categoriesHeader} text-left`}>Big Biriyani Co.</h4> }
                                                         <div className={`text-left ${styles.cards_details}`}>
                                                         <div className="row">
                                                             {
@@ -171,7 +164,7 @@ function LandingPage() {
                                                     </div>   
                                                     <div class="anchor" id="Fit_N_Fab">
                                                         {filterItem.length > 0 && filterItem.filter((item) => item.category === 'Fit N fab').length === 0 ? ""  : 
-                                                            <h4 className="text-left">Fit N Fab</h4> }
+                                                            <h4 className={`${styles.categoriesHeader} text-left`}>Fit N Fab</h4> }
                                                         <div className={`text-left ${styles.cards_details}`}>
                                                         <div className="row">
                                                             {
@@ -186,7 +179,7 @@ function LandingPage() {
                                                     </div>       
                                                     <div class="anchor" id="Dessert">
                                                         {filterItem.length > 0 && filterItem.filter((item) => item.category === 'Dessert').length === 0 ? ""  : 
-                                                            <h4 className="text-left">Dessert</h4> }
+                                                            <h4 className={`${styles.categoriesHeader} text-left`}>Dessert</h4> }
                                                         <div className={`text-left ${styles.cards_details}`}>
                                                         <div className="row">
                                                             {
