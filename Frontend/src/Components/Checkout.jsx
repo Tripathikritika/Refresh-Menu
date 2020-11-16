@@ -1,7 +1,7 @@
 import React , {useState } from "react";
 import styles from "../Styling/Checkout.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import Axios from "axios";
 import Map from '../Others/Map'
 import { deleteItem } from "../Redux/Cart/action";
@@ -15,7 +15,7 @@ function Checkout() {
   const loggedInEmail= useSelector((state) => state.reducer.userEmail)
   const isAuth = useSelector((state) => state.reducer.isAuth)
   const [ mobile,setMobile ] = useState("")
-
+  const history = useHistory()
   let total = 0; 
   let packagingfee = cartListItem.length > 0 ? Number(30) : 0;
   let GST = 0;
@@ -54,7 +54,7 @@ function Checkout() {
           const captured = successObj.captured;
           if (captured) {
             dispatch(deleteItem())
-            alert("Successfully!! ")
+            history.push('/checkout-form')
           }
         } catch (err) {
           console.log(err);
@@ -67,7 +67,9 @@ function Checkout() {
     const rzp1 = new window.Razorpay(options);
     rzp1.open();
   };
-  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   if( cartListItem.length === 0){
     return <Redirect to = '/' />
   }
@@ -222,6 +224,8 @@ console.log(mobile)
                                     role="tab"
                                     aria-controls="v-pills-cash"
                                     aria-selected="true"
+                                    style={{borderBottom:'3px solid #e85826',backgroundColor:'white'}}
+                                    
                                   >
                                     Cash
                                   </a>
@@ -233,6 +237,7 @@ console.log(mobile)
                                     role="tab"
                                     aria-controls="v-pills-phonepay"
                                     aria-selected="false"
+                                    style={{borderBottom:'3px solid #e85826',backgroundColor:'white'}}
                                   >
                                     PhonePe
                                   </a>
@@ -244,6 +249,7 @@ console.log(mobile)
                                     role="tab"
                                     aria-controls="v-pills-wallets"
                                     aria-selected="false"
+                                    style={{borderBottom:'3px solid #e85826',backgroundColor:'white'}}
                                   >
                                     Wallets
                                   </a>
@@ -255,17 +261,19 @@ console.log(mobile)
                                     role="tab"
                                     aria-controls="v-pills-google-pay"
                                     aria-selected="false"
+                                    style={{borderBottom:'3px solid #e85826',backgroundColor:'white'}}
                                   >
                                     Google Pay(Tez)
                                   </a>
                                   <a
-                                    class="nav-link p-3 text-dark"
+                                    class="nav-link p-3 text-dark active"
                                     id="razor-ticket"
                                     data-toggle="pill"
                                     href="#v-pills-razor"
                                     role="tab"
                                     aria-controls="v-pills-razor"
                                     aria-selected="false"
+                                    style={{borderBottom:'3px solid #e85826',backgroundColor:'white'}}
                                   >
                                     Razor Pay
                                   </a>
@@ -277,6 +285,7 @@ console.log(mobile)
                                     role="tab"
                                     aria-controls="v-pills-sodexo"
                                     aria-selected="false"
+                                    style={{borderBottom:'3px solid #e85826',backgroundColor:'white'}}
                                   >
                                     Sodexo Meal Card
                                   </a>
@@ -288,6 +297,7 @@ console.log(mobile)
                                     role="tab"
                                     aria-controls="v-pills-banking"
                                     aria-selected="false"
+                                    style={{borderBottom:'3px solid #e85826',backgroundColor:'white'}}
                                   >
                                     Net Banking
                                   </a>
@@ -299,7 +309,7 @@ console.log(mobile)
                                   id="v-pills-tabContent"
                                 >
                                   <div
-                                    class="tab-pane fade show "
+                                    class="tab-pane fade show"
                                     id="v-pills-cash"
                                     role="tabpanel"
                                     aria-labelledby="cash-home-pill"
@@ -446,11 +456,11 @@ console.log(mobile)
                                 
                                   </div>
                                   <div
-                                    class="tab-pane fade"
+                                    class="tab-pane fade show  active"
                                     id="v-pills-razor"
                                     role="tabpanel"
                                     aria-labelledby="razor-ticket"
-                                  
+                                    
                                   >
                                     <img
                                       src="./razorPay.jpg"
