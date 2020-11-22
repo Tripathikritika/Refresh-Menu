@@ -11,9 +11,8 @@
 
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-## Screenshots
+## Tech/framework
 
-## Tech/framework 
 [<img align="left" alt="Visual Studio Code" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/visual-studio-code/visual-studio-code.png" />][webdevplaylist]
 [<img align="left" alt="HTML5" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/html/html.png" />][webdevplaylist]
 [<img align="left" alt="CSS3" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/css/css.png" />][cssplaylist]
@@ -27,37 +26,45 @@
 [webdevplaylist]: #
 [jsplaylist]: #
 [cssplaylist]: #
-[reactplaylist]: #  
+[reactplaylist]: #
+
 <br/>
 ## Features
 - [x] Google Oauth Login
 - [x] OTP Login
 - [x] Facebook Login
 - [x] Map Integrated
-- [x] Integrated Payment Gateway 
+- [x] Integrated Payment Gateway
 
+## Screenshots
+
+<img src="./Frontend/public/LandingPage.png" alt="Landing Page" />
 ## Installation
->- Clone the repo
-  ``` git clone https://github.com/Tripathikritika/Refresh-Menu.git ```
->- Inside Front End Folder 
-  ``` cd Frontend ```
->- Install NPM packages 
-  ``` npm install ```
->- Let the front end start 
-  ``` npm start ```
->- Inside Back End Folder
-  ``` cd Backend ```
->- Install NPM packages 
-  ``` npm install ```
->- Let the backend run
-  ``` nodemon server.js```
-  
+
+> - Clone the repo
+>   `git clone https://github.com/Tripathikritika/Refresh-Menu.git`
+> - Inside Front End Folder
+>   `cd Frontend`
+> - Install NPM packages
+>   `npm install`
+> - Let the front end start
+>   `npm start`
+> - Inside Back End Folder
+>   `cd Backend`
+> - Install NPM packages
+>   `npm install`
+> - Let the backend run
+>   ` nodemon server.js`
+
 ## Contributors
+
 Thanks for taking the time to contribute!
+
 1. Kritika Tripathi
 2. Omkarnath Parida
 3. DhanaSekhar
 
 ## Credits
-``` https://www.freshmenu.com/ ```
-``` https://masaischool.com/ ```
+
+`https://www.freshmenu.com/`
+`https://masaischool.com/`
