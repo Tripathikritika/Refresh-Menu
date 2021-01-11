@@ -1,0 +1,67 @@
+.header {
+  margin: 0 auto;
+  padding-left: 1%;
+  padding-right: 1%;
+  width: 100%;
+  padding-top: 1%;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+}
+.lineContainer {
+  margin-top: 30vh;
+  display: flex;
+  width: 100%;
+}
+.lineContainer .progressLine {
+  position: relative;
+  margin: 0 auto;
+  border-radius: 10px;
+  width: 85%;
+  background: grey;
+  height: 5px;
+  z-index: -1;
+  display: flex;
+  justify-content: space-between;
+}
+.lineContainer .progressLine .progress {
+  position: absolute;
+  width: 75%;
+  height: 100%;
+  background: #e85826;
+  transition: width 1s ease-in-out;
+}
+.lineContainer .status {
+  position: relative;
+  top: -6.5px;
+}
+.lineContainer .status .dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: white;
+  border: 5px solid grey;
+  cursor: pointer;
+}
+.lineContainer .status .dot.current {
+  background: white;
+  border: 5px solid #e85826;
+}
+.lineContainer .status .dot.completed {
+  position: relative;
+  background: #e85826;
+  border: 5px solid #e85826;
+}
+.lineContainer .status .dot.completed::after {
+  content: '';
+  position: absolute;
+  top: calc(50% - 5px);
+  left: calc(50% - 5.9px);
+  height: 6px;
+  width: 10px;
+  border-left: 2px solid white;
+  border-bottom: 2px solid white;
+  transform-origin: center;
+  transform: rotate(-45deg);
+  z-index: 2;
+}
